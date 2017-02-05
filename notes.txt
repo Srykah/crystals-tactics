@@ -1,0 +1,36 @@
+NOTES
+
+J'ai remplacé tous les sf::Vector2u par des sf::Vector2i puisque j'ai entendu
+dire que les entiers non signés c'était pas bien, et de même j'ai enlevé tous
+les unsigned donc il risque d'y avoir des bugs au niveau des conditions pour
+ne pas que le curseur ou une case passe dans les négatifs. Ah et des warnings
+au niveau des itérations sur les tableaux aussi. Mais ça on s'en branle.
+
+Je pourrais changer mes ennuyantes fonctions de conversion par des
+std::unordered_set<std::pair<enum, id>>.
+
+TRUCS EN COURS
+
+Changer les attaques pour qu'elles acceptent le nouveau format, et qu'elles
+puissent se charger depuis un fichier xml.
+
+Faire les fonctions auxiliaires pour les attaques.
+
+Reprogrammer le déplacement d'une unité.
+
+Changer entièrement la classe Character pour refléter les changements.
+
+Changer la classe Consumable pour qu'elle arrête d'utiliser la classe Ability
+en interne (au pire elle peut toujours utiliser AbilityData).
+
+Programmer les tables de données (attaques, objets, missions) en xml.
+
+TRUCS À FAIRE
+
+Trouver un meilleur algorithme pour isVisible.
+
+Redécouper les dossiers pour avoir des contenus plus petits et plus ciblés.
+
+Virer les vieux trucs que j'ai programmés et qui ne servent plus à rien.
+
+Programmer une IA très très basique.
