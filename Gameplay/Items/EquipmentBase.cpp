@@ -1,5 +1,6 @@
 #include "Gameplay/Items/EquipmentBase.hpp"
 #include "Other/Utility.hpp"
+#include <SFML/System/String.hpp>
 
 EquipmentBase::EquipmentBase()
 : mID(-1)
@@ -18,7 +19,7 @@ void EquipmentBase::load(const pugi::xml_node& node)
     mName = sf::String(node.attribute("name").as_string());
     mDescription = sf::String(node.child("description").text().get());
     mStats.load(node.child("stats"));
-    if (!node.child("types") || node.child("types").text().as_string() == "All")
+    if (!node.child("types") || sf::String(node.child("types").text().as_string()) == sf::String("All"))
     {
         for (int i : getRange<CharType>())
             mUsedBy.push_back(CharType(i));

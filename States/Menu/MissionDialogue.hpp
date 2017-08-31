@@ -2,9 +2,9 @@
 #define MISSIONDIALOGSTATE_HPP_INCLUDED
 
 #include "States/Arch/State.hpp"
-#include <string>
 #include <map>
 #include <SFML/Graphics.hpp>
+#include <SFML/System/String.hpp>
 
 namespace States
 {
@@ -32,11 +32,11 @@ private:
         Right3
     };
 
-    static ScreenPosition StrToScreenPosition(const std::string& str);
+    static ScreenPosition StrToScreenPosition(const sf::String& str);
 
     struct DialogCharacter
     {
-        DialogCharacter(const std::string& characterFile);
+        DialogCharacter(const char* characterFile);
 
         pugi::xml_node node;
         sf::String name;
@@ -53,8 +53,8 @@ private:
     void endDialogue();
 
 private:
-    pugi::xml_node mNode;
-    pugi::xml_node_iterator mIt;
+    pugi::xml_node mBaseNode;
+    pugi::xml_node mSceneNode;
 
     sf::Texture mBackground;
 

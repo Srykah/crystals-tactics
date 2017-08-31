@@ -3,30 +3,35 @@
 #include "States/Gameplay/Battle.hpp"
 #include "Other/Utility.hpp"
 #include <stdexcept>
-#include <iostream>
+#include <cstring>
+#include <sstream>
 
 namespace States
 {
 
-MissionDialogue::ScreenPosition MissionDialogue::StrToScreenPosition(const std::string& str)
+MissionDialogue::ScreenPosition MissionDialogue::StrToScreenPosition(const sf::String& str)
 {
-    if (str == "Left1") return Left1;
-    else if (str == "Left2") return Left2;
-    else if (str == "Left3") return Left3;
+         if (str == "Left1")  return Left1;
+    else if (str == "Left2")  return Left2;
+    else if (str == "Left3")  return Left3;
     else if (str == "Right1") return Right1;
     else if (str == "Right2") return Right2;
     else if (str == "Right3") return Right3;
-    else return Out;
+    else                      return Out;
 }
 
 
-MissionDialogue::DialogCharacter::DialogCharacter(const std::string& characterFile)
+MissionDialogue::DialogCharacter::DialogCharacter(const char* characterFile)
 : screenPos(Out)
 , docPtr(new pugi::xml_document)
 {
-    docPtr->load_file(characterFile.c_str());
+    docPtr->load_file(characterFile);
     if (!*docPtr)
-        throw std::runtime_error("DialogCharacter error : couldn't open / read dialog character file " + characterFile);
+    {
+        std::stringstream ss;
+        ss << "DialogCharacter error : couldn't open / read dialog character file " << characterFile;
+        throw std::runtime_error(ss.str());
+    }
 
     node = docPtr->child("character");
     name = docPtr->child("character").attribute("name").as_string("???");
@@ -35,8 +40,8 @@ MissionDialogue::DialogCharacter::DialogCharacter(const std::string& characterFi
 
 MissionDialogue::MissionDialogue(StateStack* stack, Context context, const pugi::xml_node& node)
 : State(stack, context)
-, mNode(node)
-, mIt(mNode.child("scene").begin())
+, mBaseNode(node)
+, mSceneNode(node.child("scene").first_child())
 , mTextBackground(sf::Vector2f(1000.f, 200.f))
 , mText("", context.fonts->get(Fonts::Main))
 {
@@ -98,10 +103,10 @@ bool MissionDialogue::handleEvent(const Input::Event& event)
     }
     else if (event.stdAc == Input::A)
     {
-        if (mIt == mNode.child("scene").end())
-            endDialogue();
-        else
+        if (mSceneNode)
             read();
+        else
+            endDialogue();
     }
 
     return false;
@@ -114,9 +119,9 @@ bool MissionDialogue::handleSignal(const Signal& signal)
 
 void MissionDialogue::loadTextures()
 {
-    mBackground.loadFromFile(mNode.child("background").attribute("path").as_string());
+    mBackground.loadFromFile(mBaseNode.child("background").attribute("path").as_string());
 
-    for(pugi::xml_node& character : mNode.child("characters"))
+    for(pugi::xml_node& character : mBaseNode.child("characters"))
         mCharacters.emplace_back(character.attribute("file").as_string());
 }
 
@@ -124,13 +129,15 @@ void MissionDialogue::read()
 {
     bool readAgain(false);
 
-    if (mIt->name() == std::string("attitude"))
+    sf::String nodeName(mSceneNode.name());
+
+    if (nodeName == "attitude")
     {
         // dc is a reference to the character of given name stored in the array
-        DialogCharacter& dc = mCharacters.at(mIt->attribute("char").as_int(-1));
+        DialogCharacter& dc = mCharacters.at(mSceneNode.attribute("char").as_int(-1));
 
         // its texture is set to the image pointed at the path of its new attitude
-        dc.texture.loadFromFile(dc.node.child(mIt->attribute("new_att").as_string()).attribute("path").as_string());
+        dc.texture.loadFromFile(dc.node.child(mSceneNode.attribute("new_att").as_string()).attribute("path").as_string());
 
         // we reset the texture rect of the corresponding sprite
         if (dc.screenPos == Left1)
@@ -149,10 +156,10 @@ void MissionDialogue::read()
         // finally, we check the next step (we always want to finish on new text)
         readAgain = true;
     }
-    else if (mIt->name() == std::string("position"))
+    else if (nodeName == "position")
     {
         // dc is a reference to the character of given name stored in the array
-        DialogCharacter& dc = mCharacters.at(mIt->attribute("char").as_int(-1));
+        DialogCharacter& dc = mCharacters.at(mSceneNode.attribute("char").as_int(-1));
 
         // we check where he was so that we reset the sprite there
         switch (dc.screenPos)
@@ -183,7 +190,7 @@ void MissionDialogue::read()
         }
 
         // then we change the intern position
-        dc.screenPos = StrToScreenPosition(mIt->attribute("new_pos").as_string());
+        dc.screenPos = StrToScreenPosition(mSceneNode.attribute("new_pos").as_string());
 
         // and finally we show him on screen at its new position
         switch (dc.screenPos)
@@ -222,44 +229,46 @@ void MissionDialogue::read()
         // finally, we check the next step (we always want to finish on new text)
         readAgain = true;
     }
-    else if (mIt->name() == std::string("caption"))
+    else if (nodeName == "caption")
     {
-        mText.setString(mIt->text().as_string());
+        mText.setString(mSceneNode.text().as_string());
         mText.setStyle(sf::Text::Italic);
         centerOrigin(mText);
     }
-    else if (mIt->name() == std::string("line"))
+    else if (nodeName == "line")
     {
-        if (mIt->attribute("masked"))
+        if (mSceneNode.attribute("masked"))
         {
             sf::String str("??? : ");
-            str += mIt->text().as_string();
+            str += mSceneNode.text().as_string();
             mText.setString(str);
             mText.setStyle(sf::Text::Regular);
             centerOrigin(mText);
         }
         else
         {
-            sf::String str(mCharacters.at(mIt->attribute("char").as_int(-1)).name);
+            sf::String str(mCharacters.at(mSceneNode.attribute("char").as_int(-1)).name);
             str += " : ";
-            str += mIt->text().as_string();
+            str += mSceneNode.text().as_string();
             mText.setString(str);
             mText.setStyle(sf::Text::Regular);
             centerOrigin(mText);
         }
     }
 
-    mIt++;
-    if (readAgain && mIt != mNode.child("scene").end())
+    mSceneNode = mSceneNode.next_sibling();
+    if (readAgain && mSceneNode)
         read();
 }
 
 void MissionDialogue::endDialogue()
 {
     mStack->close(this);
-    pugi::xml_node next(mNode.next_sibling());
-    if (sf::String(next.name()) == "battle")
-        mStack->push(new Battle(mStack, mContext, next));
+    pugi::xml_node next(mBaseNode.next_sibling());
+    if (!next)
+        mStack->clear();
+    else if (!std::strcmp(next.name(), "battle"))
+        mStack->push(new Battle(mStack, mContext, next), true);
 }
 
 }

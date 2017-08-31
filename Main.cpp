@@ -1,6 +1,6 @@
 #include "States/Arch/Application.hpp"
 
-#include <stdexcept>
+#include <exception>
 #include <iostream>
 
 int main()
@@ -14,6 +14,6 @@ int main()
 	}
 	catch (std::exception& e)
 	{
-		std::cout << "\nEXCEPTION: " << e.what() << std::endl;
+		std::cerr << "\nEXCEPTION: " << e.what() << std::endl;
 	}
 }

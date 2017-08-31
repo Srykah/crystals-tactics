@@ -9,7 +9,7 @@
 #include <SFML/System/Time.hpp>
 
 #include <vector>
-#include <queue>
+#include <deque>
 
 namespace States
 {
@@ -31,10 +31,10 @@ public:
     void				handleEvent(const Input::Event& event);
     void                handleSignal();
 
-    void				push(State* state);
-    void				pop();
-    void                close(State* state);
-    void				clear();
+    void				push(State* state, bool front = false);
+    void				pop(bool front = false);
+    void                close(State* state, bool front = false);
+    void				clear(bool front = false);
 
     void                addSignal(State* state, Signal::Data& data);
 
@@ -55,7 +55,7 @@ private:
 
 private:
     std::vector<State::Ptr>		mStack;
-    std::queue<PendingChange>	mPendingList;
+    std::deque<PendingChange>	mPendingList;
     std::queue<Signal>          mSignals;
 };
 

@@ -10,8 +10,8 @@ namespace States
 const sf::Time Application::TimePerFrame = sf::seconds(1.f/60.f);
 
 Application::Application()
-: mWindow(sf::VideoMode::getFullscreenModes()[0], "Crystals : Tactics")
-, mIsFullscreen(false)
+: mWindow(sf::VideoMode::getFullscreenModes()[0], "Crystals : Tactics", sf::Style::Fullscreen)
+, mIsFullscreen(true)
 , mListener(&mWindow)
 {
 	mWindow.setKeyRepeatEnabled(false);
@@ -23,19 +23,7 @@ Application::Application()
 	mTextures.load(Textures::Buttons,		"Media/Textures/Buttons.png");
 	mTextures.load(Textures::TextField,         "Media/Textures/TextField.png");
 
-	mEntities.load(Entities::BattlefieldCursorBack, "Media/Entities/BattlefieldCursorBack/BattlefieldCursorBack.xml");
-	mEntities.load(Entities::BattlefieldCursorFront, "Media/Entities/BattlefieldCursorFront/BattlefieldCursorFront.xml");
-	mEntities.load(Entities::Arrow, "Media/Entities/Arrow/Arrow.xml");
-
-    mEntities.load(Entities::Protector, "Media/Entities/Protector/Protector.xml");
-    /*
-    mEntities.load(Entities::Mechanics, "Media/Entities/Mechanics/Mechanics.xml");
-    mEntities.load(Entities::Medic, "Media/Entities/Medic/Medic.xml");
-    mEntities.load(Entities::Sniper, "Media/Entities/Sniper/Sniper.xml");
-    mEntities.load(Entities::Spy, "Media/Entities/Spy/Spy.xml");
-    mEntities.load(Entities::Android, "Media/Entities/Android/Android.xml");
-    mEntities.load(Entities::DogRobot, "Media/Entities/DogRobot/DogRobot.xml");
-    */
+	loadEntities();
 
     mAbilities.init();
     mStats.loadFromFile("Media/Jobs/Stats.xml");
@@ -113,6 +101,23 @@ Context Application::getContext()
 {
     return Context(mWindow, mTextures, mFonts, mMusic, mSounds, mEntities,
                    mStats, mEquipments, mWeapons, mConsumables, mAbilities, mGuild);
+}
+
+void Application::loadEntities()
+{
+    mEntities.load(Entities::BattlefieldCursorBack, "Media/Entities/BattlefieldCursorBack/BattlefieldCursorBack.xml");
+	mEntities.load(Entities::BattlefieldCursorFront, "Media/Entities/BattlefieldCursorFront/BattlefieldCursorFront.xml");
+	mEntities.load(Entities::Arrow, "Media/Entities/Arrow/Arrow.xml");
+
+    mEntities.load(Entities::Protector, "Media/Entities/Protector/Protector.xml");
+    /*
+    mEntities.load(Entities::Mechanics, "Media/Entities/Mechanics/Mechanics.xml");
+    mEntities.load(Entities::Medic, "Media/Entities/Medic/Medic.xml");
+    mEntities.load(Entities::Sniper, "Media/Entities/Sniper/Sniper.xml");
+    mEntities.load(Entities::Spy, "Media/Entities/Spy/Spy.xml");
+    mEntities.load(Entities::Android, "Media/Entities/Android/Android.xml");
+    mEntities.load(Entities::DogRobot, "Media/Entities/DogRobot/DogRobot.xml");
+    */
 }
 
 }
