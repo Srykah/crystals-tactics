@@ -22,7 +22,6 @@ private:
     void beginMission();
 
 private:
-    bool mFirst;
     pugi::xml_document      mDoc;
 };
 

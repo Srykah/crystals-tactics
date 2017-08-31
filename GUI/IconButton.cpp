@@ -75,6 +75,7 @@ void IconButton::deactivate()
 
 bool IconButton::handleEvent(const Input::Event& event)
 {
+    return true;
 }
 
 void IconButton::update(sf::Time delta)

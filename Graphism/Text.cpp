@@ -9,9 +9,9 @@ Text::Text(const sf::String& text, const sf::Font& font, int characterSize, int 
 , mDrawShadow(style & (1 << 4))
 {
     mText.setStyle(style & 15);
-    mText.setColor(color);
+    mText.setFillColor(color);
     mShadow.setStyle(style & 15);
-    mShadow.setColor(color * sf::Color(128, 128, 128, 128));
+    mShadow.setFillColor(color * sf::Color(128, 128, 128, 128));
 }
 
 Text::~Text()
@@ -21,8 +21,8 @@ Text::~Text()
 
 void Text::setColor(sf::Color color)
 {
-    mText.setColor(color);
-    mShadow.setColor(color * sf::Color(128, 128, 128, 128));
+    mText.setFillColor(color);
+    mShadow.setFillColor(color * sf::Color(128, 128, 128, 128));
 }
 
 void Text::setString(const sf::String& text)

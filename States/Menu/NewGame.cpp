@@ -50,8 +50,8 @@ bool NewGame::update(sf::Time dt)
     }
     else if (mTimeCounter > mTimes.back()) // si on a fini la présentation
     {
-        mStack->clear();
-        mStack->push(new Mission(mStack, mContext, "Media/Missions/Tutorial.xml"));
+        mStack->push(new Mission(mStack, mContext, "Media/Missions/Tutorial.xml"), true);
+        mStack->clear(true);
     }
 
     return false;
@@ -61,8 +61,8 @@ bool NewGame::handleEvent(const Input::Event& event)
 {
     if (event.stdAc == Input::Start)
     {
-        mStack->clear();
-        mStack->push(new Mission(mStack, mContext, "Media/Missions/Tutorial.xml"));
+        mStack->push(new Mission(mStack, mContext, "Media/Missions/Tutorial.xml"), true);
+        mStack->clear(true);
     }
 
     return false;

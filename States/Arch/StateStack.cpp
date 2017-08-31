@@ -53,24 +53,36 @@ void StateStack::handleSignal()
 	applyPendingChanges();
 }
 
-void StateStack::push(State* state)
+void StateStack::push(State* state, bool front)
 {
-    mPendingList.emplace(Push, state);
+    if (front)
+        mPendingList.emplace_front(Push, state);
+    else
+        mPendingList.emplace_back(Push, state);
 }
 
-void StateStack::pop()
+void StateStack::pop(bool front)
 {
-    mPendingList.emplace(Pop);
+    if (front)
+        mPendingList.emplace_front(Pop);
+    else
+        mPendingList.emplace_back(Pop);
 }
 
-void StateStack::close(State* ptr)
+void StateStack::close(State* ptr, bool front)
 {
-    mPendingList.emplace(Close, ptr);
+    if (front)
+        mPendingList.emplace_front(Close, ptr);
+    else
+        mPendingList.emplace_back(Close, ptr);
 }
 
-void StateStack::clear()
+void StateStack::clear(bool front)
 {
-    mPendingList.emplace(Clear);
+    if (front)
+        mPendingList.emplace_front(Clear);
+    else
+        mPendingList.emplace_back(Clear);
 }
 
 bool StateStack::isEmpty() const
@@ -83,7 +95,7 @@ void StateStack::applyPendingChanges()
 	while(!mPendingList.empty())
 	{
 	    PendingChange change = mPendingList.front();
-	    mPendingList.pop();
+	    mPendingList.pop_front();
 
 	    if (change.action == Push)
             mStack.emplace_back(change.ptr);
