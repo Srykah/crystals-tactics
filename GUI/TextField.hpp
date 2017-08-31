@@ -1,13 +1,13 @@
 #ifndef TEXTFIELD_HPP_INCLUDED
 #define TEXTFIELD_HPP_INCLUDED
 
-#include "../Graphism/Text.hpp"
+#include "Graphism/Text.hpp"
 #include <SFML/System/String.hpp>
 #include <SFML/Graphics/VertexArray.hpp>
 #include <SFML/Graphics/Text.hpp>
-#include "../GUI/Component.hpp"
-#include "../StatesArch/State.hpp"
-#include "../Input/InputHandler.hpp"
+#include "GUI/Component.hpp"
+#include "States/Arch/Context.hpp"
+#include "Input/Listener.hpp"
 
 namespace GUI
 {
@@ -15,7 +15,7 @@ namespace GUI
 class TextField : public Component
 {
 public:
-    TextField(State::Context context,
+    TextField(States::Context context,
               sf::String* returnString,
               sf::String fieldName,
               sf::String defaultString = sf::String());
@@ -28,7 +28,7 @@ public:
     virtual bool                contains(sf::Vector2f point) const;
     virtual bool                contains(float x, float y) const;
 
-    virtual bool	        	handleInput(const sf::Event& event, IH::SA stdAc, sf::Vector2f mousePos);
+    virtual bool	        	handleEvent(const Input::Event& event);
     virtual void                update(sf::Time delta);
 
 private:

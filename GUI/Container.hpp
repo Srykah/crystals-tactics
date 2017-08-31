@@ -1,8 +1,8 @@
-#ifndef BOOK_CONTAINER_HPP
-#define BOOK_CONTAINER_HPP
+#ifndef CONTAINER_HPP_INCLUDED
+#define CONTAINER_HPP_INCLUDED
 
-#include "../GUI/Component.hpp"
-#include "../Input/InputHandler.hpp"
+#include "GUI/Component.hpp"
+#include "Input/Listener.hpp"
 
 #include <vector>
 #include <memory>
@@ -28,7 +28,7 @@ class Container : public Component
 
         virtual bool		        isSelectable() const;
 
-        virtual bool		        handleInput(const sf::Event& event, IH::SA stdAc, sf::Vector2f mousePos);
+        virtual bool		        handleEvent(const Input::Event& event);
         virtual void                update(sf::Time delta);
 
     private:
@@ -48,4 +48,4 @@ class Container : public Component
 
 }
 
-#endif // BOOK_CONTAINER_HPP
+#endif // CONTAINER_HPP_INCLUDED

@@ -1,5 +1,7 @@
-#include "../Sound/MusicPlayer.hpp"
+#include "Sound/MusicPlayer.hpp"
 
+namespace Sound
+{
 
 MusicPlayer::MusicPlayer()
 : mMusic()
@@ -42,4 +44,6 @@ void MusicPlayer::setPaused(bool paused)
 		mMusic.pause();
 	else
 		mMusic.play();
+}
+
 }

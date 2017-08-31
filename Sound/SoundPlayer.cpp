@@ -1,4 +1,4 @@
-#include "../Sound/SoundPlayer.hpp"
+#include "Sound/SoundPlayer.hpp"
 
 #include <SFML/Audio/Listener.hpp>
 
@@ -14,6 +14,9 @@ namespace
 	const float MinDistance2D = 200.f;
 	const float MinDistance3D = std::sqrt(MinDistance2D*MinDistance2D + ListenerZ*ListenerZ);
 }
+
+namespace Sound
+{
 
 SoundPlayer::SoundPlayer()
 : mSoundBuffers()
@@ -73,4 +76,6 @@ void SoundPlayer::setVolume(float volume)
 float SoundPlayer::getVolume() const
 {
     return mVolume;
+}
+
 }

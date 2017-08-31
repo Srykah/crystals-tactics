@@ -1,6 +1,6 @@
-#include "../GUI/Button.hpp"
-#include "../Other/Utility.hpp"
-#include "../Other/ResourceHolder.hpp"
+#include "GUI/Button.hpp"
+#include "Other/Utility.hpp"
+#include "Data/ResourceHolder/ResourceHolder.hpp"
 
 #include <SFML/Window/Event.hpp>
 #include <SFML/Graphics/RenderStates.hpp>
@@ -10,7 +10,7 @@
 namespace GUI
 {
 
-Button::Button(State::Context context, Type type)
+Button::Button(States::Context context, Type type)
 : mType(type)
 , mCallback()
 , mSprite(context.textures->get(Textures::Buttons))
@@ -102,7 +102,7 @@ void Button::unpress()
 }
 
 
-bool Button::handleInput(const sf::Event& event, IH::SA stdAc, sf::Vector2f mousePos)
+bool Button::handleEvent(const Input::Event& event)
 {
     return true;
 }

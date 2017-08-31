@@ -1,11 +1,12 @@
-#ifndef BOOK_UTILITY_HPP
-#define BOOK_UTILITY_HPP
+#ifndef UTILITY_HPP_INCLUDED
+#define UTILITY_HPP_INCLUDED
 
 #include <SFML/Window/Keyboard.hpp>
 #include <SFML/System/Vector2.hpp>
 
 #include <sstream>
-
+#include <type_traits>
+#include <vector>
 
 namespace sf
 {
@@ -21,29 +22,41 @@ namespace Graphism
 // Since std::to_string doesn't work on MinGW we have to implement
 // our own to support all platforms.
 template <typename T>
-std::string		toString(const T& value);
+std::string		ToStr(const T& value);
 
 // Convert enumerators to strings
-std::string		toString(sf::Keyboard::Key key);
+std::string		KeyToStr(sf::Keyboard::Key key);
 
 // Call setOrigin() with the center of the object
 template <typename T>
 void			centerOrigin(T& transformable);
 
 // Degree/radian conversion
-float			toDegree(float radian);
-float			toRadian(float degree);
+float			RadianToDegree(float radian);
+float			DegreeToRadian(float degree);
 
 // Random number generation
 int				randomInt(int exclusiveMax);
 float           randomFloatNorm();
+float           randomPick(int val);
 
 // Vector operations
 float			length(sf::Vector2f vector);
 sf::Vector2f	unitVector(sf::Vector2f vector);
+int             scal(int x1, int y1, int x2, int y2);
+
+// Arithmetics
+int signe(int val);
 
 // Time format routines
-std::string     formatTimeFromSeconds(int seconds);
+std::string     SecondsToStr(int seconds);
+
+// Enum class -> int conversions
+template<typename Enum>
+constexpr auto toInt(Enum e);
+
+template<typename Enum>
+std::vector<short> getRange();
 
 #include "Utility.inl"
-#endif // BOOK_UTILITY_HPP
+#endif // UTILITY_HPP_INCLUDED

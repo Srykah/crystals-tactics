@@ -1,4 +1,4 @@
-#include "../GUI/IconButton.hpp"
+#include "GUI/IconButton.hpp"
 
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/Graphics/RenderStates.hpp>
@@ -73,7 +73,7 @@ void IconButton::deactivate()
 	mSprite.setColor(sf::Color::White);
 }
 
-bool IconButton::handleInput(const sf::Event& event, IH::SA stdAc, sf::Vector2f mousePos)
+bool IconButton::handleEvent(const Input::Event& event)
 {
 }
 

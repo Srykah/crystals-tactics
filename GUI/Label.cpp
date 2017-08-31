@@ -1,5 +1,5 @@
 #include "Label.hpp"
-#include "../Other/Utility.hpp"
+#include "Other/Utility.hpp"
 
 #include <SFML/Graphics/RenderStates.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
@@ -8,7 +8,7 @@
 namespace GUI
 {
 
-Label::Label(const std::string& text, const FontHolder& fonts)
+Label::Label(const std::string& text, const Data::FontHolder& fonts)
 : mText(text, fonts.get(Fonts::Main), 16, Graphism::Text::Shadow)
 {
 }
@@ -18,7 +18,7 @@ bool Label::isSelectable() const
     return false;
 }
 
-bool Label::handleInput(const sf::Event& event, IH::SA stdAc, sf::Vector2f mousePos)
+bool Label::handleEvent(const Input::Event& event)
 {
     return true;
 }

@@ -1,4 +1,4 @@
-#include "../GUI/Container.hpp"
+#include "GUI/Container.hpp"
 
 #include <SFML/Window/Event.hpp>
 #include <SFML/Graphics/RenderStates.hpp>
@@ -56,41 +56,41 @@ bool Container::contains(float x, float y) const
     return contains(sf::Vector2f(x,y));
 }
 
-bool Container::handleInput(const sf::Event& event, IH::SA stdAc, sf::Vector2f mousePos)
+bool Container::handleEvent(const Input::Event& event)
 {
     // If the selected child is active then give it events
 	if (hasSelection() && mChildren[mSelectedChild]->isActive())
 	{
-		return mChildren[mSelectedChild]->handleInput(event, stdAc, mousePos);
+		return mChildren[mSelectedChild]->handleEvent(event);
 	}
 	else //else navigate through the container
     {
         //first, standard actions
         if(hasSelection())
         {
-            switch(stdAc)
+            switch(event.stdAc)
             {
-            case IH::Up:
-            case IH::Left:
+            case Input::Up:
+            case Input::Left:
                 selectPrevious();
                 return false;
 
-            case IH::Down:
-            case IH::Right:
+            case Input::Down:
+            case Input::Right:
                 selectNext();
                 return false;
 
-            case IH::A:
+            case Input::A:
                 activateSelection();
                 return false;
             }
         }
         //then, keyboard shortcuts
-        if (event.type == sf::Event::KeyPressed)
+        if (event.sfEvent.type == sf::Event::KeyPressed)
         {
             for (int i(0); i < mChildren.size(); i++)
             {
-                if (mChildren[i]->getShortcut() == event.key.code
+                if (mChildren[i]->getShortcut() == event.sfEvent.key.code
                     and mChildren[i]->isSelectable()
                     and !mChildren[i]->isSelected())
                 {
@@ -101,21 +101,20 @@ bool Container::handleInput(const sf::Event& event, IH::SA stdAc, sf::Vector2f m
             }
         }
         //then, mouse (part 1 : move)
-        else if (event.type == sf::Event::MouseMoved)
+        else if (event.sfEvent.type == sf::Event::MouseMoved)
         {
             for (int i(0); i < mChildren.size(); ++i)
             {
-                if (mChildren[i]->contains(mousePos)
-                    and !mChildren[i]->isSelected())
+                if (mChildren[i]->contains(sf::Vector2f(event.mousePos)) && !mChildren[i]->isSelected())
                     selectIndex(i);
             }
         }
         //then, mouse again (part 2 : clicks)
-        else if(event.type == sf::Event::MouseButtonPressed and event.mouseButton.button == sf::Mouse::Left)
+        else if(event.sfEvent.type == sf::Event::MouseButtonPressed && event.sfEvent.mouseButton.button == sf::Mouse::Left)
         {
             for (int i(0); i < mChildren.size(); ++i)
             {
-                if (mChildren[i]->contains(mousePos))
+                if (mChildren[i]->contains(sf::Vector2f(event.mousePos)))
                 {
                     selectIndex(i);
                     activateSelection();

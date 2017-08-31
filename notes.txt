@@ -1,35 +1,70 @@
-NOTES
 
-J'ai remplacé tous les sf::Vector2u par des sf::Vector2i puisque j'ai entendu
-dire que les entiers non signés c'était pas bien, et de même j'ai enlevé tous
-les unsigned donc il risque d'y avoir des bugs au niveau des conditions pour
-ne pas que le curseur ou une case passe dans les négatifs. Ah et des warnings
-au niveau des itérations sur les tableaux aussi. Mais ça on s'en branle.
+    NOTES
 
-Je pourrais changer mes ennuyantes fonctions de conversion par des
-std::unordered_set<std::pair<enum, id>>.
+Pour créer l'équipe de nouvelle partie, je peux la charger depuis un fichier de sauvegarde prédéfini.
+Cela fonctionne aussi pour les unités par défaut lors du recrutement.
 
-TRUCS EN COURS
+Après maintes hésitations j'ai décidé de hardcoder les capacités et les consommables.
+J'ai également décidé de gérer le déplacement et l'attaque à l'arme via des capacités.
+J'ai aussi décidé de ne pas créer de sous-classes, le code redondant sera placé dans des routines.
+L'attaque en elle-même est calculée lors de l'appel à la fonction use(), et l'animation est gérée par une Cutscene.
+La fonction update sert à mettre à jour cette Cutscene et les différentes entités et effets qui y sont liés.
 
-Changer les attaques pour qu'elles acceptent le nouveau format, et qu'elles
-puissent se charger depuis un fichier xml.
+La formule de calcul des dommages est : base + randomPick(atk) - 0.5*randomPick(def).
+Les modificateurs (orientation, coup critique, affinité élémentaire) sont appliqués après.
+Pour les soins, le calcul est le suivant : base (en %) * hp_cible.
+L'espérance de randomPick(n) est n-1 (à peu près).
 
-Faire les fonctions auxiliaires pour les attaques.
+Je vais insérer une par une les classes ci-dessous, en créant toutes les attaques (graphismes compris)
+avant de passer à la classe suivante.
 
-Reprogrammer le déplacement d'une unité.
+Ordre (temporaire) des classes :
+//Playable
+Protector       = 0,
+Medic           = 1,
+Sniper          = 2,
+Mechanics       = 3,
+Sneak           = 4,
+Bomber          = 5,
+Physicist       = 6,
+StreetArtist    = 7,
+Motorized       = 8,
+WindGuardian    = 9,
+WaterGuardian   = 10,
+FireGuardian    = 11,
+RustGuardian    = 12,
+//Enemies and summons
+Wolf            = 13,
+Robodog         = 14,
+Robospider      = 15,
+Robotortoise    = 16,
+Robobear        = 17,
+Robotiger       = 18,
+MadAndroid      = 20
 
-Changer entièrement la classe Character pour refléter les changements.
+Le compteur pour le cooldown des attaques est un compte à rebours (décroissant).
 
-Changer la classe Consumable pour qu'elle arrête d'utiliser la classe Ability
-en interne (au pire elle peut toujours utiliser AbilityData).
+Se méfier des scales vers 0 pour Effect, ça risque de pas faire comme prévu.
 
-Programmer les tables de données (attaques, objets, missions) en xml.
+Pour la fonction isInRange, j'utilise des entiers pour éviter les erreurs d'arrondi, mais je multiplie les valeurs par deux
+pour pouvoir gérer les centres de cases.
 
-TRUCS À FAIRE
+    TRUCS EN COURS
 
-Trouver un meilleur algorithme pour isVisible.
+Programmer les attaques et consommables, ajouter les animations.
 
-Redécouper les dossiers pour avoir des contenus plus petits et plus ciblés.
+Finir les fonctions auxiliaires pour les attaques.
+
+    TRUCS À FAIRE
+
+Changer le mécanisme d'animations, pour pouvoir appeler une animation avec un nom quelconque
+et ne pas tout charger à la fois.
+
+Écrire les tables de données (attaques, objets, missions) en xml.
+
+Mettre les trucs de son dans un namespace Sound.
+
+Mieux classer les dossiers Input, GUI et Graphism.
 
 Virer les vieux trucs que j'ai programmés et qui ne servent plus à rien.
 

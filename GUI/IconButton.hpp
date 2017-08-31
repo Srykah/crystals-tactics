@@ -1,7 +1,7 @@
 #ifndef ICONBUTTON_HPP_INCLUDED
 #define ICONBUTTON_HPP_INCLUDED
 
-#include "../GUI/Component.hpp"
+#include "GUI/Component.hpp"
 
 #include <SFML/Graphics/Sprite.hpp>
 
@@ -40,7 +40,7 @@ public:
     virtual bool                contains(sf::Vector2f point) const;
     virtual bool                contains(float x, float y) const;
 
-    virtual bool		    	handleInput(const sf::Event& event, IH::SA stdAc, sf::Vector2f mousePos);
+    virtual bool		    	handleEvent(const Input::Event& event);
     virtual void                update(sf::Time delta);
 
 

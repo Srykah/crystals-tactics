@@ -1,4 +1,4 @@
-#include "../Graphism/Text.hpp"
+#include "Graphism/Text.hpp"
 
 namespace Graphism
 {

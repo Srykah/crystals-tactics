@@ -5,7 +5,7 @@
 #include <SFML/Graphics/Text.hpp>
 #include <SFML/System/Time.hpp>
 #include <string>
-#include "../Input/InputHandler.hpp"
+#include "Input/Listener.hpp"
 
 namespace GUI
 {
@@ -27,7 +27,7 @@ public:
     ~BattleMenu();
 
     void update(sf::Time delta);
-    void handleInput(sf::Event event, IH::SA stdAction, sf::Vector2f mousePos);
+    void handleInput(sf::Event event, Input::StdAction stdAction, sf::Vector2f mousePos);
     void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates()) const;
 
     void addEntry(const Entry& entry);

@@ -1,5 +1,5 @@
-#include "../GUI/TextField.hpp"
-#include "../Other/Utility.hpp"
+#include "GUI/TextField.hpp"
+#include "Other/Utility.hpp"
 #include <string>
 
 bool isAValidString(const sf::String& str)
@@ -9,7 +9,7 @@ bool isAValidString(const sf::String& str)
                                                            àÀâÂäÄéÉèÈêÊëËîÎïÏôÔöÖûÛüÜ").toWideString()) == std::wstring::npos;
 }
 
-GUI::TextField::TextField(State::Context context,
+GUI::TextField::TextField(States::Context context,
                           sf::String* returnString,
                           sf::String fieldName,
                           sf::String defaultString)
@@ -53,53 +53,53 @@ bool GUI::TextField::contains(float x, float y) const
     return contains(sf::Vector2f(x,y));
 }
 
-bool GUI::TextField::handleInput(const sf::Event& event, IH::SA stdAc, sf::Vector2f mousePos)
+bool GUI::TextField::handleEvent(const Input::Event& event)
 {
-    if (event.type == sf::Event::KeyPressed)
+    if (event.sfEvent.type == sf::Event::KeyPressed)
     {
-        if (event.key.code == sf::Keyboard::Left and mCursorPos > 0)
+        if (event.sfEvent.key.code == sf::Keyboard::Left && mCursorPos > 0)
         {
             setCursorPos(mCursorPos-1);
             return false;
         }
-        else if (event.key.code == sf::Keyboard::Right and mCursorPos < mInputString.getSize())
+        else if (event.sfEvent.key.code == sf::Keyboard::Right && mCursorPos < mInputString.getSize())
         {
             setCursorPos(mCursorPos+1);
             return false;
         }
-        else if (event.key.code == sf::Keyboard::End)
+        else if (event.sfEvent.key.code == sf::Keyboard::End)
         {
             setCursorPos(mInputString.getSize());
             return false;
         }
-        else if (event.key.code == sf::Keyboard::Home)
+        else if (event.sfEvent.key.code == sf::Keyboard::Home)
         {
             setCursorPos(0);
             return false;
         }
-        else if (event.key.code == sf::Keyboard::BackSpace and mCursorPos > 0)
+        else if (event.sfEvent.key.code == sf::Keyboard::BackSpace && mCursorPos > 0)
         {
             mInputString.erase(mCursorPos-1);
             mTextEntered.setString(mInputString);
             setCursorPos(mCursorPos-1);
             return false;
         }
-        else if (event.key.code == sf::Keyboard::Delete and mCursorPos < mInputString.getSize())
+        else if (event.sfEvent.key.code == sf::Keyboard::Delete && mCursorPos < mInputString.getSize())
         {
             mInputString.erase(mCursorPos);
             mTextEntered.setString(mInputString);
             return false;
         }
-        else if (event.key.code == sf::Keyboard::Return)
+        else if (event.sfEvent.key.code == sf::Keyboard::Return)
         {
             *mReturnString = mInputString;
             deactivate();
             return false;
         }
     }
-    if (event.type == sf::Event::TextEntered and isAValidString(event.text.unicode))
+    if (event.sfEvent.type == sf::Event::TextEntered && isAValidString(event.sfEvent.text.unicode))
     {
-        mInputString.insert(mCursorPos, event.text.unicode);
+        mInputString.insert(mCursorPos, event.sfEvent.text.unicode);
         mTextEntered.setString(mInputString);
         setCursorPos(mCursorPos+1);
         return false;

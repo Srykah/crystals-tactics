@@ -1,8 +1,8 @@
-#ifndef BOOK_MUSICPLAYER_HPP
-#define BOOK_MUSICPLAYER_HPP
+#ifndef MUSICPLAYER_HPP_INCLUDED
+#define MUSICPLAYER_HPP_INCLUDED
 
-#include "../Other/ResourceHolder.hpp"
-#include "../Other/ResourceIdentifiers.hpp"
+#include "Data/ResourceHolder/ResourceHolder.hpp"
+#include "Data/ResourceHolder/ResourceIdentifiers.hpp"
 
 #include <SFML/System/NonCopyable.hpp>
 #include <SFML/Audio/Music.hpp>
@@ -10,6 +10,8 @@
 #include <map>
 #include <string>
 
+namespace Sound
+{
 
 class MusicPlayer : private sf::NonCopyable
 {
@@ -30,4 +32,6 @@ class MusicPlayer : private sf::NonCopyable
 		float								mVolume;
 };
 
-#endif // BOOK_MUSICPLAYER_HPP
+}
+
+#endif // MUSICPLAYER_HPP_INCLUDED

@@ -1,11 +1,11 @@
-#ifndef BOOK_BUTTON_HPP
-#define BOOK_BUTTON_HPP
+#ifndef BUTTON_HPP_INCLUDED
+#define BUTTON_HPP_INCLUDED
 
-#include "../GUI/Component.hpp"
-#include "../Other/ResourceIdentifiers.hpp"
-#include "../StatesArch/State.hpp"
-#include "../Graphism/Text.hpp"
-#include "../Input/InputHandler.hpp"
+#include "GUI/Component.hpp"
+#include "Data/ResourceHolder/ResourceIdentifiers.hpp"
+#include "States/Arch/Context.hpp"
+#include "Graphism/Text.hpp"
+#include "Input/Listener.hpp"
 
 #include <SFML/Graphics/Sprite.hpp>
 
@@ -45,7 +45,7 @@ class Button : public Component
 
 
 	public:
-                                    Button(State::Context context, Type type);
+                                    Button(States::Context context, Type type);
 
         void					    setCallback(Callback callback);
         void					    setText(const std::string& text);
@@ -64,7 +64,7 @@ class Button : public Component
         virtual bool                contains(sf::Vector2f point) const;
         virtual bool                contains(float x, float y) const;
 
-        virtual bool		    	handleInput(const sf::Event& event, IH::SA stdAc, sf::Vector2f mousePos);
+        virtual bool		    	handleEvent(const Input::Event& event);
         virtual void                update(sf::Time delta);
 
 
@@ -84,4 +84,4 @@ class Button : public Component
 
 }
 
-#endif // BOOK_BUTTON_HPP
+#endif // BUTTON_HPP_INCLUDED

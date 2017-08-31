@@ -1,5 +1,5 @@
-#ifndef BOOK_COMPONENT_HPP
-#define BOOK_COMPONENT_HPP
+#ifndef COMPONENT_HPP_INCLUDED
+#define COMPONENT_HPP_INCLUDED
 
 #include <SFML/System/NonCopyable.hpp>
 #include <SFML/Graphics/Drawable.hpp>
@@ -9,7 +9,7 @@
 
 #include <memory>
 
-#include "../Input/InputHandler.hpp"
+#include "Input/Listener.hpp"
 
 
 namespace sf
@@ -44,7 +44,7 @@ class Component : public sf::Drawable, public sf::Transformable, private sf::Non
         virtual bool                contains(sf::Vector2f point) const = 0;
         virtual bool                contains(float x, float y) const = 0;
 
-        virtual bool	        	handleInput(const sf::Event& event, IH::SA stdAc, sf::Vector2f mousePos) = 0;
+        virtual bool	        	handleEvent(const Input::Event& event) = 0;
         virtual void                update(sf::Time delta) = 0;
 
 
@@ -58,4 +58,4 @@ class Component : public sf::Drawable, public sf::Transformable, private sf::Non
 
 }
 
-#endif // BOOK_COMPONENT_HPP
+#endif // COMPONENT_HPP_INCLUDED

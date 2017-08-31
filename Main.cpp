@@ -1,4 +1,4 @@
-#include "StatesArch/Application.hpp"
+#include "States/Arch/Application.hpp"
 
 #include <stdexcept>
 #include <iostream>
@@ -9,7 +9,7 @@ int main()
 
 	try
 	{
-		Application app;
+		States::Application app;
 		app.run();
 	}
 	catch (std::exception& e)

@@ -1,10 +1,10 @@
-#ifndef BOOK_LABEL_HPP
-#define BOOK_LABEL_HPP
+#ifndef LABEL_HPP_INCLUDED
+#define LABEL_HPP_INCLUDED
 
-#include "../GUI/Component.hpp"
-#include "../Other/ResourceIdentifiers.hpp"
-#include "../Other/ResourceHolder.hpp"
-#include "../Graphism/Text.hpp"
+#include "GUI/Component.hpp"
+#include "Data/ResourceHolder/ResourceIdentifiers.hpp"
+#include "Data/ResourceHolder/ResourceHolder.hpp"
+#include "Graphism/Text.hpp"
 
 namespace GUI
 {
@@ -16,7 +16,7 @@ class Label : public Component
 
 
 	public:
-							Label(const std::string& text, const FontHolder& fonts);
+							Label(const std::string& text, const Data::FontHolder& fonts);
 
         virtual bool		isSelectable() const;
 		void				setText(const std::string& text);
@@ -24,7 +24,7 @@ class Label : public Component
 		virtual bool        contains(sf::Vector2f point) const;
 		virtual bool        contains(float x, float y) const;
 
-        virtual bool		handleInput(const sf::Event& event, IH::SA stdAc, sf::Vector2f mousePos);
+        virtual bool		handleEvent(const Input::Event& event);
         virtual void        update(sf::Time delta);
 
 
@@ -39,4 +39,4 @@ class Label : public Component
 
 }
 
-#endif // BOOK_LABEL_HPP
+#endif // LABEL_HPP_INCLUDED

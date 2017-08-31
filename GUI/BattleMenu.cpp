@@ -1,4 +1,4 @@
-#include "../GUI/BattleMenu.hpp"
+#include "GUI/BattleMenu.hpp"
 #include <SFML/Graphics/RenderTarget.hpp>
 
 namespace GUI
@@ -33,19 +33,19 @@ void BattleMenu::update(sf::Time delta)
     //nothing planned for now
 }
 
-void BattleMenu::handleInput(sf::Event event, IH::SA stdAction, sf::Vector2f mousePos)
+void BattleMenu::handleInput(sf::Event event, Input::StdAction stdAction, sf::Vector2f mousePos)
 {
-    if (stdAction == IH::A && !mEntries[mIndexSelection].grayed)
+    if (stdAction == Input::A && !mEntries[mIndexSelection].grayed)
     {
         mHasResult = true;
         mResult = mEntries[mIndexSelection].returnValue;
     }
-    else if (stdAction == IH::Up && mIndexSelection > 0)
+    else if (stdAction == Input::Up && mIndexSelection > 0)
     {
         mIndexSelection--;
         mSelection.setPosition(5, 5+40*mIndexSelection);
     }
-    else if (stdAction == IH::Down && mIndexSelection < int(mEntries.size())-1)
+    else if (stdAction == Input::Down && mIndexSelection < int(mEntries.size())-1)
     {
         mIndexSelection++;
         mSelection.setPosition(5, 5+40*mIndexSelection);
