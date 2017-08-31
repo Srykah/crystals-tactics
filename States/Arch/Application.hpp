@@ -42,6 +42,8 @@ private:
     Context                 getContext();
 
 private:
+    void                    loadEntities();
+
     static const sf::Time	TimePerFrame;
 
     sf::RenderWindow		mWindow;

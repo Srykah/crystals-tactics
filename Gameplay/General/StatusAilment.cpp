@@ -43,4 +43,5 @@ SA StrToSA(const std::string& text)
     else if (text == "Disabled") return StatusAilment::Disabled;
     else if (text == "Asleep") return StatusAilment::Asleep;
     else if (text == "Invisible") return StatusAilment::Invisible;
+    else return StatusAilment::None;
 }
