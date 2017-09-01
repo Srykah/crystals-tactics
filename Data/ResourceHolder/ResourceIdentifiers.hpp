@@ -58,8 +58,7 @@ namespace Entities
 {
     enum ID
     {
-        CursorBack,
-        CursorFront,
+        CursorTile,
         Arrow,
         Protector,
         MechProtector,

@@ -158,6 +158,9 @@ void Listener::process(sf::Time delta)
             mQueue.emplace(event, None, sf::Mouse::getPosition(*mWindow));
     }
 
+    sf::Event emptyEvent;
+    emptyEvent.type = sf::Event::Count;
+
     ///we then take care of the axes
     if (mGamepadID != -1)
     {
@@ -169,7 +172,7 @@ void Listener::process(sf::Time delta)
                 {
                     mDirection = axe_pair.second;
                     mAxisUsed = true;
-                    mQueue.emplace(sf::Event(), DirToSA(mDirection), sf::Mouse::getPosition(*mWindow));
+                    mQueue.emplace(emptyEvent, DirToSA(mDirection), sf::Mouse::getPosition(*mWindow));
                     break;
                 }
             }
@@ -203,13 +206,13 @@ void Listener::process(sf::Time delta)
         if (!mRepeating && mTimer >= REPEAT_BEGIN)
         {
             mTimer -= REPEAT_BEGIN;
-            mQueue.emplace(sf::Event(), DirToSA(mDirection), sf::Mouse::getPosition(*mWindow));
+            mQueue.emplace(emptyEvent, DirToSA(mDirection), sf::Mouse::getPosition(*mWindow));
             mRepeating = true;
         }
         while (mRepeating && mTimer >= REPEAT_DT)
         {
             mTimer -= REPEAT_DT;
-            mQueue.emplace(sf::Event(), DirToSA(mDirection), sf::Mouse::getPosition(*mWindow));
+            mQueue.emplace(emptyEvent, DirToSA(mDirection), sf::Mouse::getPosition(*mWindow));
         }
     }
 }

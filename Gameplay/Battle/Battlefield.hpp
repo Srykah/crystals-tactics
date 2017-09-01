@@ -15,7 +15,7 @@ namespace Graphism { class Scene; }
 template<typename T>
 using Grid = std::vector< std::vector< T > >;
 
-const int TILE_DIM(64);
+const int TILE_DIM(48);
 
 class Battlefield : public sf::Drawable
 {

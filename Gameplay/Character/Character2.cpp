@@ -17,7 +17,7 @@ void Character::startBattle(BattleContext context, sf::Vector2i coords, Directio
     mUnitListKey = mBattleContext.ul->addUnit(this);
 
     Graphism::Entity* entity = new Graphism::Entity(mContext.entities->get(CharTypeToEntitiesID(mType)), "idle", facing);
-    mEntityNode = new Graphism::EntityNode(entity, mCoords.y);
+    mEntityNode = new Graphism::EntityNode(entity, mCoords.y+1);
     mEntityNode->setPosition(get2DPos(mCoords));
     mBattleContext.scene->addNode(mEntityNode);
 
@@ -35,7 +35,7 @@ void Character::setCoords(sf::Vector2i coords)
     {
         mCoords = coords;
         getNode()->setPosition(get2DPos(coords));
-        getNode()->setZ(mCoords.y);
+        getNode()->setZ(mCoords.y+1);
     }
 }
 

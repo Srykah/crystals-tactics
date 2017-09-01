@@ -18,8 +18,7 @@ SimpleNode::~SimpleNode()
 
 void SimpleNode::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-    sf::RenderStates newStates(states);
-    newStates.transform *= getGlobalTransform();
+    states.transform *= getGlobalTransform();
     target.draw(*mDrawable, states);
 }
 

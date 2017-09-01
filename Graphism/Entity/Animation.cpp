@@ -13,7 +13,7 @@ Animation::Animation(const Data::AnimationData& data)
 , mCurrentFrame(0)
 , mElapsedTime(sf::Time::Zero)
 {
-
+    restart();
 }
 
 void Animation::update(sf::Time dt)

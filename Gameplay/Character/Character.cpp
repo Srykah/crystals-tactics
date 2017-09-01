@@ -77,15 +77,9 @@ void Character::switchMechForm()
         if (mEntityNode != nullptr)
         {
             if (mType == CharType::Protector)
-                mEntityNode->entity.reset(new Graphism::Entity(mContext.entities->get(Entities::MechProtector)));
-            /*
-            else if (mType == CharType::Sniper)
-                mEntity = mContext.entities->get(Entities::MechSniper);
-            else if (mType == CharType::Bomber)
-                mEntity = mContext.entities->get(Entities::MechBomber);
-            else if (mType == CharType::Driver)
-                mEntity = mContext.entities->get(Entities::MechDriver);
-            */
+                mEntityNode->entity.reset(new Graphism::Entity(mContext.entities->get(Entities::MechProtector),
+                                                               getEntity()->getAnimationName(),
+                                                               getEntity()->getFacing()));
         }
     }
     else
@@ -94,7 +88,9 @@ void Character::switchMechForm()
         if (mEntityNode != nullptr)
         {
             if (mType == CharType::Protector)
-                mEntityNode->entity.reset(new Graphism::Entity(mContext.entities->get(Entities::Protector)));
+                mEntityNode->entity.reset(new Graphism::Entity(mContext.entities->get(Entities::Protector),
+                                                               getEntity()->getAnimationName(),
+                                                               getEntity()->getFacing()));
             /*
             else if (mType == Sniper)
                 mEntity = mContext.entities->get(Entities::Sniper);

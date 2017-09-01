@@ -21,11 +21,10 @@ public:
     typedef std::unique_ptr< Node > Ptr;
 
 public:
-                    //Node();
                     Node(float z, Key parentKey = -1);
     virtual         ~Node();
 
-    bool            update(sf::Time delta);
+    virtual bool    update(sf::Time delta);
 
     Key             getKey() const;
     Key             getParentKey() const;

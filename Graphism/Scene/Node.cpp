@@ -5,17 +5,6 @@
 namespace Graphism
 {
 
-/*
-Node::Node()
-: mKey(-1)
-, mZ(0.f)
-, mParentKey(-1)
-, mScene(nullptr)
-{
-
-}
-*/
-
 Node::Node(float z, Node::Key parentKey)
 : mKey(-1)
 , mZ(z)

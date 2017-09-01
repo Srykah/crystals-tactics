@@ -35,7 +35,7 @@ private:
     Battlefield         mBattlefield;
     Graphism::Cursor    mCursor;
     Cutscene            mCutscene;
-
+    sf::View            mView;
 
 private:
     BattleContext       getBattleContext();

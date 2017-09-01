@@ -1,7 +1,7 @@
 #ifndef ENTITY_HPP_INCLUDED
 #define ENTITY_HPP_INCLUDED
 
-#include <SFML/Graphics.hpp>
+#include <SFML/Graphics/Drawable.hpp>
 #include <utility>
 #include <SFML/System/String.hpp>
 #include <memory>
@@ -13,12 +13,11 @@
 namespace Graphism
 {
 
-class Entity : public sf::Drawable, public sf::Transformable
+class Entity : public sf::Drawable
 {
 public:
     typedef std::unique_ptr<Entity> Ptr;
 
-    Entity(const Data::EntityData& data);
     Entity(const Data::EntityData& data, sf::String anim, Direction::Dir facing);
     ~Entity();
 

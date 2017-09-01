@@ -70,9 +70,9 @@ void Scene::removeNode(Node::Key key)
 void Scene::sort()
 {
     if (!std::is_sorted(mNodes.begin(), mNodes.end(),
-              [](const Node::Ptr& left, const Node::Ptr& right){ return left->getZ() > right->getZ(); }))
+              [](const Node::Ptr& left, const Node::Ptr& right){ return left->getZ() < right->getZ(); }))
     std::sort(mNodes.begin(), mNodes.end(),
-              [](const Node::Ptr& left, const Node::Ptr& right){ return left->getZ() > right->getZ(); });
+              [](const Node::Ptr& left, const Node::Ptr& right){ return left->getZ() < right->getZ(); });
 }
 
 }

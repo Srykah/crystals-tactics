@@ -42,9 +42,9 @@ bool Effect::update(sf::Time delta)
     {
         if (mTime + delta <= mDuration)
         {
-            mNode->setPosition(mPosFun(mTime + delta));
-            mNode->setRotation(mRotFun(mTime + delta));
-            mNode->setZ(mZFun(mTime + delta));
+            mNode->move(mPosFun(mTime + delta) - mPosFun(mTime));
+            mNode->rotate(mRotFun(mTime + delta) - mRotFun(mTime));
+            mNode->moveZ(mZFun(mTime + delta) - mZFun(mTime));
             mNode->setScale(mScaleFun(mTime + delta));
 
             mTime += delta;

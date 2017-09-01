@@ -23,10 +23,8 @@ public:
 private:
     void            updateEntityPositions();
 
-    EntityNode*     mCursorBack;
-    Node::Key       mSceneKey;
-    EntityNode*     mCursorFront;
-    sf::Vector2i    mCursorCoords;
+    EntityNode*     mNode;
+    sf::Vector2i    mCoords;
 };
 
 }

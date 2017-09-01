@@ -15,7 +15,6 @@ Graphism::NoOwnNode::~NoOwnNode()
 
 void Graphism::NoOwnNode::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-    sf::RenderStates newStates(states);
-    newStates.transform *= getGlobalTransform();
-    target.draw(*mDrawable, newStates);
+    states.transform *= getGlobalTransform();
+    target.draw(*mDrawable, states);
 }

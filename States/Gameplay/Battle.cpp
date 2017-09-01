@@ -15,6 +15,7 @@ Battle::Battle(StateStack* stack, Context context, pugi::xml_node& node)
 : State(stack, context)
 , mBackground(sf::Quads, 4)
 , mCursor(mScene, *context.entities)
+, mView(mCursor.getView(1.f))
 {
     mBackground[0].color = sf::Color(0,0,255);
     mBackground[1].position = sf::Vector2f(1366,0);
@@ -36,6 +37,8 @@ Battle::Battle(StateStack* stack, Context context, pugi::xml_node& node)
         Direction::Dir facing(StrToDir(unit.attribute("facing").as_string()));
         charac->startBattle(getBattleContext(), coords, facing);
     }
+
+    mScene.sort();
 }
 
 Battle::~Battle()
@@ -50,7 +53,7 @@ void Battle::draw()
     sf::View oldView(window.getView());
 
     ///the scene is drawn with the view centered on the cursor
-    window.setView(mCursor.getView(1.f));
+    window.setView(mView);
     window.draw(mScene);
 
     ///return to previous view

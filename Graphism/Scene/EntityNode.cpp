@@ -1,4 +1,5 @@
 #include "Graphism/Scene/EntityNode.hpp"
+#include <SFML/Graphics/RenderTarget.hpp>
 
 namespace Graphism
 {
@@ -17,8 +18,7 @@ EntityNode::~EntityNode()
 
 void EntityNode::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-    sf::RenderStates newStates(states);
-    newStates.transform *= getGlobalTransform();
+    states.transform *= getGlobalTransform();
     target.draw(*entity, states);
 }
 

@@ -1,16 +1,19 @@
 #include "Graphism/HUD/Cursor.hpp"
 #include "Gameplay/General/Routines.hpp"
+#include "Gameplay/Battle/Battlefield.hpp"
 
 namespace Graphism
 {
 
 Cursor::Cursor(Scene& scene, const Data::EntityHolder& entities, sf::Vector2i coords)
-: mCursorBack(new EntityNode(new Entity(entities.get(Entities::CursorBack), "idle", Direction::None), coords.y))
-, mSceneKey(scene.addNode(mCursorBack))
-, mCursorFront(new EntityNode(new Entity(entities.get(Entities::CursorFront), "float", Direction::None), 100.f, mSceneKey))
-, mCursorCoords(coords)
+: mNode(nullptr)
+, mCoords(coords)
 {
-    scene.addNode(mCursorFront);
+    mNode = new EntityNode(new Entity(entities.get(Entities::CursorTile), "fixed", Direction::None), coords.y+1);
+    Node::Key key = scene.addNode(mNode);
+    EntityNode* arrowNode = new EntityNode(new Entity(entities.get(Entities::Arrow), "float", Direction::Down), 100.f, key);
+    arrowNode->move(0.f, -2*TILE_DIM);
+    scene.addNode(arrowNode);
     updateEntityPositions();
 }
 
@@ -21,26 +24,26 @@ Cursor::~Cursor()
 
 bool Cursor::setCoords(sf::Vector2i coords)
 {
-    bool needToSortScene = (coords.y != mCursorCoords.y);
-    mCursorCoords = coords;
+    bool needToSortScene = (coords.y != mCoords.y);
+    mCoords = coords;
     updateEntityPositions();
     return needToSortScene;
 }
 
 sf::Vector2i Cursor::getCoords() const
 {
-    return mCursorCoords;
+    return mCoords;
 }
 
 sf::View Cursor::getView(float zoom)
 {
-    return sf::View(get2DPos(mCursorCoords), sf::Vector2f(1366.f, 768.f)/zoom);
+    return sf::View(mNode->getPosition(), sf::Vector2f(1366.f, 768.f)/zoom);
 }
 
 void Cursor::updateEntityPositions()
 {
-    mCursorBack->move(get2DPos(mCursorCoords));
-    mCursorBack->setZ(mCursorCoords.y);
+    mNode->setPosition(get2DPos(mCoords));
+    mNode->setZ(mCoords.y+1);
 }
 
 

@@ -2,16 +2,10 @@
 #include "XML/pugixml.hpp"
 #include <iostream>
 #include <cassert>
+#include <SFML/Graphics/RenderTarget.hpp>
 
 namespace Graphism
 {
-
-Entity::Entity(const Data::EntityData& data)
-: mData(data)
-, mFacing(Direction::Down)
-{
-
-}
 
 Entity::Entity(const Data::EntityData& data, sf::String anim, Direction::Dir facing)
 : mData(data)

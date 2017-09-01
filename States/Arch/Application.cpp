@@ -105,8 +105,7 @@ Context Application::getContext()
 
 void Application::loadEntities()
 {
-    mEntities.load(Entities::CursorBack, "Media/Entities/CursorBack/CursorBack.xml");
-	mEntities.load(Entities::CursorFront, "Media/Entities/CursorFront/CursorFront.xml");
+    mEntities.load(Entities::CursorTile, "Media/Entities/CursorTile/CursorTile.xml");
 	mEntities.load(Entities::Arrow, "Media/Entities/Arrow/Arrow.xml");
 
     mEntities.load(Entities::Protector, "Media/Entities/Protector/Protector.xml");

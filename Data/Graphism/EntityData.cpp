@@ -1,7 +1,6 @@
 #include "Data/Graphism/EntityData.hpp"
 #include "Gameplay/General/Routines.hpp"
 #include <stdexcept>
-//#include <iostream>
 
 using Direction::Dir;
 
@@ -20,16 +19,16 @@ bool EntityData::loadFromNode(const pugi::xml_node& node)
     for (auto animNode : node.children("animation"))
     {
         sf::String animName(animNode.attribute("name").as_string());
-        //std::cerr << "loading animation " << animName << " :" << std::endl;
 
         bool repeat(animNode.attribute("repeat").as_bool());
-        sf::Time duration(sf::milliseconds(animNode.attribute("duration").as_int()));
+        sf::Time duration(sf::seconds(animNode.attribute("duration").as_float()));
 
         for (auto facingNode : animNode.children())
         {
-            //std::cerr << "    loading facing " << facingNode.name() << std::endl;
             Direction::Dir facing(StrToDir(facingNode.name()));
-            mData.emplace_back(animName, facing, AnimationData(mSpriteSheet, duration, repeat));
+            AnimationData animData(mSpriteSheet, duration, repeat);
+            animData.loadFromNode(facingNode);
+            mData.emplace_back(animName, facing, animData);
         }
     }
 
