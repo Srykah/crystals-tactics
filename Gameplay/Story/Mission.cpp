@@ -10,7 +10,7 @@ Mission::~Mission()
 
 }
 
-void Mission::load(const std::string& file)
+void Mission::load(const sf::String& file)
 {
 
 }

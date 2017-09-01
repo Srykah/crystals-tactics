@@ -3,7 +3,7 @@
 
 #include "States/Arch/State.hpp"
 #include <vector>
-#include <string>
+#include <SFML/System/String.hpp>
 #include "Graphism/Text.hpp"
 
 namespace States

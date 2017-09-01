@@ -3,6 +3,7 @@
 
 #include "States/Arch/State.hpp"
 #include "Graphism/Scene/Scene.hpp"
+#include "Graphism/HUD/Cursor.hpp"
 #include "Gameplay/Battle/UnitList.hpp"
 #include "Gameplay/Battle/Battlefield.hpp"
 #include "Gameplay/Battle/BattleContext.hpp"
@@ -29,12 +30,12 @@ public:
 private:
     Guild               mEnemyGuild;
     UnitList            mUnitList;
-    Battlefield         mBattlefield;
-
-    sf::View            mView;
     sf::VertexArray     mBackground;
     Graphism::Scene     mScene;
+    Battlefield         mBattlefield;
+    Graphism::Cursor    mCursor;
     Cutscene            mCutscene;
+
 
 private:
     BattleContext       getBattleContext();

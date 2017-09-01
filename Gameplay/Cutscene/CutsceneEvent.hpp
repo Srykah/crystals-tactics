@@ -16,7 +16,7 @@ public:
 public:
     CutsceneEvent(Trigger on_start, Update on_update = [](sf::Time){return true;}, Trigger on_end = [](){});
     CutsceneEvent(Trigger on_start, const sf::Time countdown, Trigger on_end = [](){});
-    CutsceneEvent(Character* charac, std::string animName, Direction::Dir facing);
+    CutsceneEvent(Character* charac, sf::String animName, Direction::Dir facing);
     ~CutsceneEvent();
 
     void onStart();

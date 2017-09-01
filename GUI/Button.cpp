@@ -29,7 +29,7 @@ void Button::setCallback(Callback callback)
 	mCallback = std::move(callback);
 }
 
-void Button::setText(const std::string& text)
+void Button::setText(const sf::String& text)
 {
 	mText.setString(text);
 	centerOrigin(mText);

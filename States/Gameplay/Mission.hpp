@@ -10,7 +10,7 @@ namespace States
 class Mission : public State
 {
 public:
-    Mission(StateStack* stack, Context context, const std::string& filename);
+    Mission(StateStack* stack, Context context, const sf::String& filename);
     ~Mission();
 
     virtual void		draw();

@@ -2,6 +2,7 @@
 #define CHARACTERSTRUCTS_HPP_INCLUDED
 
 #include <array>
+#include <SFML/System/String.hpp>
 
 class Weapon;
 class Equipment;
@@ -58,9 +59,9 @@ struct CharAbility
 const size_t NB_ABILITIES(4);
 typedef std::array<CharAbility, NB_ABILITIES> AbilityArray;
 
-std::string         CharTypeToStr(CharType type);
-CharType            StrToCharType(const std::string& text);
-std::string         CharRoleToStr(CharRole role);
-CharRole            StrToCharRole(const std::string& text);
+sf::String          CharTypeToStr(CharType type);
+CharType            StrToCharType(const sf::String& text);
+sf::String          CharRoleToStr(CharRole role);
+CharRole            StrToCharRole(const sf::String& text);
 
 #endif // CHARACTERENUMS_HPP_INCLUDED

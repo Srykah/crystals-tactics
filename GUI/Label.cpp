@@ -8,7 +8,7 @@
 namespace GUI
 {
 
-Label::Label(const std::string& text, const Data::FontHolder& fonts)
+Label::Label(const sf::String& text, const Data::FontHolder& fonts)
 : mText(text, fonts.get(Fonts::Main), 16, Graphism::Text::Shadow)
 {
 }
@@ -34,7 +34,7 @@ void Label::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(mText, states);
 }
 
-void Label::setText(const std::string& text)
+void Label::setText(const sf::String& text)
 {
 	mText.setString(text);
 }

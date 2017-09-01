@@ -6,7 +6,7 @@
 #include "Gameplay/General/StatusAilment.hpp"
 #include "Gameplay/General/Direction.hpp"
 #include "Data/ResourceHolder/ResourceIdentifiers.hpp"
-#include <string>
+#include <SFML/System/String.hpp>
 
 sf::Vector2f        get2DPos(sf::Vector2i tile);
 sf::Vector3f        get3DPos(sf::Vector2i tile);

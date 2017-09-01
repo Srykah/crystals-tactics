@@ -20,7 +20,7 @@ bool Character::hasUsedItem() const
     return mState.test(HAS_USED_ITEM);
 }
 
-const std::string& Character::getName() const
+const sf::String& Character::getName() const
 {
     return mName;
 }

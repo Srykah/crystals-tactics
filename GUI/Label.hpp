@@ -16,10 +16,10 @@ class Label : public Component
 
 
 	public:
-							Label(const std::string& text, const Data::FontHolder& fonts);
+							Label(const sf::String& text, const Data::FontHolder& fonts);
 
         virtual bool		isSelectable() const;
-		void				setText(const std::string& text);
+		void				setText(const sf::String& text);
 
 		virtual bool        contains(sf::Vector2f point) const;
 		virtual bool        contains(float x, float y) const;

@@ -1,6 +1,6 @@
 #include "GUI/TextField.hpp"
 #include "Other/Utility.hpp"
-#include <string>
+#include <SFML/System/String.hpp>
 
 bool isAValidString(const sf::String& str)
 {

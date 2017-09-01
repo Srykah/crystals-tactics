@@ -2,7 +2,7 @@
 #define AI_HPP_INCLUDED
 
 #include <SFML/System/Time.hpp>
-#include <string>
+#include <SFML/System/String.hpp>
 #include "Gameplay/Battle/BattleContext.hpp"
 
 class Character;
@@ -25,6 +25,6 @@ void playTurnBalanced(Character* unit);
 
 }
 
-AI::Type StrToAI(const std::string& str);
+AI::Type StrToAI(const sf::String& str);
 
 #endif // AI_HPP_INCLUDED

@@ -1,7 +1,7 @@
 #ifndef ELEMENT_HPP_INCLUDED
 #define ELEMENT_HPP_INCLUDED
 
-#include <string>
+#include <SFML/System/String.hpp>
 #include <map>
 #include "XML/pugixml.hpp"
 
@@ -29,7 +29,7 @@ struct ElemAffinities
 
 ElemAffinities operator*(ElemAffinities const& first, ElemAffinities const& second);
 
-std::string         ElementToStr(Element elem);
-Element             StrToElement(const std::string& text);
+sf::String         ElementToStr(Element elem);
+Element             StrToElement(const sf::String& text);
 
 #endif // ELEMENT_HPP_INCLUDED

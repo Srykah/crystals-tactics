@@ -3,6 +3,7 @@
 
 #include <SFML/Window/Keyboard.hpp>
 #include <SFML/System/Vector2.hpp>
+#include <SFML/System/String.hpp>
 
 #include <sstream>
 #include <type_traits>
@@ -22,10 +23,10 @@ namespace Graphism
 // Since std::to_string doesn't work on MinGW we have to implement
 // our own to support all platforms.
 template <typename T>
-std::string		ToStr(const T& value);
+sf::String		ToStr(const T& value);
 
 // Convert enumerators to strings
-std::string		KeyToStr(sf::Keyboard::Key key);
+sf::String		KeyToStr(sf::Keyboard::Key key);
 
 // Call setOrigin() with the center of the object
 template <typename T>
@@ -49,7 +50,7 @@ int             scal(int x1, int y1, int x2, int y2);
 int signe(int val);
 
 // Time format routines
-std::string     SecondsToStr(int seconds);
+sf::String     SecondsToStr(int seconds);
 
 // Enum class -> int conversions
 template<typename Enum>

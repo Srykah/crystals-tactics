@@ -4,7 +4,7 @@
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/Text.hpp>
 #include <SFML/System/Time.hpp>
-#include <string>
+#include <SFML/System/String.hpp>
 #include "Input/Listener.hpp"
 
 namespace GUI

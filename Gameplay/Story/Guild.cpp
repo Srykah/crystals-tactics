@@ -14,17 +14,17 @@ bool Guild::loadFromNode(const pugi::xml_node& node, States::Context context)
     /// job levels
     for (int i : getRange<CharType>())
     {
-        pugi::xml_node data(node.child("jobLevels").child(CharTypeToStr(CharType(i)).c_str()));
+        pugi::xml_node data(node.child("jobLevels").child(CharTypeToStr(CharType(i)).toAnsiString().c_str()));
         mJobLevels.emplace(CharType(i), JobLevel(data.attribute("level").as_int(1), data.attribute("exp").as_int()));
     }
 
     return true;
 }
 
-bool Guild::loadFromFile(const std::string& filename, States::Context context)
+bool Guild::loadFromFile(const sf::String& filename, States::Context context)
 {
     pugi::xml_document doc;
-    if (!doc.load_file(filename.c_str()))
+    if (!doc.load_file(filename.toAnsiString().c_str()))
         return false;
 
     return loadFromNode(doc.child("save"), context);

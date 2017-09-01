@@ -10,7 +10,7 @@ void centerOrigin(T& transformable)
 }
 
 template <typename T>
-std::string ToStr(const T& value)
+sf::String ToStr(const T& value)
 {
     std::stringstream stream;
     stream << value;

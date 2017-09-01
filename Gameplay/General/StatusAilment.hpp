@@ -2,6 +2,7 @@
 #define STATUSAILMENT_HPP_INCLUDED
 
 #include <boost/variant.hpp>
+#include <SFML/System/String.hpp>
 
 enum StatusAilment
 {
@@ -18,7 +19,7 @@ enum StatusAilment
 
 typedef StatusAilment SA;
 
-std::string SAToStr(SA ailment);
-SA          StrToSA(const std::string& text);
+sf::String  SAToStr(SA ailment);
+SA          StrToSA(const sf::String& text);
 
 #endif // STATUSAILMENT_HPP_INCLUDED

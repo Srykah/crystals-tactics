@@ -17,7 +17,7 @@ CutsceneEvent::CutsceneEvent(Trigger on_start, const sf::Time countdown, Trigger
 
 }
 
-CutsceneEvent::CutsceneEvent(Character* charac, std::string anim, Direction::Dir facing)
+CutsceneEvent::CutsceneEvent(Character* charac, sf::String anim, Direction::Dir facing)
 : mStart([charac, anim, facing](){ charac->getEntity()->setAnimationAndFacing(anim, facing); })
 , mUpdate([charac](sf::Time delta){ return charac->getEntity()->isAnimationFinished(); })
 {

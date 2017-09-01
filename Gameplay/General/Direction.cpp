@@ -1,6 +1,6 @@
 #include "Gameplay/General/Direction.hpp"
 
-std::string DirToStr(Direction::Dir dir)
+sf::String DirToStr(Direction::Dir dir)
 {
     switch(dir)
     {
@@ -17,7 +17,7 @@ std::string DirToStr(Direction::Dir dir)
     }
 }
 
-Direction::Dir StrToDir(const std::string& str)
+Direction::Dir StrToDir(const sf::String& str)
 {
     if (str == "up") return Direction::Up;
     else if (str == "down") return Direction::Down;
@@ -26,6 +26,6 @@ Direction::Dir StrToDir(const std::string& str)
     else if (str == "none") return Direction::None;
 
     std::stringstream error;
-    error << "String " << str << " couldn't be converted into Direction::Dir";
+    error << "String " << str.toAnsiString() << " couldn't be converted into Direction::Dir";
     throw std::runtime_error(error.str());
 }

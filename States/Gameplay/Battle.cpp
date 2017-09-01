@@ -14,7 +14,7 @@ namespace States
 Battle::Battle(StateStack* stack, Context context, pugi::xml_node& node)
 : State(stack, context)
 , mBackground(sf::Quads, 4)
-, mView(sf::Vector2f(0,0), sf::Vector2f(1366,768))
+, mCursor(mScene, *context.entities)
 {
     mBackground[0].color = sf::Color(0,0,255);
     mBackground[1].position = sf::Vector2f(1366,0);
@@ -50,7 +50,7 @@ void Battle::draw()
     sf::View oldView(window.getView());
 
     ///the scene is drawn with the view centered on the cursor
-    window.setView(mView);
+    window.setView(mCursor.getView(1.f));
     window.draw(mScene);
 
     ///return to previous view

@@ -2,7 +2,7 @@
 #define CHARACTER_HPP_INCLUDED
 
 #include <SFML/Graphics.hpp>
-#include <string>
+#include <SFML/System/String.hpp>
 #include <memory>
 #include <fstream>
 #include <bitset>
@@ -70,7 +70,7 @@ public: //page 3 : getters
     bool                hasMoved()          const;
     bool                hasAttacked()       const;
     bool                hasUsedItem()       const;
-    const std::string&  getName()           const;
+    const sf::String&  getName()           const;
     CharType       getType()           const;
     CharRole       getRole()           const;
     bool                isMech()            const;
@@ -101,7 +101,7 @@ private:
     static const short HAS_USED_ITEM = 2;
 
 private:
-    std::string         mName;
+    sf::String         mName;
     CharType       mType;
     CharRole       mRole;
     AI::Type            mAIType;

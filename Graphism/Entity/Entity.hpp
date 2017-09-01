@@ -3,7 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <utility>
-#include <string>
+#include <SFML/System/String.hpp>
 #include <memory>
 #include "Data/Graphism/EntityData.hpp"
 #include "Graphism/Entity/Animation.hpp"
@@ -19,26 +19,26 @@ public:
     typedef std::unique_ptr<Entity> Ptr;
 
     Entity(const Data::EntityData& data);
-    Entity(const Data::EntityData& data, std::string anim, Direction::Dir facing);
+    Entity(const Data::EntityData& data, sf::String anim, Direction::Dir facing);
     ~Entity();
 
     void update(sf::Time delta);
     void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates()) const;
 
-    void setAnimation(std::string anim);
+    void setAnimation(sf::String anim);
     void setFacing(Direction::Dir facing);
-    void setAnimationAndFacing(std::string anim, Direction::Dir facing);
+    void setAnimationAndFacing(sf::String anim, Direction::Dir facing);
     void restart();
 
     Direction::Dir getFacing() const;
-    std::string getAnimationName() const;
+    sf::String getAnimationName() const;
     sf::Time getTimer() const;
     bool isAnimationFinished() const;
 
 private:
     const Data::EntityData& mData;
     std::unique_ptr<Animation> mAnimationPtr;
-    std::string mCurAnim;
+    sf::String mCurAnim;
     Direction::Dir mFacing;
 };
 

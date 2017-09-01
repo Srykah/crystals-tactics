@@ -105,8 +105,8 @@ Context Application::getContext()
 
 void Application::loadEntities()
 {
-    mEntities.load(Entities::BattlefieldCursorBack, "Media/Entities/BattlefieldCursorBack/BattlefieldCursorBack.xml");
-	mEntities.load(Entities::BattlefieldCursorFront, "Media/Entities/BattlefieldCursorFront/BattlefieldCursorFront.xml");
+    mEntities.load(Entities::CursorBack, "Media/Entities/CursorBack/CursorBack.xml");
+	mEntities.load(Entities::CursorFront, "Media/Entities/CursorFront/CursorFront.xml");
 	mEntities.load(Entities::Arrow, "Media/Entities/Arrow/Arrow.xml");
 
     mEntities.load(Entities::Protector, "Media/Entities/Protector/Protector.xml");

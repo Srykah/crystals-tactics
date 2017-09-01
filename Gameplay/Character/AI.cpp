@@ -43,7 +43,7 @@ void playTurnBalanced(Character* unit)
 
 }
 
-AI::Type StrToAI(const std::string& str)
+AI::Type StrToAI(const sf::String& str)
 {
     if (str == "balanced")
         return AI::Balanced;

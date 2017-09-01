@@ -4,7 +4,7 @@
 #include "XML/pugixml.hpp"
 #include <vector>
 #include <memory>
-#include <string>
+#include <SFML/System/String.hpp>
 
 namespace Data {
 
@@ -13,7 +13,7 @@ class DataHolder
 {
 public:
     void                loadFromNode(const pugi::xml_node& node);
-    void                loadFromFile(const std::string& file);
+    void                loadFromFile(const sf::String& file);
     short               push_back(DataType* data);
     DataType&		    get(short id);
     const DataType&	    get(short id) const;

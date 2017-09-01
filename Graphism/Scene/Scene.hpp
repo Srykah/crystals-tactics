@@ -22,7 +22,6 @@ public:
     Node* getNode(Node::Key key); // returns pointer to the node with the key passed in argument
     void removeNode(Node::Key key); //removes children nodes recursively
 
-private:
     void sort();
 
 private:

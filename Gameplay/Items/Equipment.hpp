@@ -31,6 +31,6 @@ private:
     ElemAffinities mAffinities;
 };
 
-Equipment::Position StrToEqpPos(const std::string& text);
+Equipment::Position StrToEqpPos(const sf::String& text);
 
 #endif // EQUIPMENT_HPP_INCLUDED

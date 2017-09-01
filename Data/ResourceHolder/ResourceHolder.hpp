@@ -2,7 +2,7 @@
 #define RESOURCEHOLDER_HPP_INCLUDED
 
 #include <map>
-#include <string>
+#include <SFML/System/String.hpp>
 #include <memory>
 #include <stdexcept>
 #include <cassert>
@@ -14,10 +14,10 @@ template <typename Identifier, typename Resource>
 class ResourceHolder
 {
 public:
-    void						load(Identifier id, const std::string& filename);
+    void						load(Identifier id, const sf::String& filename);
 
     template <typename Parameter>
-    void						load(Identifier id, const std::string& filename, const Parameter& secondParam);
+    void						load(Identifier id, const sf::String& filename, const Parameter& secondParam);
 
     Resource&					get(Identifier id);
     const Resource&				get(Identifier id) const;

@@ -2,6 +2,7 @@
 #define STATS_HPP_INCLUDED
 
 #include "XML/pugixml.hpp"
+#include <SFML/System/String.hpp>
 
 typedef short Stat;
 
@@ -42,7 +43,7 @@ struct Stats
 
 Stats operator+(Stats const& first, Stats const& second);
 
-std::string         StatNameToStr(Stats::Name statName);
-Stats::Name         StrToStatName(const std::string& text);
+sf::String          StatNameToStr(Stats::Name statName);
+Stats::Name         StrToStatName(const sf::String& text);
 
 #endif // STATS_HPP_INCLUDED

@@ -10,7 +10,7 @@
 #include <SFML/Graphics/Sprite.hpp>
 
 #include <vector>
-#include <string>
+#include <SFML/System/String.hpp>
 #include <memory>
 #include <functional>
 
@@ -48,7 +48,7 @@ class Button : public Component
                                     Button(States::Context context, Type type);
 
         void					    setCallback(Callback callback);
-        void					    setText(const std::string& text);
+        void					    setText(const sf::String& text);
         void					    setManualDeactivation(bool flag);
 
         virtual bool			    isSelectable() const;

@@ -18,7 +18,7 @@ SaveButton::SaveButton(int number, pugi::xml_node file, States::Context context)
     mTexts[0].setPosition(5,5);
 
     //get hero node
-    pugi::xml_node& hero = *std::find_if(file.child("characters").children().begin(), file.child("characters").children().end(), [](pugi::xml_node& node){ return node.attribute("storyStatus").as_string() == std::string("Hero"); });
+    pugi::xml_node& hero = *std::find_if(file.child("characters").children().begin(), file.child("characters").children().end(), [](pugi::xml_node& node){ return node.attribute("storyStatus").as_string() == sf::String("Hero"); });
 
     //name of the hero
     mTexts.push_back(Graphism::Text(hero.attribute("name").as_string(), context.fonts->get(Fonts::Main), 30, Graphism::Text::Shadow, Colors::Sand));

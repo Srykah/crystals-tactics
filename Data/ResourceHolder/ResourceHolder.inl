@@ -1,6 +1,6 @@
 
 template <typename Identifier, typename Resource>
-void ResourceHolder<Identifier, Resource>::load(Identifier id, const std::string& filename)
+void ResourceHolder<Identifier, Resource>::load(Identifier id, const sf::String& filename)
 {
 	// Create and load resource
 	std::unique_ptr<Resource> resource(new Resource());
@@ -13,7 +13,7 @@ void ResourceHolder<Identifier, Resource>::load(Identifier id, const std::string
 
 template <typename Identifier, typename Resource>
 template <typename Parameter>
-void ResourceHolder<Identifier, Resource>::load(Identifier id, const std::string& filename, const Parameter& secondParam)
+void ResourceHolder<Identifier, Resource>::load(Identifier id, const sf::String& filename, const Parameter& secondParam)
 {
 	// Create and load resource
 	std::unique_ptr<Resource> resource(new Resource());

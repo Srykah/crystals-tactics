@@ -461,7 +461,7 @@ void dealDamage(Stat baseDmg, Character* attacker, Character* target, Element el
 
     if(escapes(target, angle)) //if the target escapes from this angle
     {
-        std::cout << target->getName() << "evaded !" << std::endl;
+        std::cout << target->getName().toAnsiString() << "evaded !" << std::endl;
         target->getEntity()->setAnimation("evade");
     }
     else
@@ -480,7 +480,7 @@ void dealDamage(Stat baseDmg, Character* attacker, Character* target, Element el
 
         target->receiveDamage(damage);
 
-        std::cout << target->getName() << " receives " << damage << " damage !" << std::endl;
+        std::cout << target->getName().toAnsiString() << " receives " << damage << " damage !" << std::endl;
     }
 }
 

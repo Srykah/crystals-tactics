@@ -2,7 +2,9 @@
 #include "XML/pugixml.hpp"
 #include "Data/ResourceHolder/ResourceHolder.hpp"
 #include "Graphism/Colors.hpp"
-#include "Graphism/Entity/Animation.hpp"
+#include "Graphism/Scene/Scene.hpp"
+#include "Graphism/Scene/NoOwnNode.hpp"
+#include "Graphism/Scene/EntityNode.hpp"
 #include <stdexcept>
 #include <sstream>
 
@@ -23,11 +25,11 @@ Battlefield::~Battlefield()
 
 }
 
-void Battlefield::loadFromFile(const std::string& file, Graphism::Scene& scene, Data::EntityHolder* entityHolder)
+void Battlefield::loadFromFile(const sf::String& file, Graphism::Scene& scene, Data::EntityHolder* entityHolder)
 {
     ///ouverture du fichier
     pugi::xml_document doc;
-    if(!doc.load_file(file.c_str()))
+    if(!doc.load_file(file.toAnsiString().c_str()))
         throw std::runtime_error("Couldn't open battlefield script");
 
     const pugi::xml_node& tilesNode = doc.child("tiles");
@@ -83,7 +85,10 @@ void Battlefield::loadFromFile(const std::string& file, Graphism::Scene& scene, 
         }
     }
 
-    ///récupération des décorations (à faire)
+    //ajout à la scène
+    Graphism::Node::Key key = scene.addNode(new Graphism::NoOwnNode(this, 0.f));
+
+    ///récupération des décorations, à ajouter à la scène en tant qu'enfant de la node du champ de bataille
 
     ///récupération des spawns
     for(auto spawn : spawnsNode)

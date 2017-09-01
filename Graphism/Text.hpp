@@ -2,7 +2,7 @@
 #define TEXT_HPP_INCLUDED
 
 #include <SFML/Graphics.hpp>
-#include <string>
+#include <SFML/System/String.hpp>
 
 namespace Graphism
 {

@@ -29,7 +29,7 @@ const ElemAffinities& Equipment::getAffinities() const
     return mAffinities;
 }
 
-Equipment::Position StrToEqpPos(const std::string& text)
+Equipment::Position StrToEqpPos(const sf::String& text)
 {
     if (text == "head") return Equipment::Head;
     else if (text == "body") return Equipment::Body;

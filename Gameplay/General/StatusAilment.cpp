@@ -1,6 +1,6 @@
 #include "Gameplay/General/StatusAilment.hpp"
 
-std::string SAToStr(StatusAilment ailment)
+sf::String SAToStr(StatusAilment ailment)
 {
     switch(ailment)
     {
@@ -34,7 +34,7 @@ std::string SAToStr(StatusAilment ailment)
     }
 }
 
-SA StrToSA(const std::string& text)
+SA StrToSA(const sf::String& text)
 {
     if (text == "Burnt") return StatusAilment::Burnt;
     else if (text == "Poisoned") return StatusAilment::Poisoned;

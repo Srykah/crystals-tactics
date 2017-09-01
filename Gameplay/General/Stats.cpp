@@ -54,7 +54,7 @@ Stats operator+(Stats const& first, Stats const& second)
     return Stats(first)+=second;
 }
 
-std::string StatNameToStr(Stats::Name statName)
+sf::String StatNameToStr(Stats::Name statName)
 {
     #define STATTOSTRING_CASE(STATNAME) case Stats::STATNAME: return #STATNAME;
 
@@ -72,7 +72,7 @@ std::string StatNameToStr(Stats::Name statName)
     }
 }
 
-Stats::Name StrToStatName(const std::string& text)
+Stats::Name StrToStatName(const sf::String& text)
 {
     #define STRINGTOSTAT_IF(TEXT, STATNAME) if (TEXT == #STATNAME) return Stats::STATNAME;
 
@@ -83,5 +83,5 @@ Stats::Name StrToStatName(const std::string& text)
     else if (text == "defense") return Stats::DEFENSE;
     else if (text == "evasion") return Stats::EVASION;
     else if (text == "critHitRate") return Stats::CRITHITRATE;
-    else throw std::runtime_error(std::string("couldn't convert ") + text + std::string(" into stat name"));
+    else throw std::runtime_error(sf::String("couldn't convert ") + text + sf::String(" into stat name"));
 }

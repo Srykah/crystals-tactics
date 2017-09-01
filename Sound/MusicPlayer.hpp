@@ -8,7 +8,7 @@
 #include <SFML/Audio/Music.hpp>
 
 #include <map>
-#include <string>
+#include <SFML/System/String.hpp>
 
 namespace Sound
 {
@@ -28,7 +28,7 @@ class MusicPlayer : private sf::NonCopyable
 
 	private:
 		sf::Music							mMusic;
-		std::map<Music::ID, std::string>	mFilenames;
+		std::map<Music::ID, sf::String>	mFilenames;
 		float								mVolume;
 };
 

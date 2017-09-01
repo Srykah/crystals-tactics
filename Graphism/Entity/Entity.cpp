@@ -13,7 +13,7 @@ Entity::Entity(const Data::EntityData& data)
 
 }
 
-Entity::Entity(const Data::EntityData& data, std::string anim, Direction::Dir facing)
+Entity::Entity(const Data::EntityData& data, sf::String anim, Direction::Dir facing)
 : mData(data)
 , mCurAnim(anim)
 , mFacing(facing)
@@ -26,7 +26,7 @@ Entity::~Entity()
 
 }
 
-void Entity::setAnimation(std::string name)
+void Entity::setAnimation(sf::String name)
 {
     mCurAnim = name;
     mAnimationPtr.reset(new Animation(mData.getAnim(mCurAnim, mFacing)));
@@ -38,7 +38,7 @@ void Entity::setFacing(Direction::Dir facing)
     mAnimationPtr.reset(new Animation(mData.getAnim(mCurAnim, mFacing)));
 }
 
-void Entity::setAnimationAndFacing(std::string anim, Direction::Dir facing)
+void Entity::setAnimationAndFacing(sf::String anim, Direction::Dir facing)
 {
     mCurAnim = anim;
     mFacing = facing;
@@ -70,7 +70,7 @@ Direction::Dir Entity::getFacing() const
     return mFacing;
 }
 
-std::string Entity::getAnimationName() const
+sf::String Entity::getAnimationName() const
 {
     return mCurAnim;
 }

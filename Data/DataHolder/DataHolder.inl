@@ -11,11 +11,11 @@ void DataHolder<DataType>::loadFromNode(const pugi::xml_node& node)
 }
 
 template<typename DataType>
-void DataHolder<DataType>::loadFromFile(const std::string& file)
+void DataHolder<DataType>::loadFromFile(const sf::String& file)
 {
     pugi::xml_document doc;
-    if (!doc.load_file(file.c_str()))
-        throw std::runtime_error(std::string("Error : couldn't open ") + file);
+    if (!doc.load_file(file.toAnsiString().c_str()))
+        throw std::runtime_error(sf::String("Error : couldn't open ") + file);
 
     loadFromNode(doc.first_child());
 }

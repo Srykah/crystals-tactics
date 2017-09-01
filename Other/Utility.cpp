@@ -16,7 +16,7 @@ namespace
 	auto RandomEngine = createRandomEngine();
 }
 
-std::string KeyToStr(sf::Keyboard::Key key)
+sf::String KeyToStr(sf::Keyboard::Key key)
 {
 	#define KEYTOSTRING_CASE(KEY) case sf::Keyboard::KEY: return #KEY;
 
@@ -181,7 +181,7 @@ int signe(int val)
 		return 0;
 }
 
-std::string SecondsToStr(int seconds)
+sf::String SecondsToStr(int seconds)
 {
     int realSeconds = seconds % 60;
     int minutes = (seconds / 60) % 60;

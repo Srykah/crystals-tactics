@@ -1,7 +1,7 @@
 #ifndef DIRECTION_HPP_INCLUDED
 #define DIRECTION_HPP_INCLUDED
 
-#include <string>
+#include <SFML/System/String.hpp>
 #include <sstream>
 #include <stdexcept>
 
@@ -24,7 +24,7 @@ namespace Direction
     };
 }
 
-std::string         DirToStr(Direction::Dir dir);
-Direction::Dir      StrToDir(const std::string& str);
+sf::String         DirToStr(Direction::Dir dir);
+Direction::Dir      StrToDir(const sf::String& str);
 
 #endif // DIRECTION_HPP_INCLUDED

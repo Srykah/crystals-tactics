@@ -1,6 +1,6 @@
 #include "CharacterStructs.hpp"
 
-std::string CharTypeToStr(CharType type)
+sf::String CharTypeToStr(CharType type)
 {
     #define JOBTOSTRING_CASE(JOB) case CharType::JOB: return #JOB;
 
@@ -21,7 +21,7 @@ std::string CharTypeToStr(CharType type)
     }
 }
 
-CharType StrToCharType(const std::string& text)
+CharType StrToCharType(const sf::String& text)
 {
     #define STRINGTOJOB_IF(TEXT, JOB) if (TEXT == #JOB) return CharType::JOB;
 
@@ -37,7 +37,7 @@ CharType StrToCharType(const std::string& text)
     else return CharType::Unknown;
 }
 
-std::string CharRoleToStr(CharRole role)
+sf::String CharRoleToStr(CharRole role)
 {
     #define ROLETOSTRING_CASE(ROLE) case CharRole::ROLE: return #ROLE;
 
@@ -53,7 +53,7 @@ std::string CharRoleToStr(CharRole role)
     }
 }
 
-CharRole StrToCharRole(const std::string& text)
+CharRole StrToCharRole(const sf::String& text)
 {
     #define STRINGTOROLE_IF(TEXT, ROLE) if (TEXT == #ROLE) return CharRole::ROLE;
 

@@ -43,7 +43,7 @@ ElemAffinities operator*(ElemAffinities const& first, ElemAffinities const& seco
     return ElemAffinities(first) *= second;
 }
 
-std::string ElementToStr(Element elem)
+sf::String ElementToStr(Element elem)
 {
     #define ELEMTOSTRING_CASE(ELEM) case Element::ELEM: return #ELEM;
 
@@ -60,7 +60,7 @@ std::string ElementToStr(Element elem)
     }
 }
 
-Element StrToElement(const std::string& text)
+Element StrToElement(const sf::String& text)
 {
     #define STRINGTOELEM_IF(TEXT, ELEM) if (TEXT == #ELEM) return Element::ELEM;
 

@@ -5,7 +5,7 @@
 #include "Input/Listener.hpp"
 #include "Graphism/Entity/Entity.hpp"
 #include <SFML/Graphics.hpp>
-#include <string>
+#include <SFML/System/String.hpp>
 #include <vector>
 #include <map>
 
@@ -33,7 +33,7 @@ public:
                     Battlefield();
                     ~Battlefield();
 
-    void            loadFromFile(const std::string& file, Graphism::Scene& scene, Data::EntityHolder* entityHolder);
+    void            loadFromFile(const sf::String& file, Graphism::Scene& scene, Data::EntityHolder* entityHolder);
 
     virtual void    update(sf::Time delta);
     virtual void    draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates()) const;
