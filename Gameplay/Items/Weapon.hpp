@@ -11,21 +11,36 @@ class Weapon : public EquipmentBase
 public:
     typedef std::shared_ptr< Weapon > SPtr;
 
+    enum class Type
+    {
+        None = -1,
+        Knife = 0,
+        Mace,
+        Pistol,
+        Canon,
+        Count
+    };
+
     Weapon();
     ~Weapon();
 
-    void load(const pugi::xml_node& node);
+    void                load(const pugi::xml_node& node);
     int                 getDamage() const;
-    int                 getRange() const;
+    int                 getRangeMin() const;
+    int                 getRangeMax() const;
+    int                 getPrecision() const;
     Element             getElement() const;
-    StatusAilment       getAilment() const; //not supported yet
+    StatusAilment       getAilment() const;
 
 private:
+    Type mType;
     int mDamage;
-    int mRange;
+    int mRangeMin, mRangeMax;
+    int mPrecision;
     Element mElement;
     StatusAilment mAilment;
 };
 
+Weapon::Type StrToWpnType(const sf::String& str);
 
 #endif // WEAPON_HPP_INCLUDED

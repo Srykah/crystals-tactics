@@ -16,7 +16,31 @@ void attack(Character* charac, sf::Vector2i to)
     // get orientation
     Direction::Dir dir(Ab::dirTowards(charac->getCoords(), to));
 
-    charac->getBattleContext().cutscene->addEvent(CutsceneEvent(charac, "attack", dir));
+    Weapon* wpn(charac->getBuild().weapon);
+    sf::String animName("bareFistAttack");
+    if (wpn)
+    {
+        switch(wpn->getType())
+        {
+        case Weapon::Type::Knife:
+            animName = "knifeAttack";
+            break;
+
+        case Weapon::Type::Mace:
+            animName = "maceAttack";
+            break;
+
+        case Weapon::Type::Pistol:
+            animName = "pistolAttack";
+            break;
+
+        case Weapon::Type::Canon:
+            animName = "canonAttack";
+            break;
+        }
+    }
+
+    charac->getBattleContext().cutscene->addEvent(CutsceneEvent(charac, animName, dir));
 }
 
 void takeDamage(Character* charac, int dmg)

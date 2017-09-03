@@ -19,14 +19,14 @@ public:
     const sf::String&       getName() const;
     const sf::String&       getDescription() const;
     Stats                   getStats() const;
-    bool                    canBeEquipped(CharType type) const;
+    //bool                    canBeEquipped(CharType type) const;
 
 private:
     short mID;
     sf::String mName;
     sf::String mDescription;
     Stats mStats;
-    std::vector<CharType> mUsedBy;
+    //std::vector<CharType> mUsedBy;
 };
 
 #endif // EQUIPMENTBASE_HPP_INCLUDED

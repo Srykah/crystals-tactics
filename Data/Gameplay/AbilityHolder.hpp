@@ -2,6 +2,7 @@
 #define ABILITYHOLDER_HPP_INCLUDED
 
 #include "Gameplay/Abilities/Ability.hpp"
+#include "Gameplay/Character/CharacterStructs.hpp"
 
 namespace Data
 {
@@ -9,12 +10,21 @@ namespace Data
 class AbilityHolder
 {
 public:
-    void                init();
-    Ab::Ability&		get(short id);
-    const Ab::Ability&	get(short id) const;
+    AbilityHolder();
+
+    Ab::Ability&		get(CharType type, short id, bool mech = false);
+    const Ab::Ability&	get(CharType type, short id, bool mech = false) const;
 
 private:
-    std::vector< Ab::Ability::Ptr > mDataTab;
+    struct AbData
+    {
+        CharType type;
+        bool mech;
+        short id;
+        Ab::Ability::Ptr ability;
+    };
+
+    std::vector<AbData> mDataTab;
 };
 
 }

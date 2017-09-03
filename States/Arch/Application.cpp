@@ -21,15 +21,13 @@ Application::Application()
 	mFonts.load(Fonts::Title,               "Media/Fonts/gcrank.ttf");
 
 	mTextures.load(Textures::Buttons,		"Media/Textures/Buttons.png");
-	mTextures.load(Textures::TextField,         "Media/Textures/TextField.png");
+	mTextures.load(Textures::TextField,     "Media/Textures/TextField.png");
 
 	loadEntities();
 
-    mAbilities.init();
     mStats.loadFromFile("Media/Jobs/Stats.xml");
     mEquipments.loadFromFile("Media/Items/Equipments.xml");
     mWeapons.loadFromFile("Media/Items/Weapons.xml");
-    mConsumables.init();
 
 	mStateStack.push(new Title(&mStateStack, getContext()));
 }

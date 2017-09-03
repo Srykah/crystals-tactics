@@ -1,21 +1,38 @@
 #include "Data/Gameplay/AbilityHolder.hpp"
+#include <stdexcept>
 
 namespace Data
 {
 
-void AbilityHolder::init()
+AbilityHolder::AbilityHolder()
 {
-    //push_back every single ability in the game here. And in the correct order please !
+    //push_back every abilities in the game here.
 }
 
-Ab::Ability& AbilityHolder::get(short id)
+Ab::Ability& AbilityHolder::get(CharType type, short id, bool mech)
 {
-    return *(mDataTab.at(id));
+    auto it = std::find_if(mDataTab.begin(), mDataTab.end(), [type, mech, id](const AbData& abData)
+    {
+        return type == abData.type && mech == abData.mech && id == abData.id;
+    });
+
+    if (it == mDataTab.end())
+        throw std::out_of_range("AbilityHolder : Out of Range");
+    else
+        return *(it->ability);
 }
 
-const Ab::Ability& AbilityHolder::get(short id) const
+const Ab::Ability& AbilityHolder::get(CharType type, short id, bool mech) const
 {
-    return *(mDataTab.at(id));
+    auto it = std::find_if(mDataTab.begin(), mDataTab.end(), [type, mech, id](const AbData& abData)
+    {
+        return type == abData.type && mech == abData.mech && id == abData.id;
+    });
+
+    if (it == mDataTab.end())
+        throw std::out_of_range("AbilityHolder : Out of Range");
+    else
+        return *(it->ability);
 }
 
 }

@@ -22,7 +22,7 @@ WeaponAttack::~WeaponAttack()
 std::vector<sf::Vector2i> WeaponAttack::getRange(Character* user) const
 {
     Weapon* wpn(user->getBuild().weapon);
-    return circleRange(user, 1, (wpn ? wpn->getRange() : 1));
+    return circleRange(user, (wpn ? wpn->getRangeMin() : 1), (wpn ? wpn->getRangeMax() : 1));
 }
 
 std::vector<sf::Vector2i> WeaponAttack::getArea(Character* user, sf::Vector2i to) const

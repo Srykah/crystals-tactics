@@ -19,7 +19,7 @@ void EquipmentBase::load(const pugi::xml_node& node)
     mName = sf::String(node.attribute("name").as_string());
     mDescription = sf::String(node.child("description").text().get());
     mStats.load(node.child("stats"));
-    if (!node.child("types") || sf::String(node.child("types").text().as_string()) == sf::String("All"))
+    /*if (!node.child("types") || sf::String(node.child("types").text().as_string()) == sf::String("All"))
     {
         for (int i : getRange<CharType>())
             mUsedBy.push_back(CharType(i));
@@ -30,7 +30,7 @@ void EquipmentBase::load(const pugi::xml_node& node)
         std::string typeName;
         while (std::getline(ss, typeName, ','))
             mUsedBy.push_back(StrToCharType(typeName));
-    }
+    }*/
 }
 
 int EquipmentBase::getID() const
@@ -53,7 +53,9 @@ Stats EquipmentBase::getStats() const
     return mStats;
 }
 
+/*
 bool EquipmentBase::canBeEquipped(CharType type) const
 {
     return std::find(mUsedBy.begin(), mUsedBy.end(), type) != mUsedBy.end();
 }
+*/
