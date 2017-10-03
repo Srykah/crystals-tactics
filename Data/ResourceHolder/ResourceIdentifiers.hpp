@@ -16,6 +16,7 @@ namespace Textures
 	{
 		TitleScreen,
 		Buttons,
+		XboxButtons,
 		TextField,
 		CTLogo,
 		TNTeamLogo,

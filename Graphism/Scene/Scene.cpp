@@ -20,7 +20,10 @@ Scene::~Scene()
 void Scene::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     for (const Node::Ptr& elem : mNodes)
+    {
+        if (elem->isVisible())
         target.draw(*elem, states);
+    }
 }
 
 void Scene::update(sf::Time delta)
@@ -63,7 +66,7 @@ void Scene::removeNode(Node::Key key)
     {
         mNodes.erase(it);
         std::for_each(mNodes.begin(), mNodes.end(),
-            [this, it](const Node::Ptr& elem){ if (elem->getParentKey() == (*it)->getKey()) removeNode(elem->getKey()); });
+            [this, it](const Node::Ptr& elem){ if (elem->getParent() == it->get()) removeNode(elem->getKey()); });
     }
 }
 

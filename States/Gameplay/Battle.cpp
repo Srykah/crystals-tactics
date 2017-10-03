@@ -7,15 +7,16 @@
 #include "Other/Utility.hpp"
 
 #include "States/Menu/Pause.hpp"
+#include "States/Gameplay/BattleObjectives.hpp"
 
 namespace States
 {
 
 Battle::Battle(StateStack* stack, Context context, pugi::xml_node& node)
 : State(stack, context)
+, mStep(BattleStep::Objectives)
 , mBackground(sf::Quads, 4)
 , mCursor(mScene, *context.entities)
-, mView(mCursor.getView(1.f))
 {
     mBackground[0].color = sf::Color(0,0,255);
     mBackground[1].position = sf::Vector2f(1366,0);
@@ -25,7 +26,8 @@ Battle::Battle(StateStack* stack, Context context, pugi::xml_node& node)
     mBackground[3].position = sf::Vector2f(0,768);
     mBackground[3].color = sf::Color(0,128,255);
 
-    mBattlefield.loadFromFile(node.child("battlefield").attribute("path").as_string(), mScene, mContext.entities);
+    mBattlefield.loadFromFile(node.child("battlefield").attribute("path").as_string(),
+                              mScene, mContext.entities, mCursor);
 
     // chargement des unités
     for(auto unit : node.child("units").children())
@@ -39,6 +41,8 @@ Battle::Battle(StateStack* stack, Context context, pugi::xml_node& node)
     }
 
     mScene.sort();
+
+    mStack->push(new BattleObjectives(mStack, mContext, getBattleContext()));
 }
 
 Battle::~Battle()
@@ -52,7 +56,11 @@ void Battle::draw()
     sf::RenderWindow& window = *mContext.window;
     sf::View oldView(window.getView());
 
-    ///the scene is drawn with the view centered on the cursor
+    ///draw the bg
+    window.setView(window.getDefaultView());
+    window.draw(mBackground);
+
+    ///the scene is drawn with the context view
     window.setView(mView);
     window.draw(mScene);
 
@@ -83,7 +91,9 @@ bool Battle::handleSignal(const Signal& signal)
 
 BattleContext Battle::getBattleContext()
 {
-    return BattleContext(mEnemyGuild, mBattlefield, mUnitList, mScene, mCutscene);
+    return BattleContext(mStep, mEnemyGuild, mBattlefield, mUnitList, mScene, mCutscene, mView, mCursor);
+}
+
 }
 
 /*
@@ -114,19 +124,4 @@ void Battle::initFacingSelectArrows()
     rightArrow.setPosition(xOffset);
     mScene.addNode(rightArrow);
 }
-
-void Battle::showCursor(bool flag)
-{
-    if (flag)
-    {
-        Graphism::Node cursorNode(&mCursorBack, 0.f);
-        cursorNode.setPosition(get2DPos(mCursorCoords));
-        mCursorKey = mScene.addNode(cursorNode);
-        mScene.addNode(Graphism::Node(&mCursorFront, 100.f, mCursorKey));
-    }
-    else
-        mScene.removeNode(mCursorKey);
-}
 */
-
-}

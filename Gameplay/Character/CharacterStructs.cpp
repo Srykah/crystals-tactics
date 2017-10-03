@@ -2,22 +2,17 @@
 
 sf::String CharTypeToStr(CharType type)
 {
-    #define JOBTOSTRING_CASE(JOB) case CharType::JOB: return #JOB;
-
     switch(type)
     {
-    JOBTOSTRING_CASE(Protector)
-    /*
-    JOBTOSTRING_CASE(Mechanics)
-    JOBTOSTRING_CASE(Medic)
-    JOBTOSTRING_CASE(Sniper)
-    JOBTOSTRING_CASE(Spy)
-    JOBTOSTRING_CASE(Android)
-    JOBTOSTRING_CASE(DogRobot)
-    */
-
-    default:
-        return "Unknown";
+    case CharType::Protector:   return "Protector";
+    case CharType::Medic:       return "Medic";
+    case CharType::Sniper:      return "Sniper";
+    case CharType::Mechanics:   return "Mechanics";
+    case CharType::Spy:         return "Spy";
+    case CharType::Physicist:   return "Physicist";
+    case CharType::Bomber:      return "Bomber";
+    case CharType::Acrobat:     return "Acrobat";
+    default:                    return "Unknown";
     }
 }
 

@@ -89,7 +89,7 @@ public: //page 3 : getters
     short               getUnitListKey()    const;
     AI::Type            getAI()             const;
     bool                isBot()             const;
-    CharBuild      getBuild()          const;
+    CharBuild           getBuild()          const;
     AbilityArray&       getAbilities();
     Graphism::Entity*   getEntity();
     Graphism::Node::Key getSceneKey()       const;
@@ -101,11 +101,11 @@ private:
     static const short HAS_USED_ITEM = 2;
 
 private:
-    sf::String         mName;
-    CharType       mType;
-    CharRole       mRole;
-    AI::Type            mAIType;
-    bool                mIsAlly;
+    sf::String      mName;
+    CharType        mType;
+    CharRole        mRole;
+    AI::Type        mAIType;
+    bool            mIsAlly;
 
     Graphism::EntityNode*   mEntityNode;
     sf::CircleShape*        mCircle;

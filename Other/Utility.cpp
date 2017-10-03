@@ -155,15 +155,15 @@ float randomPick(int val)
     return std::max(val + std::log2(randomFloatNorm()) + 1.f, 0.f);
 }
 
-float length(sf::Vector2f vector)
+float length(sf::Vector2f vec)
 {
-	return std::sqrt(vector.x * vector.x + vector.y * vector.y);
+	return std::hypot(vec.x, vec.y);
 }
 
-sf::Vector2f unitVector(sf::Vector2f vector)
+sf::Vector2f unitVector(sf::Vector2f vec)
 {
-	assert(vector != sf::Vector2f(0.f, 0.f));
-	return vector / length(vector);
+	assert(vec != sf::Vector2f(0.f, 0.f));
+	return vec / length(vec);
 }
 
 int scal(int x1, int y1, int x2, int y2)

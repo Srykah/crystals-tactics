@@ -4,8 +4,8 @@
 namespace Graphism
 {
 
-EntityNode::EntityNode(Entity* entity, float z, Key parentKey)
-: Node(z, parentKey)
+EntityNode::EntityNode(Entity* entity, float z, Node* parent)
+: Node(z, parent)
 , entity(entity)
 {
 

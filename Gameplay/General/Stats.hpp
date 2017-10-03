@@ -25,16 +25,16 @@ struct Stats
           Stat _mobility,
           Stat _attack,
           Stat _defense,
-          Stat _evasion,
-          Stat _critHitRate);
+          float _evasion,
+          float _critHitRate);
 
     Stat maxHP;
     Stat speed;
     Stat mobility;
     Stat attack;
     Stat defense;
-    Stat evasion;
-    Stat critHitRate;
+    float evasion;
+    float critHitRate;
 
     void load(const pugi::xml_node& node);
 

@@ -21,13 +21,13 @@ public:
     typedef std::unique_ptr< Node > Ptr;
 
 public:
-                    Node(float z, Key parentKey = -1);
+                    Node(float z, Node* parentNode = nullptr);
     virtual         ~Node();
 
     virtual bool    update(sf::Time delta);
 
     Key             getKey() const;
-    Key             getParentKey() const;
+    Node*           getParent() const;
 
     void            setZ(float z);
     void            moveZ(float offset);
@@ -41,12 +41,16 @@ public:
     sf::Vector2f    getGlobalScale()     const;
     sf::Transform   getGlobalTransform() const;
 
+    void            setVisible(bool visible = true);
+    bool            isVisible() const;
+
 private:
-    Key                 mKey;
-    float               mZ;
-    Key                 mParentKey;
-    Scene*              mScene;
-    Effect              mEffect;
+    Key     mKey;
+    float   mZ;
+    Node*   mParent;
+    Scene*  mScene;
+    Effect  mEffect;
+    bool    mVisible;
 
     friend class Scene;
 };

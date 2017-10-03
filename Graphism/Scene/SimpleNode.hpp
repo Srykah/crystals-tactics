@@ -10,7 +10,7 @@ namespace Graphism
 class SimpleNode : public Node
 {
 public:
-            SimpleNode(sf::Drawable* drawable, float z, Key parentKey = -1);
+            SimpleNode(sf::Drawable* drawable, float z, Node* parent = nullptr);
     virtual ~SimpleNode();
 
     void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates()) const;

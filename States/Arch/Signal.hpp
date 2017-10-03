@@ -13,7 +13,7 @@ class State;
 
 struct Signal
 {
-    typedef boost::variant<int, short, float, sf::Vector2i, Character*> Data;
+    typedef boost::variant<bool, short, int, float, sf::Vector2i, Character*> Data;
 
     State* sender;
     Data data;

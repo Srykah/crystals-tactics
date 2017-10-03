@@ -24,7 +24,7 @@ State::~State()
 {
 }
 
-void State::emit(Signal::Data& data)
+void State::emit(Signal::Data data)
 {
     mStack->addSignal(this, data);
 }

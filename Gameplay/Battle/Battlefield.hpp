@@ -10,7 +10,11 @@
 #include <map>
 
 class UnitList;
-namespace Graphism { class Scene; }
+namespace Graphism
+{
+    class Scene;
+    class Cursor;
+}
 
 template<typename T>
 using Grid = std::vector< std::vector< T > >;
@@ -33,7 +37,8 @@ public:
                     Battlefield();
                     ~Battlefield();
 
-    void            loadFromFile(const sf::String& file, Graphism::Scene& scene, Data::EntityHolder* entityHolder);
+    void            loadFromFile(const sf::String& file, Graphism::Scene& scene,
+                                 Data::EntityHolder* entityHolder, Graphism::Cursor& cursor);
 
     virtual void    update(sf::Time delta);
     virtual void    draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates()) const;

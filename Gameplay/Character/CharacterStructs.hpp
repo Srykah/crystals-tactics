@@ -9,36 +9,27 @@ class Equipment;
 
 enum class CharType
 {
-    Unknown         = -1,
-    Protector       = 0,
-    Medic           = 1,
-    Sniper          = 2,
-    Mechanics       = 3,
-    Spy             = 4,
-    Bomber          = 5,
-    Physicist       = 6,
-    Acrobat         = 7,
-    Rider           = 8,
-    /*
-    Wolf            = 13,
-    Robodog         = 14,
-    Robospider      = 15,
-    Robotortoise    = 16,
-    Robobear        = 17,
-    Robotiger       = 18,
-    MadAndroid      = 20
-    */
+    Unknown = -1,
+    Protector = 0,
+    Medic,
+    Sniper,
+    Mechanics,
+    Spy,
+    Bomber,
+    Physicist,
+    Acrobat,
     Count
 };
 
 enum class CharRole
 {
-    Hero,
+    None = -1,
+    Hero = 0,
     Boss,
     Target,
     Guest,
     Escort,
-    None
+    Count
 };
 
 struct CharBuild

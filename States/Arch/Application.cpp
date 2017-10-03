@@ -21,6 +21,7 @@ Application::Application()
 	mFonts.load(Fonts::Title,               "Media/Fonts/gcrank.ttf");
 
 	mTextures.load(Textures::Buttons,		"Media/Textures/Buttons.png");
+	mTextures.load(Textures::XboxButtons,   "Media/Textures/XboxButtons.png");
 	mTextures.load(Textures::TextField,     "Media/Textures/TextField.png");
 
 	loadEntities();

@@ -22,7 +22,7 @@ void Character::startBattle(BattleContext context, sf::Vector2i coords, Directio
     mBattleContext.scene->addNode(mEntityNode);
 
     mCircle = new sf::CircleShape;
-    Graphism::SimpleNode* circleNode = new Graphism::SimpleNode(mCircle, -0.1f, getSceneKey());
+    Graphism::SimpleNode* circleNode = new Graphism::SimpleNode(mCircle, -0.1f, mEntityNode);
     circleNode->setOrigin(0.5*TILE_DIM, 0.5*TILE_DIM);
     mBattleContext.scene->addNode(circleNode);
 

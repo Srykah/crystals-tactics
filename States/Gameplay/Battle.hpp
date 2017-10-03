@@ -28,6 +28,7 @@ public:
     virtual bool        handleSignal(const Signal& signal);
 
 private:
+    BattleStep          mStep;
     Guild               mEnemyGuild;
     UnitList            mUnitList;
     sf::VertexArray     mBackground;
@@ -39,6 +40,7 @@ private:
 
 private:
     BattleContext       getBattleContext();
+    void                showCursor(bool flag = true);
 };
 
 }

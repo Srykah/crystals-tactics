@@ -25,6 +25,7 @@ public:
     ~Weapon();
 
     void                load(const pugi::xml_node& node);
+    Type                getType() const;
     int                 getDamage() const;
     int                 getRangeMin() const;
     int                 getRangeMax() const;

@@ -4,8 +4,8 @@
 namespace Graphism
 {
 
-SimpleNode::SimpleNode(sf::Drawable* drawable, float z, Key parentKey)
-: Node(z, parentKey)
+SimpleNode::SimpleNode(sf::Drawable* drawable, float z, Node* parent)
+: Node(z, parent)
 , mDrawable(drawable)
 {
 

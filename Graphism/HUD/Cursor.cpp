@@ -10,8 +10,8 @@ Cursor::Cursor(Scene& scene, const Data::EntityHolder& entities, sf::Vector2i co
 , mCoords(coords)
 {
     mNode = new EntityNode(new Entity(entities.get(Entities::CursorTile), "fixed", Direction::None), coords.y+1);
-    Node::Key key = scene.addNode(mNode);
-    EntityNode* arrowNode = new EntityNode(new Entity(entities.get(Entities::Arrow), "float", Direction::Down), 100.f, key);
+    scene.addNode(mNode);
+    EntityNode* arrowNode = new EntityNode(new Entity(entities.get(Entities::Arrow), "float", Direction::Down), 100.f, mNode);
     arrowNode->move(0.f, -2*TILE_DIM);
     scene.addNode(arrowNode);
     updateEntityPositions();
@@ -30,6 +30,11 @@ bool Cursor::setCoords(sf::Vector2i coords)
     return needToSortScene;
 }
 
+bool Cursor::move(sf::Vector2i offset)
+{
+    return setCoords(getCoords()+offset);
+}
+
 sf::Vector2i Cursor::getCoords() const
 {
     return mCoords;
@@ -46,5 +51,9 @@ void Cursor::updateEntityPositions()
     mNode->setZ(mCoords.y+1);
 }
 
+void Cursor::setVisible(bool visible)
+{
+    mNode->setVisible(visible);
+}
 
 }

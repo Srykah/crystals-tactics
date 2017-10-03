@@ -1,5 +1,5 @@
-#ifndef BATTLEMAIN_HPP_INCLUDED
-#define BATTLEMAIN_HPP_INCLUDED
+#ifndef UNITSELECT_HPP_INCLUDED
+#define UNITSELECT_HPP_INCLUDED
 
 #include "States/Arch/State.hpp"
 #include "Gameplay/Battle/BattleContext.hpp"
@@ -7,11 +7,11 @@
 namespace States
 {
 
-class BattleMain : public State
+class UnitSelect : public State
 {
 public:
-    BattleMain(StateStack* stack, Context context, BattleContext bc);
-    ~BattleMain();
+    UnitSelect(StateStack* stack, Context context, BattleContext bc);
+    ~UnitSelect();
 
     virtual void		draw();
     virtual bool		update(sf::Time dt);
@@ -22,6 +22,7 @@ private:
     BattleContext       mBattleContext;
 };
 
+
 }
 
-#endif // BATTLEMAIN_HPP_INCLUDED
+#endif // UNITSELECT_HPP_INCLUDED

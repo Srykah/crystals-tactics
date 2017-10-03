@@ -13,7 +13,7 @@ Stats::Stats()
 
 }
 
-Stats::Stats(Stat _maxHP, Stat _speed, Stat _mobility, Stat _attack, Stat _defense, Stat _evasion, Stat _critHitRate)
+Stats::Stats(Stat _maxHP, Stat _speed, Stat _mobility, Stat _attack, Stat _defense, float _evasion, float _critHitRate)
 : maxHP(_maxHP)
 , speed(_speed)
 , mobility(_mobility)
@@ -27,13 +27,13 @@ Stats::Stats(Stat _maxHP, Stat _speed, Stat _mobility, Stat _attack, Stat _defen
 
 void Stats::load(const pugi::xml_node& node)
 {
-    maxHP = node.attribute("maxHP").as_uint();
-    speed = node.attribute("speed").as_uint();
-    mobility = node.attribute("mobility").as_uint();
-    attack = node.attribute("attack").as_uint();
-    defense = node.attribute("defense").as_uint();
-    evasion = node.attribute("evasion").as_uint();
-    critHitRate = node.attribute("critHitRate").as_uint();
+    maxHP = node.attribute("maxHP").as_int();
+    speed = node.attribute("speed").as_int();
+    mobility = node.attribute("mobility").as_int();
+    attack = node.attribute("attack").as_int();
+    defense = node.attribute("defense").as_int();
+    evasion = node.attribute("evasion").as_float();
+    critHitRate = node.attribute("critHitRate").as_float();
 }
 
 Stats& Stats::operator+=(Stats const& other)

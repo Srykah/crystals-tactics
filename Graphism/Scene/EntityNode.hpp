@@ -9,7 +9,7 @@ namespace Graphism
 
 struct EntityNode : public Node
 {
-            EntityNode(Entity* entity, float z, Key parentKey = -1);
+            EntityNode(Entity* entity, float z, Node* parent = nullptr);
     virtual ~EntityNode();
 
     void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates()) const;

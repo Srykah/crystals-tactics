@@ -9,7 +9,7 @@ namespace Graphism
 class NoOwnNode : public Node
 {
 public:
-            NoOwnNode(sf::Drawable* drawable, float z, Key parentKey = -1);
+            NoOwnNode(sf::Drawable* drawable, float z, Node* parent = nullptr);
     virtual ~NoOwnNode();
 
     void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates()) const;

@@ -2,6 +2,7 @@
 #include "XML/pugixml.hpp"
 #include "Data/ResourceHolder/ResourceHolder.hpp"
 #include "Graphism/Colors.hpp"
+#include "Graphism/HUD/Cursor.hpp"
 #include "Graphism/Scene/Scene.hpp"
 #include "Graphism/Scene/NoOwnNode.hpp"
 #include "Graphism/Scene/EntityNode.hpp"
@@ -25,7 +26,8 @@ Battlefield::~Battlefield()
 
 }
 
-void Battlefield::loadFromFile(const sf::String& file, Graphism::Scene& scene, Data::EntityHolder* entityHolder)
+void Battlefield::loadFromFile(const sf::String& file, Graphism::Scene& scene,
+                               Data::EntityHolder* entityHolder, Graphism::Cursor& cursor)
 {
     ///ouverture du fichier
     pugi::xml_document doc;
@@ -36,6 +38,7 @@ void Battlefield::loadFromFile(const sf::String& file, Graphism::Scene& scene, D
     const pugi::xml_node& battlefieldNode = doc.child("battlefield");
     const pugi::xml_node& decorationsNode = doc.child("decorations");
     const pugi::xml_node& spawnsNode = doc.child("spawns");
+    const pugi::xml_node& cursorNode = doc.child("cursor");
 
     ///lecture des infos sur les tuiles
     mTileSheet.loadFromFile(tilesNode.attribute("tileSheet").as_string());
@@ -94,6 +97,9 @@ void Battlefield::loadFromFile(const sf::String& file, Graphism::Scene& scene, D
     for(auto spawn : spawnsNode)
         mSpawns.emplace_back(spawn.attribute("x").as_uint(), spawn.attribute("y").as_uint());
 
+    ///initialisation du curseur
+    sf::Vector2i cursorCoords(cursorNode.attribute("x").as_uint(), cursorNode.attribute("y").as_uint());
+    cursor.setCoords(cursorCoords);
 }
 
 void Battlefield::update(sf::Time delta)

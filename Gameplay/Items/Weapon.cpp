@@ -25,14 +25,29 @@ void Weapon::load(const pugi::xml_node& node)
     mAilment = StrToSA(node.attribute("ailment").as_string());
 }
 
+Weapon::Type Weapon::getType() const
+{
+    return mType;
+}
+
 int Weapon::getDamage() const
 {
     return mDamage;
 }
 
-int Weapon::getRange() const
+int Weapon::getRangeMin() const
 {
-    return mRange;
+    return mRangeMin;
+}
+
+int Weapon::getRangeMax() const
+{
+    return mRangeMax;
+}
+
+int Weapon::getPrecision() const
+{
+    return mPrecision;
 }
 
 Element Weapon::getElement() const
@@ -47,9 +62,9 @@ StatusAilment Weapon::getAilment() const
 
 Weapon::Type StrToWpnType(const sf::String& str)
 {
-         if (str == "knife")    return Weapon::Knife;
-    else if (str == "mass")     return Weapon::Mace;
-    else if (str == "pistol")   return Weapon::Pistol;
-    else if (str == "canon")    return Weapon::Canon;
+         if (str == "knife")    return Weapon::Type::Knife;
+    else if (str == "mass")     return Weapon::Type::Mace;
+    else if (str == "pistol")   return Weapon::Type::Pistol;
+    else if (str == "canon")    return Weapon::Type::Canon;
     else throw std::domain_error(str.toAnsiString() + std::string(" is not a weapon type"));
 }

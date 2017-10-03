@@ -5,11 +5,12 @@
 namespace Graphism
 {
 
-Node::Node(float z, Node::Key parentKey)
+Node::Node(float z, Node* parentNode)
 : mKey(-1)
 , mZ(z)
-, mParentKey(parentKey)
+, mParent(parentNode)
 , mScene(nullptr)
+, mVisible(true)
 {
 
 }
@@ -29,9 +30,9 @@ Node::Key Node::getKey() const
     return mKey;
 }
 
-Node::Key Node::getParentKey() const
+Node* Node::getParent() const
 {
-    return mParentKey;
+    return mParent;
 }
 
 void Node::setZ(float z)
@@ -46,10 +47,10 @@ void Node::moveZ(float offset)
 
 float Node::getZ() const
 {
-    if (mParentKey == -1)
+    if (mParent == nullptr)
         return mZ;
     else
-        return mZ + mScene->getNode(mParentKey)->getZ();
+        return mZ + mParent->getZ();
 }
 
 void Node::setEffect(Effect effect)
@@ -70,29 +71,39 @@ sf::Vector2f Node::getGlobalPosition() const
 
 float Node::getGlobalRotation() const
 {
-    if (mParentKey == -1)
+    if (mParent == nullptr)
         return getRotation();
     else
-        return getRotation() + mScene->getNode(mParentKey)->getGlobalRotation();
+        return getRotation() + mParent->getGlobalRotation();
 }
 
 sf::Vector2f Node::getGlobalScale() const
 {
-    if (mParentKey == -1)
+    if (mParent == nullptr)
         return getScale();
     else
     {
-        sf::Vector2f prev_scale(mScene->getNode(mParentKey)->getGlobalScale());
+        sf::Vector2f prev_scale(mParent->getGlobalScale());
         return sf::Vector2f(getScale().x*prev_scale.x, getScale().y*prev_scale.y);
     }
 }
 
 sf::Transform Node::getGlobalTransform() const
 {
-    if (mParentKey == -1)
+    if (mParent == nullptr)
         return getTransform();
     else
-        return mScene->getNode(mParentKey)->getGlobalTransform() * getTransform();
+        return mParent->getGlobalTransform() * getTransform();
+}
+
+void Node::setVisible(bool visible)
+{
+    mVisible = visible;
+}
+
+bool Node::isVisible() const
+{
+    return mVisible && (mParent == nullptr || mParent->isVisible());
 }
 
 }

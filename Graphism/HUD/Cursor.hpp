@@ -17,8 +17,10 @@ public:
     ~Cursor();
 
     bool            setCoords(sf::Vector2i coords);
+    bool            move(sf::Vector2i coords);
     sf::Vector2i    getCoords() const;
     sf::View        getView(float zoom = 1.f);
+    void            setVisible(bool visible = true);
 
 private:
     void            updateEntityPositions();
