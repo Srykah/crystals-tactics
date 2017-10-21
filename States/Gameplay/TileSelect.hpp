@@ -10,7 +10,7 @@ namespace States
 class TileSelect : public State
 {
 public:
-    TileSelect(StateStack* stack, Context context, BattleContext bc);
+    TileSelect(StateStack* stack, Context context, BattleContext bc, bool freeViewing = false);
     ~TileSelect();
 
     virtual void		draw();
@@ -20,6 +20,7 @@ public:
 
 private:
     BattleContext       mBattleContext;
+    bool                mFreeViewing;
 };
 
 }

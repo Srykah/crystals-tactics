@@ -29,6 +29,8 @@ Battle::Battle(StateStack* stack, Context context, pugi::xml_node& node)
     mBattlefield.loadFromFile(node.child("battlefield").attribute("path").as_string(),
                               mScene, mContext.entities, mCursor);
 
+    mCursor.setVisible(false);
+
     // chargement des unités
     for(auto unit : node.child("units").children())
     {

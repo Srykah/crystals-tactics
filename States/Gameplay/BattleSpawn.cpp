@@ -1,10 +1,10 @@
 #include "States/Gameplay/BattleSpawn.hpp"
 #include "States/Arch/StateStack.hpp"
 #include "States/Gameplay/TileSelect.hpp"
-#include "States/Gameplay/FreeView.hpp"
 #include "States/Gameplay/UnitSelect.hpp"
 #include "States/Gameplay/BattleMain.hpp"
 #include "States/Menu/OKBox.hpp"
+#include "Gameplay/Battle/Battlefield.hpp"
 
 namespace States
 {
@@ -15,6 +15,7 @@ BattleSpawn::BattleSpawn(StateStack* stack, Context context, BattleContext bc)
 , mChildState(new TileSelect(stack, context, bc))
 , mStep(UnitSelection)
 {
+    bc.bf->highlightSpawns();
     mStack->push(mChildState, true);
 }
 
@@ -35,7 +36,7 @@ bool BattleSpawn::update(sf::Time dt)
 
 bool BattleSpawn::handleEvent(const Input::Event& event)
 {
-    if ((mStep == Step::TileSelection || mStep == Step::FreeViewing) && event.stdAc == Input::X)
+    if (mStep == Step::TileSelection && event.stdAc == Input::X)
     {
         mStack->close(mChildState);
         mChildState = new OKBox(mStack, mContext, "Lancer le combat ?");
@@ -58,20 +59,20 @@ bool BattleSpawn::handleSignal(const Signal& signal)
             if (boost::get<bool>(signal.data)) // if we have selected a tile
             {
                 mStep = Step::UnitSelection;
+                mBattleContext.bf->clearPaint();
                 mChildState = new UnitSelect(mStack, mContext, mBattleContext);
                 mStack->push(mChildState);
             }
-            else // if we leave the tile selection, open free view
+            else // if we leave the tile selection, re-open it
             {
-                mStep = Step::FreeViewing;
-                mChildState = new FreeView(mStack, mContext, mBattleContext);
+                mChildState = new TileSelect(mStack, mContext, mBattleContext);
                 mStack->push(mChildState);
             }
             return false;
 
         case Step::UnitSelection:
-        case Step::FreeViewing:
             mStep = Step::TileSelection;
+            mBattleContext.bf->highlightSpawns();
             mChildState = new TileSelect(mStack, mContext, mBattleContext);
             mStack->push(mChildState);
             return false;

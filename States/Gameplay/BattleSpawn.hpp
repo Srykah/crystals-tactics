@@ -23,7 +23,6 @@ private:
     {
         TileSelection,
         UnitSelection,
-        FreeViewing,
         Confirmation
     };
 

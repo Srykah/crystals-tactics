@@ -70,9 +70,9 @@ public: //page 3 : getters
     bool                hasMoved()          const;
     bool                hasAttacked()       const;
     bool                hasUsedItem()       const;
-    const sf::String&  getName()           const;
-    CharType       getType()           const;
-    CharRole       getRole()           const;
+    const sf::String&   getName()           const;
+    CharType            getType()           const;
+    CharRole            getRole()           const;
     bool                isMech()            const;
     Stat                getLevel()          const;
     Stat                getExp()            const;
@@ -115,7 +115,7 @@ private:
     Stat            mLevel;
     Stat            mExperience;
     Stats           mStats;
-    CharBuild  mBuild;
+    CharBuild       mBuild;
     AbilityArray    mAbilities;
     ElemAffinities  mAffinities;
 

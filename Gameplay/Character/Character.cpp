@@ -49,9 +49,6 @@ void Character::load(const pugi::xml_node& node)
         mAbilities[i].id = attr.as_int();
         i++;
     }
-
-
-
 }
 
 void Character::setType(CharType type)

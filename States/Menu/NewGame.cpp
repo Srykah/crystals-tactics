@@ -3,6 +3,7 @@
 #include "States/Gameplay/Mission.hpp"
 #include "Gameplay/Story/Guild.hpp"
 #include "Other/Utility.hpp"
+#include <stdexcept>
 
 namespace States
 {
@@ -133,7 +134,8 @@ void NewGame::init()
 
 void NewGame::createCharacters()
 {
-    mContext.guild->loadFromFile("Saves/Default.xml", mContext);
+    if (!mContext.guild->loadFromFile("Saves/Default.xml", mContext))
+        throw std::runtime_error("NewGame::createCharacters : unable to read file Saves/Default.xml");
 }
 
 }

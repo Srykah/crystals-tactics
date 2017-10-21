@@ -3,6 +3,7 @@
 
 #include "States/Arch/State.hpp"
 #include "Gameplay/Battle/BattleContext.hpp"
+#include "Graphism/Scene/EntityNode.hpp"
 
 namespace States
 {
@@ -19,7 +20,8 @@ public:
     virtual bool        handleSignal(const Signal& signal);
 
 private:
-    BattleContext       mBattleContext;
+    BattleContext           mBattleContext;
+    Graphism::EntityNode*   mNode;
 };
 
 
