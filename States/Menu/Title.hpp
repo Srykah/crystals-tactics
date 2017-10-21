@@ -21,7 +21,7 @@ public:
     virtual bool        handleSignal(const Signal& signal);
 
 private:
-    Data::TextureHolder       mTextures;
+    Data::TextureHolder mTextures;
     GUI::Container      mMenu;
     sf::Sprite          mTNTeamSprite;
     sf::Sprite			mBackgroundSprite;
@@ -29,6 +29,7 @@ private:
     Graphism::Text	    mContinueText;
     sf::Time			mEffectTime;
     int                 mPhase;
+    bool                mBlinkOn;
 };
 
 }
