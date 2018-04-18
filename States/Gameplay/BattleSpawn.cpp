@@ -13,7 +13,7 @@ BattleSpawn::BattleSpawn(StateStack* stack, Context context, BattleContext bc)
 : State(stack, context)
 , mBattleContext(bc)
 , mChildState(new TileSelect(stack, context, bc))
-, mStep(UnitSelection)
+, mStep(TileSelection)
 {
     bc.bf->highlightSpawns();
     mStack->push(mChildState, true);
