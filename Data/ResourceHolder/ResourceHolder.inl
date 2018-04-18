@@ -1,51 +1,48 @@
 
-template <typename Identifier, typename Resource>
-void ResourceHolder<Identifier, Resource>::load(Identifier id, const sf::String& filename)
+template <class Resource>
+void ResourceHolder<Resource>::load(const sf::String& filename)
 {
-	// Create and load resource
-	std::unique_ptr<Resource> resource(new Resource());
-	if (!resource->loadFromFile(filename))
-		throw std::runtime_error("ResourceHolder::load - Failed to load " + filename);
+	// open document
+	pugi::xml_document doc;
+    if (!doc.load_file(file.toAnsiString().c_str()))
+        throw std::runtime_error(sf::String("Error : couldn't open ") + file);
 
-	// If loading successful, insert resource to map
-	insertResource(id, std::move(resource));
+    // for each child, create a resource and use its load method on the child
+    for (const pugi::xml_node& child : node.children())
+    {
+        short id = child.attribute("id").as_int();
+        if (id > mResources.size())
+            mResources.resize(id);
+        mResources.at(id)->load(child);
+    }
 }
 
-template <typename Identifier, typename Resource>
-template <typename Parameter>
-void ResourceHolder<Identifier, Resource>::load(Identifier id, const sf::String& filename, const Parameter& secondParam)
+template <class Resource>
+void ResourceHolder<Resource>::load(const sf::String& filename, LoadingFun fun)
 {
-	// Create and load resource
-	std::unique_ptr<Resource> resource(new Resource());
-	if (!resource->loadFromFile(filename, secondParam))
-		throw std::runtime_error("ResourceHolder::load - Failed to load " + filename);
+    // open document
+	pugi::xml_document doc;
+    if (!doc.load_file(file.toAnsiString().c_str()))
+        throw std::runtime_error(sf::String("Error : couldn't open ") + file);
 
-	// If loading successful, insert resource to map
-	insertResource(id, std::move(resource));
+    // for each child, use the load method given as parameter
+    for(const pugi::xml_node& child : node.children())
+    {
+        short id = child.attribute("id").as_int();
+        if (id > mResources.size())
+            mResources.resize(id);
+        mResources.at(id).reset(fun(child));
+    }
 }
 
-template <typename Identifier, typename Resource>
-Resource& ResourceHolder<Identifier, Resource>::get(Identifier id)
+template <class Resource>
+Resource& ResourceHolder<Resource>::get(short id)
 {
-	auto found = mResourceMap.find(id);
-	assert(found != mResourceMap.end());
-
-	return *found->second;
+	return *mResources.at(id);
 }
 
-template <typename Identifier, typename Resource>
-const Resource& ResourceHolder<Identifier, Resource>::get(Identifier id) const
+template <class Resource>
+const Resource& ResourceHolder<Resource>::get(short id) const
 {
-	auto found = mResourceMap.find(id);
-	assert(found != mResourceMap.end());
-
-	return *found->second;
-}
-
-template <typename Identifier, typename Resource>
-void ResourceHolder<Identifier, Resource>::insertResource(Identifier id, std::unique_ptr<Resource> resource)
-{
-	// Insert and check success
-	auto inserted = mResourceMap.insert(std::make_pair(id, std::move(resource)));
-	assert(inserted.second);
+	return *mResources.at(id);
 }

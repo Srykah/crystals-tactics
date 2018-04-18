@@ -10,24 +10,21 @@
 namespace Data
 {
 
-template <typename Identifier, typename Resource>
+template <class Resource>
 class ResourceHolder
 {
 public:
-    void						load(Identifier id, const sf::String& filename);
+    typedef std::function<Resource*(const pugi::xml_node& node)> LoadingFun;
 
-    template <typename Parameter>
-    void						load(Identifier id, const sf::String& filename, const Parameter& secondParam);
+public:
+    void            load(const sf::String& filename); // for Resources that have a load(pugi::xml_node& node) method
+    void			load(const sf::String& filename, LoadingFun fun); // for the other Resources
 
-    Resource&					get(Identifier id);
-    const Resource&				get(Identifier id) const;
-
-private:
-    void						insertResource(Identifier id, std::unique_ptr<Resource> resource);
-
+    Resource&		get(short id);
+    const Resource&	get(short id) const;
 
 private:
-    std::map<Identifier, std::unique_ptr<Resource>>	mResourceMap;
+    std::vector< std::unique_ptr<Resource> >	mResources;
 };
 
 #include "ResourceHolder.inl"

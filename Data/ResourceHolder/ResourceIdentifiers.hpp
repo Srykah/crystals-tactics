@@ -10,69 +10,10 @@
 #include "Data/Gameplay/StatsData.hpp"
 #include "Gameplay/Character/CharacterStructs.hpp"
 
-namespace Textures
-{
-	enum ID
-	{
-		TitleScreen,
-		Buttons,
-		XboxButtons,
-		TextField,
-		CTLogo,
-		TNTeamLogo,
-		Moon,
-		Meteorites,
-		Ocean,
-		Desert,
-		Volcano,
-		Crystals
-	};
-}
-
 namespace Fonts
 {
-	enum ID
-	{
-		Main,
-		Title
-	};
-}
-
-namespace SoundEffect
-{
-	enum ID
-	{
-		ButtonSelect,
-		ButtonActivate
-	};
-}
-
-namespace Music
-{
-	enum ID
-	{
-		Epilogue
-	};
-}
-
-namespace Entities
-{
-    enum ID
-    {
-        CursorTile,
-        Arrow,
-        Protector,
-        MechProtector,
-        /*
-        Mechanics,
-        Medic,
-        Sniper,
-        Spy,
-        Android,
-        DogRobot,
-        */
-        Unknown
-    };
+	const short Main = 0;
+    const short Title = 1;
 }
 
 namespace Data
@@ -85,6 +26,6 @@ typedef ResourceHolder<Entities::ID, Data::EntityData>      EntityHolder;
 
 }
 
-Entities::ID        CharTypeToEntitiesID(CharType type);
+short   CharTypeToEntityID(CharType type);
 
 #endif // RESOURCEIDENTIFIERS_HPP_INCLUDED
