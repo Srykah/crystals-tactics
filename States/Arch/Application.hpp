@@ -24,7 +24,7 @@ différents écrans de jeu via son contexte.
 
 */
 
-namespace States
+namespace st
 {
 
 class Application

@@ -3,12 +3,11 @@
 #include "Gameplay/Battle/Battlefield.hpp"
 #include "Graphism/HUD/Cursor.hpp"
 
-namespace States
+namespace st
 {
 
 TileSelect::TileSelect(StateStack* stack, Context context, BattleContext bc, bool freeViewing)
-: State(stack, context)
-, mBattleContext(bc)
+: BattleState(stack, context, bc)
 , mFreeViewing(freeViewing)
 {
     bc.cursor->setVisible();

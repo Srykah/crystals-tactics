@@ -11,7 +11,7 @@
 #include <vector>
 #include <deque>
 
-namespace States
+namespace st
 {
 
 class StateStack : private sf::NonCopyable
@@ -20,7 +20,6 @@ public:
     enum Action
     {
         Push,
-        Pop,
         Close,
         Clear
     };
@@ -32,7 +31,6 @@ public:
     void                handleSignal();
 
     void				push(State* state, bool front = false);
-    void				pop(bool front = false);
     void                close(State* state, bool front = false);
     void				clear(bool front = false);
 

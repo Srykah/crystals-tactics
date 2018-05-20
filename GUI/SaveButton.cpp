@@ -5,7 +5,7 @@
 namespace GUI
 {
 
-SaveButton::SaveButton(int number, pugi::xml_node file, States::Context context)
+SaveButton::SaveButton(int number, pugi::xml_node file, st::Context context)
 : mFrame(sf::Vector2f(500, 100))
 , mSounds(*context.sounds)
 {
@@ -14,24 +14,24 @@ SaveButton::SaveButton(int number, pugi::xml_node file, States::Context context)
     mFrame.setOutlineThickness(-3);
 
     //number of the file
-    mTexts.push_back(Graphism::Text("File no " + ToStr(number), context.fonts->get(Fonts::Main), 30, Graphism::Text::Shadow, Colors::Sand));
+    mTexts.push_back(gr::Text("File no " + ToStr(number), context.fonts->get(Fonts::Main), 30, gr::Text::Shadow, Colors::Sand));
     mTexts[0].setPosition(5,5);
 
     //get hero node
     pugi::xml_node& hero = *std::find_if(file.child("characters").children().begin(), file.child("characters").children().end(), [](pugi::xml_node& node){ return node.attribute("storyStatus").as_string() == sf::String("Hero"); });
 
     //name of the hero
-    mTexts.push_back(Graphism::Text(hero.attribute("name").as_string(), context.fonts->get(Fonts::Main), 30, Graphism::Text::Shadow, Colors::Sand));
+    mTexts.push_back(gr::Text(hero.attribute("name").as_string(), context.fonts->get(Fonts::Main), 30, gr::Text::Shadow, Colors::Sand));
     mTexts[1].setPosition(5, 40);
 
     //level of the hero
-    mTexts.push_back(Graphism::Text(hero.attribute("level").as_string(), context.fonts->get(Fonts::Main), 30, Graphism::Text::Shadow, Colors::Sand));
+    mTexts.push_back(gr::Text(hero.attribute("level").as_string(), context.fonts->get(Fonts::Main), 30, gr::Text::Shadow, Colors::Sand));
     sf::FloatRect bounds = mTexts[2].getGlobalBounds();
     mTexts[2].setPosition(495-bounds.width, 40);
 
     //time of play
-    mTexts.push_back(Graphism::Text(SecondsToStr(file.child("meta").attribute("playTime").as_int()),
-                                    context.fonts->get(Fonts::Main), 30, Graphism::Text::Shadow, Colors::Sand));
+    mTexts.push_back(gr::Text(SecondsToStr(file.child("meta").attribute("playTime").as_int()),
+                                    context.fonts->get(Fonts::Main), 30, gr::Text::Shadow, Colors::Sand));
     bounds = mTexts[3].getGlobalBounds();
     mTexts[3].setPosition(495-bounds.width, 5);
 }

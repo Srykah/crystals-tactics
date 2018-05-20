@@ -7,7 +7,7 @@ Source de la classe State
 
 //*/
 
-namespace States
+namespace st
 {
 
 /*//

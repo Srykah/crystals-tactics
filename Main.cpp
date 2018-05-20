@@ -9,7 +9,7 @@ int main()
 
     try
     {
-        States::Application app;
+        st::Application app;
         app.run();
     }
     catch (std::exception& e)

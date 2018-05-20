@@ -2,7 +2,7 @@
 #include "States/Arch/StateStack.hpp"
 #include "Other/Utility.hpp"
 
-namespace States
+namespace st
 {
 
 OKBox::OKBox(StateStack* stack, Context context, sf::String question, sf::String ok, sf::String back)

@@ -5,7 +5,7 @@
 #include "Other/Utility.hpp"
 #include <stdexcept>
 
-namespace States
+namespace st
 {
 
 NewGame::NewGame(StateStack* stack, Context context)

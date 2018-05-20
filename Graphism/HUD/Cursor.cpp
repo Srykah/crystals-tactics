@@ -2,7 +2,7 @@
 #include "Gameplay/General/Routines.hpp"
 #include "Gameplay/Battle/Battlefield.hpp"
 
-namespace Graphism
+namespace gr
 {
 
 Cursor::Cursor(Scene& scene, const Data::EntityHolder& entities, sf::Vector2i coords)
@@ -11,9 +11,11 @@ Cursor::Cursor(Scene& scene, const Data::EntityHolder& entities, sf::Vector2i co
 {
     mNode = new EntityNode(new Entity(entities.get(Entities::CursorTile), "fixed", Direction::None), coords.y+1);
     scene.addNode(mNode);
+
     EntityNode* arrowNode = new EntityNode(new Entity(entities.get(Entities::Arrow), "float", Direction::Down), 100.f, mNode);
     arrowNode->move(0.f, -2*TILE_DIM);
     scene.addNode(arrowNode);
+
     updateEntityPositions();
 }
 

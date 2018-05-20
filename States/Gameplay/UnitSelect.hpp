@@ -1,14 +1,16 @@
 #ifndef UNITSELECT_HPP_INCLUDED
 #define UNITSELECT_HPP_INCLUDED
 
-#include "States/Arch/State.hpp"
+#include "States/Gameplay/BattleState.hpp"
 #include "Gameplay/Battle/BattleContext.hpp"
 #include "Graphism/Scene/EntityNode.hpp"
+#include "Graphism/HUD/CharacInfo.hpp"
+#include "States/Gameplay/FacingSelect.hpp"
 
-namespace States
+namespace st
 {
 
-class UnitSelect : public State
+class UnitSelect : public BattleState
 {
 public:
     UnitSelect(StateStack* stack, Context context, BattleContext bc);
@@ -20,8 +22,13 @@ public:
     virtual bool        handleSignal(const Signal& signal);
 
 private:
-    BattleContext           mBattleContext;
-    Graphism::EntityNode*   mNode;
+    void                changeCharacter(short offset);
+
+private:
+    short               mIndex;
+    gr::CharacInfo      mCharacInfo;
+    gr::EntityNode*     mNode;
+    st::FacingSelect*   mChildState;
 };
 
 

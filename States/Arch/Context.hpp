@@ -37,7 +37,7 @@ Il contient, dans l'ordre :
 
 //*/
 
-namespace States
+namespace st
 {
 
 struct Context

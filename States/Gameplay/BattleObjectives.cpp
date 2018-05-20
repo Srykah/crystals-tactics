@@ -4,13 +4,12 @@
 #include "Gameplay/Battle/Battlefield.hpp"
 #include "Other/Utility.hpp"
 
-namespace States
+namespace st
 {
 
 BattleObjectives::BattleObjectives(StateStack* stack, Context context, BattleContext bc)
-: State(stack, context)
-, mBattleContext(bc)
-, mText("Battez tous les ennemis !", context.fonts->get(Fonts::Main), 60, Graphism::Text::Shadow, sf::Color::Red)
+: BattleState(stack, context, bc)
+, mText("Battez tous les ennemis !", context.fonts->get(Fonts::Main), 60, gr::Text::Shadow, sf::Color::Red)
 {
     sf::Vector2f taille(TILE_DIM * mBattleContext.bf->getGridSize());
     sf::Vector2f centre = taille / 2.f;
@@ -49,8 +48,6 @@ bool BattleObjectives::handleEvent(const Input::Event& event)
 {
     if (event.stdAc == Input::A)
     {
-        *mBattleContext.step = BattleStep::Spawn;
-        mStack->push(new BattleSpawn(mStack, mContext, mBattleContext), true);
         mStack->close(this);
     }
 }

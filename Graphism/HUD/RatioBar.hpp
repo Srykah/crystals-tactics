@@ -3,7 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 
-namespace Graphism
+namespace gr
 {
 
 class RatioBar : public sf::Drawable, public sf::Transformable

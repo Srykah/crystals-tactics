@@ -4,7 +4,7 @@
 #include <sstream>
 #include <stdexcept>
 
-namespace Graphism
+namespace gr
 {
 
 Animation::Animation(const Data::AnimationData& data)

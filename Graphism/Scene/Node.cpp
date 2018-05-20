@@ -2,12 +2,11 @@
 #include "Graphism/Scene/Scene.hpp"
 #include <SFML/Graphics/RenderTarget.hpp>
 
-namespace Graphism
+namespace gr
 {
 
 Node::Node(float z, Node* parentNode)
-: mKey(-1)
-, mZ(z)
+: mZ(z)
 , mParent(parentNode)
 , mScene(nullptr)
 , mVisible(true)
@@ -23,11 +22,6 @@ Node::~Node()
 bool Node::update(sf::Time delta)
 {
     return mEffect.update(delta);
-}
-
-Node::Key Node::getKey() const
-{
-    return mKey;
 }
 
 Node* Node::getParent() const

@@ -4,7 +4,7 @@
 #include "Graphism/Scene/Node.hpp"
 #include "Graphism/Entity/Entity.hpp"
 
-namespace Graphism
+namespace gr
 {
 
 struct EntityNode : public Node

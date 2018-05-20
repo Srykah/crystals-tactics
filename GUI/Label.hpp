@@ -34,7 +34,7 @@ class Label : public Component
 
 
     private:
-        Graphism::Text		mText;
+        gr::Text		    mText;
 };
 
 }

@@ -7,6 +7,7 @@
 #include "Graphism/Scene/EntityNode.hpp"
 #include "Graphism/Scene/SimpleNode.hpp"
 #include "Other/Utility.hpp"
+#include <iostream>
 
 void Character::startBattle(BattleContext context, sf::Vector2i coords, Direction::Dir facing)
 {
@@ -16,13 +17,13 @@ void Character::startBattle(BattleContext context, sf::Vector2i coords, Directio
 
     mUnitListKey = mBattleContext.ul->addUnit(this);
 
-    Graphism::Entity* entity = new Graphism::Entity(mContext.entities->get(CharTypeToEntitiesID(mType)), "idle", facing);
-    mEntityNode = new Graphism::EntityNode(entity, mCoords.y+1);
+    gr::Entity* entity = new gr::Entity(mContext.entities->get(CharTypeToEntitiesID(mType)), "idle", facing);
+    mEntityNode = new gr::EntityNode(entity, mCoords.y+1);
     mEntityNode->setPosition(get2DPos(mCoords));
     mBattleContext.scene->addNode(mEntityNode);
 
     mCircle = new sf::CircleShape;
-    Graphism::SimpleNode* circleNode = new Graphism::SimpleNode(mCircle, -0.1f, mEntityNode);
+    gr::SimpleNode* circleNode = new gr::SimpleNode(mCircle, -0.1f, mEntityNode);
     circleNode->setOrigin(0.5*TILE_DIM, 0.5*TILE_DIM);
     mBattleContext.scene->addNode(circleNode);
 
@@ -130,7 +131,7 @@ void Character::reset()
 
 void Character::removeFromScene()
 {
-    mBattleContext.scene->removeNode(mEntityNode->getKey());
+    mBattleContext.scene->removeNode(mEntityNode);
     mEntityNode = nullptr;
     mCircle = nullptr;
 }

@@ -6,7 +6,7 @@
 
 class Character;
 
-namespace States
+namespace st
 {
 
 class State;

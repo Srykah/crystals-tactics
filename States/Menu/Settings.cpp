@@ -9,7 +9,7 @@
 #include <SFML/Graphics/RenderTexture.hpp>
 #include <SFML/Graphics/View.hpp>
 
-namespace States
+namespace st
 {
 
 Settings::Settings(StateStack* stack, Context context) :

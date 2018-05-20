@@ -8,7 +8,7 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include "Graphism/Text.hpp"
 
-namespace States
+namespace st
 {
 
 class OKBox : public State
@@ -23,7 +23,7 @@ public:
     virtual bool        handleSignal(const Signal& signal);
 
 private:
-    Graphism::Text      mQuestion, mOK, mBack;
+    gr::Text      mQuestion, mOK, mBack;
     sf::Sprite          mAButton, mBButton;
     sf::RectangleShape  mBackground, mBox;
 };

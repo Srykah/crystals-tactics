@@ -9,7 +9,7 @@ namespace GUI
 {
 
 Label::Label(const sf::String& text, const Data::FontHolder& fonts)
-: mText(text, fonts.get(Fonts::Main), 16, Graphism::Text::Shadow)
+: mText(text, fonts.get(Fonts::Main), 16, gr::Text::Shadow)
 {
 }
 

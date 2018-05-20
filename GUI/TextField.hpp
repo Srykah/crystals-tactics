@@ -15,7 +15,7 @@ namespace GUI
 class TextField : public Component
 {
 public:
-    TextField(States::Context context,
+    TextField(st::Context context,
               sf::String* returnString,
               sf::String fieldName,
               sf::String defaultString = sf::String());
@@ -38,7 +38,7 @@ private:
 
     sf::String mInputString;
     sf::String* mReturnString;
-    Graphism::Text mFieldName;
+    gr::Text mFieldName;
     sf::Text mTextEntered;
 
     sf::Sprite mTextBox;

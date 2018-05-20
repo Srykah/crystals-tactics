@@ -1,14 +1,14 @@
 #ifndef BATTLEOBJECTIVESSTATE_HPP_INCLUDED
 #define BATTLEOBJECTIVESSTATE_HPP_INCLUDED
 
-#include "States/Arch/State.hpp"
+#include "States/Gameplay/BattleState.hpp"
 #include "Gameplay/Battle/BattleContext.hpp"
 #include "Graphism/Text.hpp"
 
-namespace States
+namespace st
 {
 
-class BattleObjectives : public State
+class BattleObjectives : public BattleState
 {
 public:
     BattleObjectives(StateStack* stack, Context context, BattleContext bc);
@@ -20,8 +20,7 @@ public:
     virtual bool        handleSignal(const Signal& signal);
 
 private:
-    BattleContext   mBattleContext;
-    Graphism::Text  mText;
+    gr::Text  mText;
 };
 
 }

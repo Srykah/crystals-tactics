@@ -147,17 +147,12 @@ UnitList::Key Character::getUnitListKey() const
     return mUnitListKey;
 }
 
-Graphism::Entity* Character::getEntity()
+gr::Entity* Character::getEntity()
 {
     return mEntityNode->entity.get();
 }
 
-Graphism::Node::Key Character::getSceneKey() const
-{
-    return mEntityNode->getKey();
-}
-
-Graphism::EntityNode* Character::getNode()
+gr::EntityNode* Character::getNode()
 {
     return mEntityNode;
 }

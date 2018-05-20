@@ -9,13 +9,13 @@
 #include <SFML/Graphics/RenderTexture.hpp>
 #include <SFML/Graphics/View.hpp>
 
-namespace States
+namespace st
 {
 
 Pause::Pause(StateStack* stack, Context context)
 : State(stack, context)
 , mBackgroundSprite()
-, mPausedText("Pause", context.fonts->get(Fonts::Main), 70, Graphism::Text::Shadow)
+, mPausedText("Pause", context.fonts->get(Fonts::Main), 70, gr::Text::Shadow)
 , mGUIContainer()
 {
 	sf::Vector2f windowSize(context.window->getSize());

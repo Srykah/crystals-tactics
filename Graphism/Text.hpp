@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/System/String.hpp>
 
-namespace Graphism
+namespace gr
 {
 
 class Text : public sf::Drawable, public sf::Transformable

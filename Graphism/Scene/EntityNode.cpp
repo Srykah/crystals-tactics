@@ -1,7 +1,7 @@
 #include "Graphism/Scene/EntityNode.hpp"
 #include <SFML/Graphics/RenderTarget.hpp>
 
-namespace Graphism
+namespace gr
 {
 
 EntityNode::EntityNode(Entity* entity, float z, Node* parent)

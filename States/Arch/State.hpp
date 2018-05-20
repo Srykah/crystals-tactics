@@ -34,7 +34,7 @@ d'en lancer un autre, ou de se fermer tout seul, par exemple.
 
 //*/
 
-namespace States
+namespace st
 {
 
 class StateStack;
@@ -52,8 +52,8 @@ public:
     de l'application et son contexte.
 
     //*/
-                        State(StateStack* stack, Context context);
-    virtual				~State();
+                    State(StateStack* stack, Context context);
+    virtual			~State();
 
     /*//
 
@@ -65,16 +65,16 @@ public:
 
     //*/
 
-    virtual void		draw() = 0;
-    virtual bool		update(sf::Time dt) = 0;
-    virtual bool		handleEvent(const Input::Event& event) = 0;
-    virtual bool        handleSignal(const Signal& signal) = 0;
+    virtual void	draw() = 0;
+    virtual bool	update(sf::Time dt) = 0;
+    virtual bool	handleEvent(const Input::Event& event) = 0;
+    virtual bool    handleSignal(const Signal& signal) = 0;
 
 protected:
-    void                emit(Signal::Data data); //Fonction d'émission de signal
+    void            emit(Signal::Data data); //Fonction d'émission de signal
 
-    StateStack*			mStack;
-    Context				mContext;
+    StateStack*		mStack;
+    Context			mContext;
 };
 
 }

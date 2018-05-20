@@ -1,7 +1,7 @@
 #include "Graphism/Scene/Effect.hpp"
 #include "Graphism/Scene/Node.hpp"
 
-namespace Graphism
+namespace gr
 {
 
 Effect::Effect()

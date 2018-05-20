@@ -6,7 +6,7 @@
 class Battlefield;
 class UnitList;
 class Guild;
-namespace Graphism
+namespace gr
 {
     class Scene;
     class Cursor;
@@ -37,10 +37,10 @@ struct BattleContext
                   Guild&            advGuild,
                   Battlefield&      bf,
                   UnitList&         ul,
-                  Graphism::Scene&  scene,
+                  gr::Scene&  scene,
                   Cutscene&         cutscene,
                   sf::View&         view,
-                  Graphism::Cursor& cursor)
+                  gr::Cursor& cursor)
     : step(&step)
     , advGuild(&advGuild)
     , bf(&bf)
@@ -56,10 +56,10 @@ struct BattleContext
     Guild*              advGuild;
     Battlefield*        bf;
     UnitList*           ul;
-    Graphism::Scene*    scene;
+    gr::Scene*    scene;
     Cutscene*           cutscene;
     sf::View*           view;
-    Graphism::Cursor*   cursor;
+    gr::Cursor*   cursor;
 };
 
 

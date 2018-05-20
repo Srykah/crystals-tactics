@@ -1,10 +1,9 @@
 #include "States/Arch/Application.hpp"
 #include "States/Menu/Title.hpp"
 #include "Other/Utility.hpp"
-#include <iostream>
 #include <stdexcept>
 
-namespace States
+namespace st
 {
 
 const sf::Time Application::TimePerFrame = sf::seconds(1.f/60.f);

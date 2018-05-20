@@ -9,12 +9,12 @@
 
 #include <SFML/Graphics/RenderTexture.hpp>
 
-namespace States
+namespace st
 {
 
 Title::Title(StateStack* stack, Context context)
 : State(stack, context)
-, mContinueText("Appuyez sur Start / Entrée pour continuer", context.fonts->get(Fonts::Main), 20, Graphism::Text::Shadow, sf::Color(192,192,192))
+, mContinueText("Appuyez sur Start / Entrée pour continuer", context.fonts->get(Fonts::Main), 20, gr::Text::Shadow, sf::Color(192,192,192))
 , mPhase(0)
 {
     mTextures.load(Textures::TNTeamLogo, "Media/Textures/Logos/TNTeam.png");

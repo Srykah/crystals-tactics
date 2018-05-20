@@ -18,7 +18,7 @@ public:
     typedef std::shared_ptr<SaveButton> SPtr;
     typedef std::function<void()> Callback;
 
-                    SaveButton(int number, pugi::xml_node file, States::Context context);
+                    SaveButton(int number, pugi::xml_node file, st::Context context);
                     ~SaveButton();
 
     void            setCallback(Callback callback);
@@ -39,7 +39,7 @@ private:
     virtual void	draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
     Callback		            mCallback;
-    std::vector<Graphism::Text>	mTexts;
+    std::vector<gr::Text>	mTexts;
     sf::RectangleShape          mFrame;
     Sound::SoundPlayer&         mSounds;
 };

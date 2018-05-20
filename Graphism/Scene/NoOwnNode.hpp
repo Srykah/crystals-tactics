@@ -3,7 +3,7 @@
 
 #include "Graphism/Scene/Node.hpp"
 
-namespace Graphism
+namespace gr
 {
 
 class NoOwnNode : public Node

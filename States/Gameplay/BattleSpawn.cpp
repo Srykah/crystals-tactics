@@ -6,12 +6,11 @@
 #include "States/Menu/OKBox.hpp"
 #include "Gameplay/Battle/Battlefield.hpp"
 
-namespace States
+namespace st
 {
 
 BattleSpawn::BattleSpawn(StateStack* stack, Context context, BattleContext bc)
-: State(stack, context)
-, mBattleContext(bc)
+: BattleState(stack, context, bc)
 , mChildState(new TileSelect(stack, context, bc))
 , mStep(TileSelection)
 {
@@ -80,7 +79,8 @@ bool BattleSpawn::handleSignal(const Signal& signal)
         case Step::Confirmation:
             if (boost::get<bool>(signal.data)) // start battle
             {
-                mStack->push(new BattleMain(mStack, mContext, mBattleContext));
+                mStack->close(this);
+                emit(true);
             }
             else // back to selecting a tile
             {

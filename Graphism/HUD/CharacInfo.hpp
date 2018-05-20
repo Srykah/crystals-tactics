@@ -9,13 +9,13 @@
 #include "Gameplay/Character/Character.hpp"
 #include "States/Arch/Context.hpp"
 
-namespace Graphism
+namespace gr
 {
 
 class CharacInfo : public sf::Drawable, public sf::Transformable
 {
 public:
-    CharacInfo(States::Context context, Character* charac = nullptr);
+    CharacInfo(st::Context context, Character* charac = nullptr);
     ~CharacInfo();
 
     void		draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates()) const;
@@ -35,7 +35,7 @@ private:
     void fillTexts();
 
     sf::RectangleShape  mBackground;
-    Character*     mCharacter;
+    Character*          mCharacter;
 
     Stats               mStatsCache;
     Stat                mLvlCache;
@@ -43,17 +43,17 @@ private:
     Stat                mSpdCntCache;
 
     sf::RectangleShape  mFace;
-    Graphism::Text      mNameText;
-    Graphism::Text      mJobText;
-    Graphism::Text      mLevelText;
-    Graphism::Text      mHPText;
-    Graphism::RatioBar  mHPBar;
-    Graphism::Text      mSpdCntText;
-    Graphism::Text      mAtkText;
-    Graphism::Text      mDefText;
-    Graphism::Text      mMobText;
-    Graphism::Text      mEvadeText;
-    Graphism::Text      mSpeedText;
+    gr::Text      mNameText;
+    gr::Text      mJobText;
+    gr::Text      mLevelText;
+    gr::Text      mHPText;
+    gr::RatioBar  mHPBar;
+    gr::Text      mSpdCntText;
+    gr::Text      mAtkText;
+    gr::Text      mDefText;
+    gr::Text      mMobText;
+    gr::Text      mEvadeText;
+    gr::Text      mSpeedText;
 
 };
 

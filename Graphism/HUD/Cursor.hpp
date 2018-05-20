@@ -7,7 +7,7 @@
 #include "Graphism/Scene/Scene.hpp"
 #include "Data/ResourceHolder/ResourceIdentifiers.hpp"
 
-namespace Graphism
+namespace gr
 {
 
 class Cursor

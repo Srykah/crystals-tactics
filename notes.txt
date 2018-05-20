@@ -4,7 +4,7 @@
 Pour créer l'équipe de nouvelle partie, je peux la charger depuis un fichier de sauvegarde prédéfini.
 Cela fonctionne aussi pour les unités par défaut lors du recrutement.
 
-Après maintes hésitations j'ai décidé de hardcoder les capacités et les consommables.
+Après maintes hésitations j'ai décidé de hardcoder l'effet des capacités et consommables.
 J'ai également décidé de gérer le déplacement et l'attaque à l'arme via des capacités.
 J'ai aussi décidé de ne pas créer de sous-classes, le code redondant sera placé dans des routines.
 L'attaque en elle-même est calculée lors de l'appel à la fonction use(), et l'animation est gérée par une Cutscene.
@@ -29,10 +29,6 @@ Bomber          = 5,
 Physicist       = 6,
 StreetArtist    = 7,
 Motorized       = 8,
-WindGuardian    = 9,
-WaterGuardian   = 10,
-FireGuardian    = 11,
-RustGuardian    = 12,
 //Enemies and summons
 Wolf            = 13,
 Robodog         = 14,
@@ -56,6 +52,8 @@ Programmer les attaques et consommables, ajouter les animations.
 Finir les fonctions auxiliaires pour les attaques.
 
     TRUCS À FAIRE
+
+Créer une classe BattleState qui gère le BattleContext et en faire hériter les States adéquates.
 
 Changer le mécanisme d'animations, pour pouvoir appeler une animation avec un nom quelconque
 et ne pas tout charger à la fois.

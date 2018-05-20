@@ -10,7 +10,7 @@ typedef std::function<float(sf::Time)>          ZFun;
 typedef std::function<float(sf::Time)>          RotFun;
 typedef std::function<sf::Vector2f(sf::Time)>   ScaleFun;
 
-namespace Graphism
+namespace gr
 {
 
 class Node;

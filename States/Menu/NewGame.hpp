@@ -6,7 +6,7 @@
 #include <SFML/System/String.hpp>
 #include "Graphism/Text.hpp"
 
-namespace States
+namespace st
 {
 
 class NewGame : public State
@@ -34,7 +34,7 @@ private:
     std::vector<Textures::ID> mTexIDTab;
     std::vector<bool> mPositions;
     std::vector<sf::Time> mTimes;
-    Graphism::Text mText;
+    gr::Text mText;
     sf::Time mTimeCounter;
     sf::RectangleShape mTextZone;
     const sf::Vector2f UP_POS, MID_POS;

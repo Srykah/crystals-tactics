@@ -1,6 +1,6 @@
 #include "Graphism/Text.hpp"
 
-namespace Graphism
+namespace gr
 {
 
 Text::Text(const sf::String& text, const sf::Font& font, int characterSize, int style, sf::Color color)

@@ -26,8 +26,8 @@ Battlefield::~Battlefield()
 
 }
 
-void Battlefield::loadFromFile(const sf::String& file, Graphism::Scene& scene,
-                               Data::EntityHolder* entityHolder, Graphism::Cursor& cursor)
+void Battlefield::loadFromFile(const sf::String& file, gr::Scene& scene,
+                               Data::EntityHolder* entityHolder, gr::Cursor& cursor)
 {
     ///ouverture du fichier
     pugi::xml_document doc;
@@ -89,7 +89,7 @@ void Battlefield::loadFromFile(const sf::String& file, Graphism::Scene& scene,
     }
 
     //ajout à la scène
-    Graphism::Node::Key key = scene.addNode(new Graphism::NoOwnNode(this, 0.f));
+    scene.addNode(new gr::NoOwnNode(this, 0.f));
 
     ///récupération des décorations, à ajouter à la scène en tant qu'enfant de la node du champ de bataille
 
@@ -104,7 +104,7 @@ void Battlefield::loadFromFile(const sf::String& file, Graphism::Scene& scene,
 
 void Battlefield::update(sf::Time delta)
 {
-    for (Graphism::Entity& decoration : mDecorations)
+    for (gr::Entity& decoration : mDecorations)
         decoration.update(delta);
 }
 

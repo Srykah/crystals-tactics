@@ -1,13 +1,12 @@
 #include "Graphism/Scene/Scene.hpp"
 #include <SFML/Graphics/RenderTarget.hpp>
 #include "Graphism/Scene/Node.hpp"
-#include <sstream>
+#include <stdexcept>
 
-namespace Graphism
+namespace gr
 {
 
 Scene::Scene()
-: mKey(-1)
 {
 
 }
@@ -22,7 +21,7 @@ void Scene::draw(sf::RenderTarget& target, sf::RenderStates states) const
     for (const Node::Ptr& elem : mNodes)
     {
         if (elem->isVisible())
-        target.draw(*elem, states);
+            target.draw(*elem, states);
     }
 }
 
@@ -30,52 +29,43 @@ void Scene::update(sf::Time delta)
 {
     bool sortNeeded(false);
     for (Node::Ptr& elem : mNodes)
-        sortNeeded = sortNeeded || elem->update(delta);
+        sortNeeded = elem->update(delta) || sortNeeded;
 
     if(sortNeeded)
         sort();
 }
 
-Node::Key Scene::addNode(Node* node)
+void Scene::addNode(Node* node)
 {
-    mKey++;
     node->mScene = this;
-    node->mKey = mKey;
     mNodes.emplace_back(node);
     sort();
-    return mKey;
 }
 
-Node* Scene::getNode(Node::Key key)
+void Scene::removeNode(Node* node)
 {
-    auto it = std::find_if(mNodes.begin(), mNodes.end(), [key](const Node::Ptr& elem){ return elem->getKey() == key; });
-    if (it != mNodes.end())
-        return it->get();
-    else
-    {
-        std::stringstream ss;
-        ss << "Graphism::Scene::getNode : Key " << key << " not in Scene";
-        throw std::out_of_range(ss.str());
-    }
-}
+    auto is_node = [node](const Node::Ptr& ptr){ return ptr.get() == node; };
+    auto is_child = [node](const Node::Ptr& elem){ if (!elem) throw std::runtime_error("this node is empty");
+        else return elem->getParent() == node; };
 
-void Scene::removeNode(Node::Key key)
-{
-    auto it = std::find_if(mNodes.begin(), mNodes.end(), [key](const Node::Ptr& elem){ return elem->getKey() == key; });
-    if (it != mNodes.end())
+    auto it = std::find_if(mNodes.begin(), mNodes.end(), is_child);
+    while (it != mNodes.end())
     {
-        mNodes.erase(it);
-        std::for_each(mNodes.begin(), mNodes.end(),
-            [this, it](const Node::Ptr& elem){ if (elem->getParent() == it->get()) removeNode(elem->getKey()); });
+        removeNode(it->get());
+        it = std::find_if(mNodes.begin(), mNodes.end(), is_child);
     }
+
+    auto it2 = std::remove_if(mNodes.begin(), mNodes.end(), is_node);
+    if (it2 != mNodes.end())
+        mNodes.erase(it2);
 }
 
 void Scene::sort()
 {
-    if (!std::is_sorted(mNodes.begin(), mNodes.end(),
-              [](const Node::Ptr& left, const Node::Ptr& right){ return left->getZ() < right->getZ(); }))
-    std::sort(mNodes.begin(), mNodes.end(),
-              [](const Node::Ptr& left, const Node::Ptr& right){ return left->getZ() < right->getZ(); });
+    auto less_z = [](const Node::Ptr& left, const Node::Ptr& right){ return left->getZ() < right->getZ(); };
+
+    if (!std::is_sorted(mNodes.begin(), mNodes.end(), less_z))
+        std::sort(mNodes.begin(), mNodes.end(), less_z);
 }
 
 }

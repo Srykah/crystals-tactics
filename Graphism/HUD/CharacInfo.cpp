@@ -4,24 +4,24 @@
 #include "Gameplay/General/Routines.hpp"
 #include <sstream>
 
-namespace Graphism
+namespace gr
 {
 
-CharacInfo::CharacInfo(States::Context context, Character* charac)
+CharacInfo::CharacInfo(st::Context context, Character* charac)
 : mBackground(sf::Vector2f(350, 150))
 , mCharacter(charac)
 , mFace(sf::Vector2f(100,100))
-, mNameText("", context.fonts->get(Fonts::Main), 10, Graphism::Text::Shadow, sf::Color(255,192,0))
-, mJobText("", context.fonts->get(Fonts::Main), 10, Graphism::Text::Shadow, sf::Color(255,192,0))
-, mLevelText("", context.fonts->get(Fonts::Main), 10, Graphism::Text::Shadow, sf::Color(255,192,0))
-, mHPText("", context.fonts->get(Fonts::Main), 10, Graphism::Text::Shadow, sf::Color(255,192,0))
+, mNameText("", context.fonts->get(Fonts::Main), 10, gr::Text::Shadow, sf::Color(255,192,0))
+, mJobText("", context.fonts->get(Fonts::Main), 10, gr::Text::Shadow, sf::Color(255,192,0))
+, mLevelText("", context.fonts->get(Fonts::Main), 10, gr::Text::Shadow, sf::Color(255,192,0))
+, mHPText("", context.fonts->get(Fonts::Main), 10, gr::Text::Shadow, sf::Color(255,192,0))
 , mHPBar(1, sf::Vector2f(270, 20), sf::Color::Green, false)
-, mSpdCntText("", context.fonts->get(Fonts::Main), 10, Graphism::Text::Shadow, sf::Color(255,192,0))
-, mAtkText("", context.fonts->get(Fonts::Main), 10, Graphism::Text::Shadow, sf::Color(255,192,0))
-, mDefText("", context.fonts->get(Fonts::Main), 10, Graphism::Text::Shadow, sf::Color(255,192,0))
-, mMobText("", context.fonts->get(Fonts::Main), 10, Graphism::Text::Shadow, sf::Color(255,192,0))
-, mEvadeText("", context.fonts->get(Fonts::Main), 10, Graphism::Text::Shadow, sf::Color(255,192,0))
-, mSpeedText("", context.fonts->get(Fonts::Main), 10, Graphism::Text::Shadow, sf::Color(255,192,0))
+, mSpdCntText("", context.fonts->get(Fonts::Main), 10, gr::Text::Shadow, sf::Color(255,192,0))
+, mAtkText("", context.fonts->get(Fonts::Main), 10, gr::Text::Shadow, sf::Color(255,192,0))
+, mDefText("", context.fonts->get(Fonts::Main), 10, gr::Text::Shadow, sf::Color(255,192,0))
+, mMobText("", context.fonts->get(Fonts::Main), 10, gr::Text::Shadow, sf::Color(255,192,0))
+, mEvadeText("", context.fonts->get(Fonts::Main), 10, gr::Text::Shadow, sf::Color(255,192,0))
+, mSpeedText("", context.fonts->get(Fonts::Main), 10, gr::Text::Shadow, sf::Color(255,192,0))
 {
     placeThings();
     fillTexts();

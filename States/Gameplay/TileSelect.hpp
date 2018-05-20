@@ -1,13 +1,13 @@
 #ifndef TILESELECT_HPP_INCLUDED
 #define TILESELECT_HPP_INCLUDED
 
-#include "States/Arch/State.hpp"
+#include "States/Gameplay/BattleState.hpp"
 #include "Gameplay/Battle/BattleContext.hpp"
 
-namespace States
+namespace st
 {
 
-class TileSelect : public State
+class TileSelect : public BattleState
 {
 public:
     TileSelect(StateStack* stack, Context context, BattleContext bc, bool freeViewing = false);

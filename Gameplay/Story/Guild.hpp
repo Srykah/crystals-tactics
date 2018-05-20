@@ -17,8 +17,8 @@ public:
     };
 
 public:
-    bool            loadFromNode(const pugi::xml_node& node, States::Context context);
-    bool            loadFromFile(const sf::String& filename, States::Context context);
+    bool            loadFromNode(const pugi::xml_node& node, st::Context context);
+    bool            loadFromFile(const sf::String& filename, st::Context context);
 
     void            addMember(Character* member);
     Character*      getMember(int i);

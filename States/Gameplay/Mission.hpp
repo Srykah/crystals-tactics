@@ -4,7 +4,7 @@
 #include "States/Arch/State.hpp"
 #include "XML/pugixml.hpp"
 
-namespace States
+namespace st
 {
 
 class Mission : public State
@@ -19,10 +19,12 @@ public:
     virtual bool        handleSignal(const Signal& signal);
 
 private:
-    void beginMission();
+    void                forward();
 
 private:
     pugi::xml_document      mDoc;
+    pugi::xml_node          mNode;
+
 };
 
 }

@@ -9,7 +9,7 @@
 #include <memory>
 #include "Graphism/Scene/Effect.hpp"
 
-namespace Graphism
+namespace gr
 {
 
 class Scene;
@@ -17,7 +17,6 @@ class Scene;
 class Node : public sf::Drawable, public sf::Transformable
 {
 public:
-    typedef int32_t Key;
     typedef std::unique_ptr< Node > Ptr;
 
 public:
@@ -26,7 +25,6 @@ public:
 
     virtual bool    update(sf::Time delta);
 
-    Key             getKey() const;
     Node*           getParent() const;
 
     void            setZ(float z);
@@ -45,7 +43,6 @@ public:
     bool            isVisible() const;
 
 private:
-    Key     mKey;
     float   mZ;
     Node*   mParent;
     Scene*  mScene;

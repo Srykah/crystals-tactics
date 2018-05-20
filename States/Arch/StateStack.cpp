@@ -2,7 +2,7 @@
 
 #include <cassert>
 
-namespace States
+namespace st
 {
 
 void StateStack::update(sf::Time dt)
@@ -61,14 +61,6 @@ void StateStack::push(State* state, bool front)
         mPendingList.emplace_back(Push, state);
 }
 
-void StateStack::pop(bool front)
-{
-    if (front)
-        mPendingList.emplace_front(Pop);
-    else
-        mPendingList.emplace_back(Pop);
-}
-
 void StateStack::close(State* ptr, bool front)
 {
     if (front)
@@ -99,9 +91,6 @@ void StateStack::applyPendingChanges()
 
 	    if (change.action == Push)
             mStack.emplace_back(change.ptr);
-
-        else if (change.action == Pop)
-            mStack.pop_back();
 
         else if (change.action == Close)
         {

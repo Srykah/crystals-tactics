@@ -6,7 +6,7 @@
 #include "GUI/Container.hpp"
 #include "Graphism/Text.hpp"
 
-namespace States
+namespace st
 {
 
 class SaveMenu : public State
@@ -22,7 +22,7 @@ public:
 
 private:
     GUI::Container mContainer;
-    Graphism::Text mMessage;
+    gr::Text mMessage;
     int mSelection;
     bool mLoadingMode;
     bool mConfirmed;

@@ -7,7 +7,7 @@
 #include "Gameplay/Abilities/Generic/Movement.hpp"
 #include "Gameplay/Abilities/Generic/WeaponAttack.hpp"
 
-Character::Character(const pugi::xml_node& savefile, States::Context context)
+Character::Character(const pugi::xml_node& savefile, st::Context context)
 : mType(CharType::Unknown)
 , mRole(CharRole::None)
 , mAIType(AI::None)
@@ -74,7 +74,7 @@ void Character::switchMechForm()
         if (mEntityNode != nullptr)
         {
             if (mType == CharType::Protector)
-                mEntityNode->entity.reset(new Graphism::Entity(mContext.entities->get(Entities::MechProtector),
+                mEntityNode->entity.reset(new gr::Entity(mContext.entities->get(Entities::MechProtector),
                                                                getEntity()->getAnimationName(),
                                                                getEntity()->getFacing()));
         }
@@ -85,7 +85,7 @@ void Character::switchMechForm()
         if (mEntityNode != nullptr)
         {
             if (mType == CharType::Protector)
-                mEntityNode->entity.reset(new Graphism::Entity(mContext.entities->get(Entities::Protector),
+                mEntityNode->entity.reset(new gr::Entity(mContext.entities->get(Entities::Protector),
                                                                getEntity()->getAnimationName(),
                                                                getEntity()->getFacing()));
             /*

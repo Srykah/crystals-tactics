@@ -1,6 +1,6 @@
 #include "Graphism/HUD/RatioBar.hpp"
 
-Graphism::RatioBar::RatioBar(float ratio, sf::Vector2f size, sf::Color color, bool increase)
+gr::RatioBar::RatioBar(float ratio, sf::Vector2f size, sf::Color color, bool increase)
 : mOutsideBar(size)
 {
     setColor(color);
@@ -8,25 +8,25 @@ Graphism::RatioBar::RatioBar(float ratio, sf::Vector2f size, sf::Color color, bo
     setRatio(ratio);
 }
 
-Graphism::RatioBar::~RatioBar()
+gr::RatioBar::~RatioBar()
 {
 
 }
 
-void Graphism::RatioBar::draw(sf::RenderTarget& target, sf::RenderStates states) const
+void gr::RatioBar::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     states.transform *= getTransform();
     target.draw(mOutsideBar, states);
     target.draw(mInsideBar, states);
 }
 
-void Graphism::RatioBar::setColor(sf::Color color)
+void gr::RatioBar::setColor(sf::Color color)
 {
     mOutsideBar.setFillColor(color*sf::Color(128,128,128));
     mInsideBar.setFillColor(color);
 }
 
-void Graphism::RatioBar::setIncrease(bool flag)
+void gr::RatioBar::setIncrease(bool flag)
 {
     mIncrease = flag;
 
@@ -45,7 +45,7 @@ void Graphism::RatioBar::setIncrease(bool flag)
     }
 }
 
-void Graphism::RatioBar::setRatio(float ratio)
+void gr::RatioBar::setRatio(float ratio)
 {
     if (ratio <= 1.f)
     {
@@ -58,14 +58,14 @@ void Graphism::RatioBar::setRatio(float ratio)
         setRatio(1.f);
 }
 
-void Graphism::RatioBar::setRatio(float num, float den)
+void gr::RatioBar::setRatio(float num, float den)
 {
     if (den <= 1e-4)
         setRatio(1.f);
     setRatio(num/den);
 }
 
-float Graphism::RatioBar::getRatio() const
+float gr::RatioBar::getRatio() const
 {
     return mRatio;
 }

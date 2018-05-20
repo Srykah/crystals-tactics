@@ -10,7 +10,7 @@
 namespace GUI
 {
 
-Button::Button(States::Context context, Type type)
+Button::Button(st::Context context, Type type)
 : mType(type)
 , mCallback()
 , mSprite(context.textures->get(Textures::Buttons))

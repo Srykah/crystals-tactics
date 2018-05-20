@@ -1,7 +1,7 @@
 #include "Graphism/Scene/SimpleNode.hpp"
 #include <SFML/Graphics/RenderTarget.hpp>
 
-namespace Graphism
+namespace gr
 {
 
 SimpleNode::SimpleNode(sf::Drawable* drawable, float z, Node* parent)

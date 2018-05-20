@@ -1,10 +1,9 @@
 #include "Graphism/Entity/Entity.hpp"
 #include "XML/pugixml.hpp"
-#include <iostream>
 #include <cassert>
 #include <SFML/Graphics/RenderTarget.hpp>
 
-namespace Graphism
+namespace gr
 {
 
 Entity::Entity(const Data::EntityData& data, sf::String anim, Direction::Dir facing)

@@ -14,7 +14,7 @@ namespace sf
 	class Sprite;
 }
 
-namespace Graphism
+namespace gr
 {
     class Animation;
     class Text;

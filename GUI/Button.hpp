@@ -45,7 +45,7 @@ class Button : public Component
 
 
 	public:
-                                    Button(States::Context context, Type type);
+                                    Button(st::Context context, Type type);
 
         void					    setCallback(Callback callback);
         void					    setText(const sf::String& text);
@@ -77,7 +77,7 @@ class Button : public Component
         Type                        mType;
         Callback			    	mCallback;
         sf::Sprite			    	mSprite;
-        Graphism::Text			    mText;
+        gr::Text			    mText;
         bool				    	mManualDeactivation;
         bool                        mStayPressed;
 };

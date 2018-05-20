@@ -4,13 +4,14 @@
 #include "Data/ResourceHolder/ResourceIdentifiers.hpp"
 #include "Input/Listener.hpp"
 #include "Graphism/Entity/Entity.hpp"
+#include "Gameplay/General/Routines.hpp"
 #include <SFML/Graphics.hpp>
 #include <SFML/System/String.hpp>
 #include <vector>
 #include <map>
 
 class UnitList;
-namespace Graphism
+namespace gr
 {
     class Scene;
     class Cursor;
@@ -18,8 +19,6 @@ namespace Graphism
 
 template<typename T>
 using Grid = std::vector< std::vector< T > >;
-
-const int TILE_DIM(48);
 
 class Battlefield : public sf::Drawable
 {
@@ -37,8 +36,8 @@ public:
                     Battlefield();
                     ~Battlefield();
 
-    void            loadFromFile(const sf::String& file, Graphism::Scene& scene,
-                                 Data::EntityHolder* entityHolder, Graphism::Cursor& cursor);
+    void            loadFromFile(const sf::String& file, gr::Scene& scene,
+                                 Data::EntityHolder* entityHolder, gr::Cursor& cursor);
 
     virtual void    update(sf::Time delta);
     virtual void    draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates()) const;
@@ -79,7 +78,7 @@ private:
 
     sf::Texture                     mTileSheet;
     sf::VertexArray                 mTerrain;
-    std::vector< Graphism::Entity > mDecorations;
+    std::vector< gr::Entity > mDecorations;
 };
 
 #endif // BATTLEFIELD_HPP_INCLUDED

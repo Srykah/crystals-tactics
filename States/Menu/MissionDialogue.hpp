@@ -6,7 +6,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/System/String.hpp>
 
-namespace States
+namespace st
 {
 
 class MissionDialogue : public State

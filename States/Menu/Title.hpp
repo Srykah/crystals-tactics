@@ -7,7 +7,7 @@
 
 #include <SFML/Graphics/Sprite.hpp>
 
-namespace States
+namespace st
 {
 
 class Title : public State
@@ -26,7 +26,7 @@ private:
     sf::Sprite          mTNTeamSprite;
     sf::Sprite			mBackgroundSprite;
     sf::Sprite          mCTSprite;
-    Graphism::Text	    mContinueText;
+    gr::Text	    mContinueText;
     sf::Time			mEffectTime;
     int                 mPhase;
 };

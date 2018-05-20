@@ -1,12 +1,12 @@
 #include "States/Menu/MissionDialogue.hpp"
 #include "States/Arch/StateStack.hpp"
-#include "States/Gameplay/Battle.hpp"
+#include "States/Gameplay/BattleMain.hpp"
 #include "Other/Utility.hpp"
 #include <stdexcept>
 #include <cstring>
 #include <sstream>
 
-namespace States
+namespace st
 {
 
 MissionDialogue::ScreenPosition MissionDialogue::StrToScreenPosition(const sf::String& str)

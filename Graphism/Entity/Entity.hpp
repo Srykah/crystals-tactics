@@ -10,7 +10,7 @@
 #include "Gameplay/General/Direction.hpp"
 #include "XML/pugixml.hpp"
 
-namespace Graphism
+namespace gr
 {
 
 class Entity : public sf::Drawable

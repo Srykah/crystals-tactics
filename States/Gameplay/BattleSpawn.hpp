@@ -1,13 +1,13 @@
 #ifndef BATTLESPAWN_HPP_INCLUDED
 #define BATTLESPAWN_HPP_INCLUDED
 
-#include "States/Arch/State.hpp"
+#include "States/Gameplay/BattleState.hpp"
 #include "Gameplay/Battle/BattleContext.hpp"
 
-namespace States
+namespace st
 {
 
-class BattleSpawn : public State
+class BattleSpawn : public BattleState
 {
 public:
     BattleSpawn(StateStack* stack, Context context, BattleContext bc);
@@ -26,7 +26,6 @@ private:
         Confirmation
     };
 
-    BattleContext   mBattleContext;
     State*          mChildState;
     Step            mStep;
 };

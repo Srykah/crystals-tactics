@@ -6,7 +6,6 @@
 #include "Gameplay/Items/Weapon.hpp"
 #include "Gameplay/Cutscene/Cutscene.hpp"
 #include "Other/Utility.hpp"
-#include <iostream>
 
 namespace Animate
 {

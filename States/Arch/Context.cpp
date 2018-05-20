@@ -1,6 +1,6 @@
 #include "States/Arch/Context.hpp"
 
-States::Context::Context(sf::RenderWindow& window,
+st::Context::Context(sf::RenderWindow& window,
                          Data::TextureHolder& textures,
                          Data::FontHolder& fonts,
                          Sound::MusicPlayer& music,

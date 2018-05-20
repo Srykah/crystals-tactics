@@ -6,7 +6,7 @@
 #include <vector> // items need to be sorted according to drawing priority
 #include "Graphism/Scene/Node.hpp"
 
-namespace Graphism
+namespace gr
 {
 
 class Scene : public sf::Drawable
@@ -18,15 +18,13 @@ public:
     void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates()) const;
     void update(sf::Time delta);
 
-    Node::Key addNode(Node* node);
-    Node* getNode(Node::Key key); // returns pointer to the node with the key passed in argument
-    void removeNode(Node::Key key); //removes children nodes recursively
+    void addNode(Node* node);
+    void removeNode(Node* node); //removes children nodes recursively
 
     void sort();
 
 private:
     std::vector<Node::Ptr> mNodes;
-    Node::Key mKey;
 };
 
 }

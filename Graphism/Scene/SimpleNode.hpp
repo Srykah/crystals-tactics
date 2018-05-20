@@ -4,7 +4,7 @@
 #include "Graphism/Scene/Node.hpp"
 #include <memory>
 
-namespace Graphism
+namespace gr
 {
 
 class SimpleNode : public Node

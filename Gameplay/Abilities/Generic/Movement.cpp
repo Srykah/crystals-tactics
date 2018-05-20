@@ -122,7 +122,7 @@ void Movement::use(Character* user, sf::Vector2i to) const
         bc.cutscene->addEvent(CutsceneEvent([user, dir, dirVec]()
         {
             user->getEntity()->setFacing(dir);
-            user->getNode()->setEffect(Graphism::Effect(sf::milliseconds(250.f), float(TILE_DIM)*sf::Vector2f(dirVec), dirVec.y));
+            user->getNode()->setEffect(gr::Effect(sf::milliseconds(250.f), float(TILE_DIM)*sf::Vector2f(dirVec), dirVec.y));
         },
         [user](sf::Time delta){ return user->getNode()->isEffectFinished(); },
         [user, dirVec]()

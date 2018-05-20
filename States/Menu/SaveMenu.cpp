@@ -4,7 +4,7 @@
 #include "Other/Utility.hpp"
 #include <stdexcept>
 
-namespace States
+namespace st
 {
 
 SaveMenu::SaveMenu(StateStack* stack, Context context, bool loading)

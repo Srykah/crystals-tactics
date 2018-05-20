@@ -9,7 +9,7 @@
 
 #include "Data/Graphism/AnimationData.hpp"
 
-namespace Graphism
+namespace gr
 {
 
 class Animation : public sf::Drawable

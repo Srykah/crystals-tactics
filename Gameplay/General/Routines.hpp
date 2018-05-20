@@ -1,12 +1,10 @@
 #ifndef GAMEPLAYUTILITY_HPP_INCLUDED
 #define GAMEPLAYUTILITY_HPP_INCLUDED
 
-#include "Gameplay/Character/Character.hpp"
-#include "Gameplay/General/Element.hpp"
-#include "Gameplay/General/StatusAilment.hpp"
-#include "Gameplay/General/Direction.hpp"
-#include "Data/ResourceHolder/ResourceIdentifiers.hpp"
-#include <SFML/System/String.hpp>
+#include <SFML/System/Vector2.hpp>
+#include <SFML/System/Vector3.hpp>
+
+const int TILE_DIM(48);
 
 sf::Vector2f        get2DPos(sf::Vector2i tile);
 sf::Vector3f        get3DPos(sf::Vector2i tile);

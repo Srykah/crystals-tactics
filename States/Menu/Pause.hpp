@@ -7,7 +7,7 @@
 
 #include <SFML/Graphics/Sprite.hpp>
 
-namespace States
+namespace st
 {
 
 class Pause : public State
@@ -23,7 +23,7 @@ public:
 
 private:
     sf::Sprite			mBackgroundSprite;
-    Graphism::Text		mPausedText;
+    gr::Text		mPausedText;
     GUI::Container 		mGUIContainer;
 };
 

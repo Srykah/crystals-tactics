@@ -4,7 +4,7 @@
 #include "States/Arch/State.hpp"
 #include "GUI/Container.hpp"
 
-namespace States
+namespace st
 {
 
 class Settings : public State

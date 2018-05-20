@@ -9,7 +9,7 @@ bool isAValidString(const sf::String& str)
                                                            àÀâÂäÄéÉèÈêÊëËîÎïÏôÔöÖûÛüÜ").toWideString()) == std::wstring::npos;
 }
 
-GUI::TextField::TextField(States::Context context,
+GUI::TextField::TextField(st::Context context,
                           sf::String* returnString,
                           sf::String fieldName,
                           sf::String defaultString)

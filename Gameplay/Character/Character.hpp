@@ -32,7 +32,7 @@ public:
     typedef std::unique_ptr<Character> Ptr;
 
 public: // page 1 : creation
-    Character(const pugi::xml_node& savefile, States::Context context);
+    Character(const pugi::xml_node& savefile, st::Context context);
     ~Character();
     void setType(CharType type);
     void setRole(CharRole role);
@@ -91,9 +91,8 @@ public: //page 3 : getters
     bool                isBot()             const;
     CharBuild           getBuild()          const;
     AbilityArray&       getAbilities();
-    Graphism::Entity*   getEntity();
-    Graphism::Node::Key getSceneKey()       const;
-    Graphism::EntityNode* getNode();
+    gr::Entity*   getEntity();
+    gr::EntityNode* getNode();
 
 private:
     static const short HAS_MOVED = 0;
@@ -107,9 +106,9 @@ private:
     AI::Type        mAIType;
     bool            mIsAlly;
 
-    Graphism::EntityNode*   mEntityNode;
+    gr::EntityNode*   mEntityNode;
     sf::CircleShape*        mCircle;
-    States::Context         mContext;
+    st::Context         mContext;
     BattleContext           mBattleContext;
 
     Stat            mLevel;
