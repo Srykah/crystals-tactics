@@ -13,7 +13,7 @@ namespace Animate
 void attack(Character* charac, sf::Vector2i to)
 {
     // get orientation
-    Direction::Dir dir(Ab::dirTowards(charac->getCoords(), to));
+    Direction::Dir dir(ab::dirTowards(charac->getCoords(), to));
 
     Weapon* wpn(charac->getBuild().weapon);
     sf::String animName("bareFistAttack");

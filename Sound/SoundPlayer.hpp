@@ -31,7 +31,7 @@ class SoundPlayer : private sf::NonCopyable
 
 
 	private:
-		Data::SoundBufferHolder	    mSoundBuffers;
+		dt::SoundBufferHolder	    mSoundBuffers;
 		std::list<sf::Sound>		mSounds;
 		float						mVolume;
 };

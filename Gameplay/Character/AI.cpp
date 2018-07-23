@@ -1,6 +1,22 @@
 #include "Gameplay/Character/AI.hpp"
 #include "Gameplay/Character/Character.hpp"
 
+namespace
+{
+
+const ConversionMap<AI::Type, std::string> conversionMap = [](){
+    ConversionMap<AI::Type, std::string> conversionMap;
+    conversionMap.addPair(AI::Aggressive, "aggressive");
+    conversionMap.addPair(AI::Defensive,  "defensive");
+    conversionMap.addPair(AI::Balanced,   "balanced");
+    conversionMap.addPair(AI::None,       "none");
+    return conversionMap;
+};
+
+}
+
+const ConversionMap<AI::Type, std::string>& getAIToStringMap() { return conversionMap; }
+
 namespace AI
 {
 
@@ -41,15 +57,4 @@ void playTurnBalanced(Character* unit)
 
 }
 
-}
-
-AI::Type StrToAI(const sf::String& str)
-{
-    if (str == "balanced")
-        return AI::Balanced;
-    else if (str == "aggressive")
-        return AI::Aggressive;
-    else if (str == "defensive")
-        return AI::Defensive;
-    else return AI::None;
 }

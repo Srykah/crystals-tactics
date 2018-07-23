@@ -29,4 +29,16 @@ void State::emit(Signal::Data data)
     mStack->addSignal(this, data);
 }
 
+void State::closeSuccess()
+{
+    emit(true);
+    mStack->close(this);
+}
+
+void State::closeFailure()
+{
+    emit(false);
+    mStack->close(this);
+}
+
 }

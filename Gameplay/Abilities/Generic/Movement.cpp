@@ -10,7 +10,7 @@ namespace
 using Path = std::deque<Direction::Dir>;
 using MovementTiles = std::map< int, std::map< int, int > >;
 
-void getMovementTiles(MovementTiles& tilesList, int x, int y, short mobility, BattleContext bc, bool ally)
+void getMovementTiles(MovementTiles& tilesList, int x, int y, short mobility, bt::BattleContext bc, bool ally)
 {
     sf::Vector2i from(x,y);
     Character* unit(bc.ul->getUnitByTile(from));
@@ -62,7 +62,7 @@ void createPath(Path& path, const MovementTiles& tilesList, int x, int y, short 
 
 }
 
-namespace Ab {
+namespace ab {
 
 Movement::Movement()
 : Ability("Déplacement", "Permet de se déplacer sur la carte, d'autant de cases que la mobilité (ou moins).", 1)
@@ -77,7 +77,7 @@ Movement::~Movement()
 
 std::vector<sf::Vector2i> Movement::getRange(Character* user) const
 {
-    BattleContext bc(user->getBattleContext());
+    bt::BattleContext bc(user->getBattleContext());
 
     MovementTiles tilesList;
     sf::Vector2i c(user->getCoords());
@@ -104,7 +104,7 @@ std::vector<sf::Vector2i> Movement::getArea(Character* user, sf::Vector2i to) co
 
 void Movement::use(Character* user, sf::Vector2i to) const
 {
-    BattleContext bc(user->getBattleContext());
+    bt::BattleContext bc(user->getBattleContext());
 
     sf::Vector2i c(user->getCoords());
     MovementTiles tiles;

@@ -13,7 +13,7 @@ namespace gr
 class Cursor
 {
 public:
-    Cursor(Scene& scene, const Data::EntityHolder& entities, sf::Vector2i coords = sf::Vector2i());
+    Cursor(Scene& scene, const dt::EntityHolder& entities, sf::Vector2i coords = sf::Vector2i());
     ~Cursor();
 
     bool            setCoords(sf::Vector2i coords);

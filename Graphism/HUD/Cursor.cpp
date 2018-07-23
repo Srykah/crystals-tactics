@@ -5,7 +5,7 @@
 namespace gr
 {
 
-Cursor::Cursor(Scene& scene, const Data::EntityHolder& entities, sf::Vector2i coords)
+Cursor::Cursor(Scene& scene, const dt::EntityHolder& entities, sf::Vector2i coords)
 : mNode(nullptr)
 , mCoords(coords)
 {

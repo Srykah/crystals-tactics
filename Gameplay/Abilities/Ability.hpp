@@ -13,7 +13,7 @@
 class Character;
 class Battlefield;
 
-namespace Ab {
+namespace ab {
 
 class Ability
 {

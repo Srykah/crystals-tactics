@@ -4,7 +4,7 @@
 #include "Gameplay/Items/Weapon.hpp"
 #include "Gameplay/Battle/Battlefield.hpp"
 
-namespace Ab {
+namespace ab {
 
 Ability::Ability(const sf::String& name, const sf::String& desc, short cooldown)
 : mName(name)

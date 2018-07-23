@@ -5,7 +5,7 @@
 
 class Character;
 
-class Bandage : public Ab::Ability
+class Bandage : public ab::Ability
 {
 public:
             Bandage();

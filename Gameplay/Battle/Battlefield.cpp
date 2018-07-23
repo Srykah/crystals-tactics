@@ -14,6 +14,9 @@ namespace
     const sf::Vector2f right(TILE_DIM,0), down(0,TILE_DIM);
 }
 
+namespace bt
+{
+
 Battlefield::Battlefield()
 : mNoTileID(0)
 , mTerrain(sf::Quads, 0)
@@ -27,7 +30,7 @@ Battlefield::~Battlefield()
 }
 
 void Battlefield::loadFromFile(const sf::String& file, gr::Scene& scene,
-                               Data::EntityHolder* entityHolder, gr::Cursor& cursor)
+                               dt::EntityHolder* entityHolder, gr::Cursor& cursor)
 {
     ///ouverture du fichier
     pugi::xml_document doc;
@@ -257,4 +260,6 @@ void Battlefield::clearPaint()
 {
     clearHighlight();
     clearSelection();
+}
+
 }

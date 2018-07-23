@@ -4,7 +4,7 @@
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 #include "GUI/Container.hpp"
-#include "Graphism/Text.hpp"
+#include "Graphism/General/Text.hpp"
 #include "Graphism/HUD/RatioBar.hpp"
 #include "Gameplay/Character/Character.hpp"
 #include "States/Arch/Context.hpp"
@@ -15,7 +15,7 @@ namespace gr
 class CharacInfo : public sf::Drawable, public sf::Transformable
 {
 public:
-    CharacInfo(st::Context context, Character* charac = nullptr);
+    CharacInfo(sa::Context context, Character* charac = nullptr);
     ~CharacInfo();
 
     void		draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates()) const;

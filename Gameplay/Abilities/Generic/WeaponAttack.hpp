@@ -4,10 +4,10 @@
 #include "Gameplay/Abilities/Ability.hpp"
 #include "Graphism/Scene/Effect.hpp"
 #include "Graphism/Entity/Entity.hpp"
-#include "Graphism/Text.hpp"
+#include "Graphism/General/Text.hpp"
 #include "States/Arch/Context.hpp"
 
-namespace Ab
+namespace ab
 {
 
 class WeaponAttack : public Ability

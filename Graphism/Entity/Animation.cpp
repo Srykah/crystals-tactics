@@ -7,7 +7,7 @@
 namespace gr
 {
 
-Animation::Animation(const Data::AnimationData& data)
+Animation::Animation(const dt::AnimationData& data)
 : mAnimData(data)
 , mSprite(data.texture)
 , mCurrentFrame(0)

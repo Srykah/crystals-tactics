@@ -6,7 +6,7 @@
 namespace gr
 {
 
-Entity::Entity(const Data::EntityData& data, sf::String anim, Direction::Dir facing)
+Entity::Entity(const en::EntityData& data, sf::String anim, Direction::Dir facing)
 : mData(data)
 , mCurAnim(anim)
 , mFacing(facing)

@@ -1,47 +1,48 @@
 #include "Gameplay/General/StatusAilment.hpp"
 
-sf::String SAToStr(StatusAilment ailment)
+void StatusAilments::addAilment(StatusAilment ailment, int duration)
 {
-    switch(ailment)
-    {
-    case StatusAilment::Burnt:
-        return "Burnt";
-    case StatusAilment::Poisoned:
-        return "Poisoned";
-    case StatusAilment::Bleeding:
-        return "Bleeding";
-    case StatusAilment::Rooted:
-        return "Rooted";
-    case StatusAilment::Disabled:
-        return "Disabled";
-    case StatusAilment::Asleep:
-        return "Asleep";
-    case StatusAilment::Invisible:
-        return "Invisible";
-        /*
-    case StatusAilment::AtkPlus:
-        return "AtkPlus";
-    case StatusAilment::DefPlus:
-        return "DefPlus";
-    case StatusAilment::RangePlus:
-        return "RangePlus";
-    case StatusAilment::MobilityPlus:
-        return "MobilityPlus";
-        */
+    mAilments[ailment] = getAilmentDuration(ailment) + duration;
+}
 
-    default:
-        return "None";
+bool StatusAilments::hasAilment(StatusAilment ailment) const
+{
+    return mAilments.count(ailment) && mAilments.at(ailment) > 0;
+}
+
+int StatusAilments::getAilmentDuration(StatusAilment ailment) const
+{
+    if (!hasAilment(ailment)) return 0;
+    else return mAilments.at(ailment);
+}
+
+void StatusAilments::newTurn()
+{
+    for (int& duration : mAilments)
+    {
+        if (duration > 0)
+            duration--;
     }
 }
 
-SA StrToSA(const sf::String& text)
+void StatusAilments::removeAilment(StatusAilment ailment)
 {
-    if (text == "Burnt") return StatusAilment::Burnt;
-    else if (text == "Poisoned") return StatusAilment::Poisoned;
-    else if (text == "Bleeding") return StatusAilment::Bleeding;
-    else if (text == "Rooted") return StatusAilment::Rooted;
-    else if (text == "Disabled") return StatusAilment::Disabled;
-    else if (text == "Asleep") return StatusAilment::Asleep;
-    else if (text == "Invisible") return StatusAilment::Invisible;
-    else return StatusAilment::None;
+    mAilments[ailments] = 0;
+}
+
+void StatusAilments::removeBadAilments()
+{
+    for (StatusAilment ailment : badAilments)
+        removeAilment(ailment);
+}
+
+void StatusAilments::removeGoodAilments()
+{
+    for (StatusAilment ailment : goodAilments)
+        removeAilment(ailment);
+}
+
+void StatusAilments::clear()
+{
+    mAilments.clear();
 }

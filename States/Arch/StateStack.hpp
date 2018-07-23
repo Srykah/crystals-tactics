@@ -11,7 +11,7 @@
 #include <vector>
 #include <deque>
 
-namespace st
+namespace sa
 {
 
 class StateStack : private sf::NonCopyable

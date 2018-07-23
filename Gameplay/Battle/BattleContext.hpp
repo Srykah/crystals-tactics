@@ -1,8 +1,7 @@
 #ifndef BATTLECONTEXT_HPP_INCLUDED
 #define BATTLECONTEXT_HPP_INCLUDED
 
-#include <SFML/Graphics/View.hpp>
-
+namespace sf { class View; }
 class Battlefield;
 class UnitList;
 class Guild;
@@ -13,54 +12,37 @@ namespace gr
 }
 class Cutscene;
 
-enum class BattleStep
+namespace bt
 {
-    Objectives,
-    Spawn,
-    Combat,
-    End
-};
 
 struct BattleContext
 {
-    BattleContext()
-    : step(nullptr)
-    , advGuild(nullptr)
-    , bf(nullptr)
-    , ul(nullptr)
-    , scene(nullptr)
-    , cutscene(nullptr)
-    , view(nullptr)
-    , cursor(nullptr) {}
-
-    BattleContext(BattleStep&       step,
-                  Guild&            advGuild,
-                  Battlefield&      bf,
-                  UnitList&         ul,
-                  gr::Scene&  scene,
-                  Cutscene&         cutscene,
-                  sf::View&         view,
-                  gr::Cursor& cursor)
-    : step(&step)
-    , advGuild(&advGuild)
-    , bf(&bf)
-    , ul(&ul)
-    , scene(&scene)
-    , cutscene(&cutscene)
-    , view(&view)
-    , cursor(&cursor) {}
+    BattleContext(Guild&        oppGuild,
+                  Battlefield&  bf,
+                  UnitList&     ul,
+                  gr::Scene&    scene,
+                  Cutscene&     cutscene,
+                  gr::Cursor&   cursor,
+                  sf::View&     view)
+    : oppGuild(oppGuild)
+    , bf(bf)
+    , ul(ul)
+    , scene(scene)
+    , cutscene(cutscene)
+    , cursor(cursor)
+    , view(view) {}
 
 
 
-    BattleStep*         step;
-    Guild*              advGuild;
-    Battlefield*        bf;
-    UnitList*           ul;
-    gr::Scene*    scene;
-    Cutscene*           cutscene;
-    sf::View*           view;
-    gr::Cursor*   cursor;
+    Guild&              oppGuild;
+    Battlefield&        bf;
+    UnitList&           ul;
+    gr::Scene&          scene;
+    Cutscene&           cutscene;
+    gr::Cursor&         cursor;
+    sf::View&           view;
 };
 
+}
 
 #endif // BATTLECONTEXT_HPP_INCLUDED

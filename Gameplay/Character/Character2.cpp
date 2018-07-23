@@ -2,14 +2,14 @@
 #include "Gameplay/Battle/Battlefield.hpp"
 #include "Gameplay/Battle/UnitList.hpp"
 #include "Gameplay/General/Routines.hpp"
-#include "Data/DataHolder/DataIdentifiers.hpp"
+#include "Data/DataIdentifiers.hpp"
 #include "Graphism/Scene/Scene.hpp"
 #include "Graphism/Scene/EntityNode.hpp"
 #include "Graphism/Scene/SimpleNode.hpp"
 #include "Other/Utility.hpp"
 #include <iostream>
 
-void Character::startBattle(BattleContext context, sf::Vector2i coords, Direction::Dir facing)
+void Character::startBattle(bt::BattleContext context, sf::Vector2i coords, Direction::Dir facing)
 {
     reset();
 
@@ -28,6 +28,25 @@ void Character::startBattle(BattleContext context, sf::Vector2i coords, Directio
     mBattleContext.scene->addNode(circleNode);
 
     setCoords(coords);
+}
+
+void Character::incrementSpeedCounter()
+{
+    mSpeedCounter += getStats().speed;
+}
+
+bool Character::isReadyToAct() const
+{
+    return mSpeedCounter >= 100;
+}
+
+void Character::newTurn()
+{
+    for(int i(0); i < NB_ABILITIES; i++)
+    {
+        if (mAbilities[i].counter > 0)
+            mAbilities[i].counter--;
+    }
 }
 
 void Character::setCoords(sf::Vector2i coords)
@@ -50,42 +69,18 @@ void Character::setFacing(Direction::Dir facing)
     getEntity()->setFacing(facing);
 }
 
-void Character::incrementSpeedCounter()
-{
-    mSpeedCounter += getStats().speed;
-}
-
-void Character::newTurn()
-{
-    for(int i(0); i < NB_ABILITIES; i++)
-    {
-        if (mAbilities[i].counter > 0)
-            mAbilities[i].counter--;
-    }
-}
-
-void Character::receiveDamage(Stat amount)
+void Character::loseHP(Stat amount)
 {
     mHP -= amount;
     if (isDead())
         mHP = 0;
 }
 
-void Character::receiveHeal(float amount)
+void Character::gainHP(Stat amount)
 {
-    mHP += int(getStats().maxHP * amount);
+    mHP += amount;
     if (mHP > getStats().maxHP)
         mHP = getStats().maxHP;
-}
-
-void Character::setStatusAilment(StatusAilment sa)
-{
-    mAilments.push_back(sa);
-}
-
-void Character::removeStatusAilments()
-{
-    mAilments.clear();
 }
 
 void Character::endTurn()
@@ -104,7 +99,7 @@ void Character::endBattle()
 {
     reset();
     removeFromScene();
-    mBattleContext = BattleContext();
+    mBattleContext = bt::BattleContext();
 }
 
 Stats Character::checkLevelUps()

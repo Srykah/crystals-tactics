@@ -25,6 +25,6 @@ void playTurnBalanced(Character* unit);
 
 }
 
-AI::Type StrToAI(const sf::String& str);
+const ConversionMap<AI::Type, std::string>& getAIToStringMap();
 
 #endif // AI_HPP_INCLUDED

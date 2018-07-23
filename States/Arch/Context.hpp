@@ -1,10 +1,7 @@
 #ifndef CONTEXT_HPP_INCLUDED
 #define CONTEXT_HPP_INCLUDED
 
-#include "Data/ResourceHolder/ResourceIdentifiers.hpp"
-#include "Data/DataHolder/DataIdentifiers.hpp"
-#include "Data/Gameplay/AbilityHolder.hpp"
-#include "Data/Gameplay/ConsumableHolder.hpp"
+#include "Data/DataIdentifiers.hpp"
 
 namespace sf
 {
@@ -37,36 +34,48 @@ Il contient, dans l'ordre :
 
 //*/
 
-namespace st
+namespace sa
 {
 
 struct Context
 {
     Context(sf::RenderWindow& window,
-            Data::TextureHolder& textures,
-            Data::FontHolder& fonts,
+            dt::TextureHolder& textures,
+            dt::FontHolder& fonts,
             Sound::MusicPlayer& music,
             Sound::SoundPlayer& sounds,
-            Data::EntityHolder& entities,
-            Data::StatsHolder& stats,
-            Data::EquipmentHolder& equipments,
-            Data::WeaponHolder& weapons,
-            Data::ConsumableHolder& consumables,
-            Data::AbilityHolder& abilities,
-            Guild& guild);
+            dt::EntityHolder& entities,
+            dt::StatsHolder& stats,
+            dt::EquipmentHolder& equipments,
+            dt::WeaponHolder& weapons,
+            dt::AbilityHolder& consumables,
+            dt::AbilityHolder& abilities,
+            Guild& guild)
+        : window(window)
+        , textures(textures)
+        , fonts(fonts)
+        , music(music)
+        , sounds(sounds)
+        , entities(entities)
+        , stats(stats)
+        , equipments(equipments)
+        , weapons(weapons)
+        , consumables(consumables)
+        , abilities(abilities)
+        , guild(guild) {}
 
-    sf::RenderWindow*	    window;
-    Data::TextureHolder*    textures;
-    Data::FontHolder*	    fonts;
-    Sound::MusicPlayer*		music;
-    Sound::SoundPlayer*	    sounds;
-    Data::EntityHolder*     entities;
-    Data::StatsHolder*      stats;
-    Data::EquipmentHolder*  equipments;
-    Data::WeaponHolder*     weapons;
-    Data::ConsumableHolder* consumables;
-    Data::AbilityHolder*    abilities;
-    Guild*                  guild;
+    sf::RenderWindow&	    window;
+    dt::TextureHolder&      textures;
+    dt::FontHolder&	        fonts;
+    Sound::MusicPlayer&		music;
+    Sound::SoundPlayer&	    sounds;
+    dt::EntityHolder&       entities;
+    dt::StatsHolder&        stats;
+    dt::EquipmentHolder&    equipments;
+    dt::WeaponHolder&       weapons;
+    dt::AbilityHolder&      consumables;
+    dt::AbilityHolder&      abilities;
+    Guild&                  guild;
 };
 
 }

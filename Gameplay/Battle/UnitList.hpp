@@ -2,48 +2,40 @@
 #define UNITLIST_HPP_INCLUDED
 
 #include "Gameplay/Character/Character.hpp"
-#include <unordered_map>
+#include <SFML/System/Time.hpp>
+#include <vector>
+
+namespace bt
+{
 
 class UnitList
 {
 public:
-    typedef short Key;
-
-private:
-    struct Unit
-    {
-        Unit(Character* unit, short exp) : unit(unit), exp(exp) {}
-
-        Character* unit;
-        short exp;
-    };
-
-    typedef std::pair<Key, Unit> Pair;
-    typedef std::unordered_map<Key, Unit> UnitMap;
-    typedef UnitMap::const_iterator It;
-
-public:
     UnitList();
     ~UnitList();
 
-    Key addUnit(Character* unit);
-    Character* getUnit(Key key) const;
+    void update(sf::Time dt);
+
+    void addUnit(Character* unit);
+    void removeUnit(Character* charac);
+
     Character* getUnitByTile(sf::Vector2i tile);
-    Key getUnitKeyByTile(sf::Vector2i tile) const;
-    void giveUnitExp(Key key, short exp);
-    short getUnitExp(Key key) const;
-    int getUnitCount() const;
-    void removeUnit(Key key);
+    int getLivingUnitCount() const;
+    int getDeadUnitCount()   const;
+    int getTotalUnitCount()  const;
+
+    void incrementCounters();
+    Character* getReadyUnit() const;
+    void checkForDeadUnits();
 
     bool battleWon() const;
     bool battleLost() const;
-    void grantExperience();
 
 private:
-    UnitMap mUnits;
-    UnitMap mDeadUnits;
-    Key mKey;
+    std::vector<Character*> mUnits;
+    std::vector<Character*> mDeadUnits;
 };
 
+}
 
 #endif // UNITLIST_HPP_INCLUDED

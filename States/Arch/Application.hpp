@@ -51,17 +51,17 @@ private:
     Input::Listener         mListener;
     StateStack				mStateStack;
 
-    Data::TextureHolder	    mTextures;
-    Data::EntityHolder      mEntities;
-    Data::FontHolder		mFonts;
+    dt::TextureHolder	    mTextures;
+    dt::EntityHolder      mEntities;
+    dt::FontHolder		mFonts;
     Sound::MusicPlayer		mMusic;
     Sound::SoundPlayer		mSounds;
 
-    Data::AbilityHolder     mAbilities;
-    Data::StatsHolder       mStats;
-    Data::EquipmentHolder   mEquipments;
-    Data::WeaponHolder      mWeapons;
-    Data::ConsumableHolder  mConsumables;
+    dt::AbilityHolder     mAbilities;
+    dt::StatsHolder       mStats;
+    dt::EquipmentHolder   mEquipments;
+    dt::WeaponHolder      mWeapons;
+    dt::ConsumableHolder  mConsumables;
 
     Guild                   mGuild;
 };

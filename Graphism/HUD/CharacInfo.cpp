@@ -7,7 +7,7 @@
 namespace gr
 {
 
-CharacInfo::CharacInfo(st::Context context, Character* charac)
+CharacInfo::CharacInfo(sa::Context context, Character* charac)
 : mBackground(sf::Vector2f(350, 150))
 , mCharacter(charac)
 , mFace(sf::Vector2f(100,100))

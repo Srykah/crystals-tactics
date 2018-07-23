@@ -2,7 +2,7 @@
 #define MOVEMENT_HPP_INCLUDED
 
 #include "Gameplay/Abilities/Ability.hpp"
-#include "Data/DataHolder/DataIdentifiers.hpp"
+#include "Data/DataIdentifiers.hpp"
 #include "Gameplay/General/Direction.hpp"
 #include "Graphism/Scene/Effect.hpp"
 #include "States/Arch/Context.hpp"
@@ -12,7 +12,7 @@
 class BattleField;
 class UnitList;
 
-namespace Ab
+namespace ab
 {
 
 class Movement : public Ability

@@ -96,13 +96,13 @@ Listener::Listener(sf::Window* window)
     mAxesMap[std::make_pair(sf::Joystick::Y, false)]    = Direction::Up;
 
     //emulation of gamepad buttons through keyboard
-    mKeyMap[sf::Keyboard::O]        = StdAction::A;
-    mKeyMap[sf::Keyboard::P]        = StdAction::B;
-    mKeyMap[sf::Keyboard::L]        = StdAction::X;
-    mKeyMap[sf::Keyboard::M]        = StdAction::Y;
-    mKeyMap[sf::Keyboard::Return]   = StdAction::Start;
-    mKeyMap[sf::Keyboard::V]        = StdAction::ZoomOut;
-    mKeyMap[sf::Keyboard::N]        = StdAction::ZoomIn;
+    mKeyMap[sf::Keyboard::Space]     = StdAction::A;
+    mKeyMap[sf::Keyboard::BackSpace] = StdAction::B;
+    mKeyMap[sf::Keyboard::Menu]      = StdAction::X;
+    mKeyMap[sf::Keyboard::LControl]  = StdAction::Y;
+    mKeyMap[sf::Keyboard::Return]    = StdAction::Start;
+    mKeyMap[sf::Keyboard::Add]       = StdAction::ZoomIn;
+    mKeyMap[sf::Keyboard::Subtract]  = StdAction::ZoomOut;
 
     //the actual gamepad buttons
     mButtonMap[0] = StdAction::A;

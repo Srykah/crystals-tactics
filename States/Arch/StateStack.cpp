@@ -2,7 +2,7 @@
 
 #include <cassert>
 
-namespace st
+namespace sa
 {
 
 void StateStack::update(sf::Time dt)

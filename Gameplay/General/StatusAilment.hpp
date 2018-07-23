@@ -1,25 +1,39 @@
 #ifndef STATUSAILMENT_HPP_INCLUDED
 #define STATUSAILMENT_HPP_INCLUDED
 
-#include <boost/variant.hpp>
-#include <SFML/System/String.hpp>
-
 enum StatusAilment
 {
-    None = -1,
-    Burnt = 0,
+    Burnt,
     Poisoned,
-    Bleeding,
-    Rooted,
-    Disabled,
-    Asleep,
-    Invisible,
-    Count
+    Paralysed
+};
+
+const StatusAilment BadAilments[] =
+{
+    Burnt,
+    Poisoned,
+    Paralysed
+};
+
+const StatusAilment GoodAilments[] =
+{
+
+};
+
+struct StatusAilments
+{
+    void addAilment(StatusAilment ailment, int duration);
+    bool hasAilment(StatusAilment ailment) const;
+    int  getAilmentDuration(StatusAilment ailment) const;
+    void newTurn();
+    void removeAilment(StatusAilment ailment);
+    void removeBadAilments();
+    void removeGoodAilments();
+    void clear();
+
+    std::map< StatusAilment, int > mAilments;
 };
 
 typedef StatusAilment SA;
-
-sf::String  SAToStr(SA ailment);
-SA          StrToSA(const sf::String& text);
 
 #endif // STATUSAILMENT_HPP_INCLUDED

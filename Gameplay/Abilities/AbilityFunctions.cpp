@@ -5,12 +5,12 @@
 #include "Gameplay/Items/Weapon.hpp"
 #include "Other/Utility.hpp"
 
-namespace Ab
+namespace ab
 {
 
 bool isVisible(const Character* user, sf::Vector2i cible)
 {
-    BattleContext bc(user->getBattleContext());
+    bt::BattleContext bc(user->getBattleContext());
 
 	if (!bc.bf->contains(cible)) // check if cible is in the battlefield
         return false;

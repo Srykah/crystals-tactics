@@ -71,7 +71,9 @@ public:
     virtual bool    handleSignal(const Signal& signal) = 0;
 
 protected:
-    void            emit(Signal::Data data); //Fonction d'émission de signal
+    void            emit(Signal::Data data);    //Fonction d'émission de signal
+    void            closeSuccess();             //Émet true et se ferme
+    void            closeFailure();             //Émet false et se ferme
 
     StateStack*		mStack;
     Context			mContext;

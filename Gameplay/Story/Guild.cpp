@@ -1,7 +1,7 @@
 #include "Gameplay/Story/Guild.hpp"
 #include "Other/Utility.hpp"
 
-bool Guild::loadFromNode(const pugi::xml_node& node, st::Context context)
+bool Guild::loadFromNode(const pugi::xml_node& node, sa::Context context)
 {
     /// units
     for (pugi::xml_node& unitNode : node.child("units").children())
@@ -21,7 +21,7 @@ bool Guild::loadFromNode(const pugi::xml_node& node, st::Context context)
     return true;
 }
 
-bool Guild::loadFromFile(const sf::String& filename, st::Context context)
+bool Guild::loadFromFile(const sf::String& filename, sa::Context context)
 {
     pugi::xml_document doc;
     if (!doc.load_file(filename.toAnsiString().c_str()))

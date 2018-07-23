@@ -15,7 +15,7 @@ Bandage::~Bandage()
 
 std::vector<sf::Vector2i> Bandage::getRange(Character* user) const
 {
-    return Ab::circleRange(user, 0, 1);
+    return ab::circleRange(user, 0, 1);
 }
 
 std::vector<sf::Vector2i> Bandage::getArea(Character* user, sf::Vector2i to) const

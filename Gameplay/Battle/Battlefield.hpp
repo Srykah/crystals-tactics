@@ -1,7 +1,7 @@
 #ifndef BATTLEFIELD_HPP_INCLUDED
 #define BATTLEFIELD_HPP_INCLUDED
 
-#include "Data/ResourceHolder/ResourceIdentifiers.hpp"
+#include "Data/DataIdentifiers.hpp"
 #include "Input/Listener.hpp"
 #include "Graphism/Entity/Entity.hpp"
 #include "Gameplay/General/Routines.hpp"
@@ -17,8 +17,8 @@ namespace gr
     class Cursor;
 }
 
-template<typename T>
-using Grid = std::vector< std::vector< T > >;
+namespace bt
+{
 
 class Battlefield : public sf::Drawable
 {
@@ -37,7 +37,7 @@ public:
                     ~Battlefield();
 
     void            loadFromFile(const sf::String& file, gr::Scene& scene,
-                                 Data::EntityHolder* entityHolder, gr::Cursor& cursor);
+                                 dt::EntityHolder* entityHolder, gr::Cursor& cursor);
 
     virtual void    update(sf::Time delta);
     virtual void    draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates()) const;
@@ -80,5 +80,7 @@ private:
     sf::VertexArray                 mTerrain;
     std::vector< gr::Entity > mDecorations;
 };
+
+}
 
 #endif // BATTLEFIELD_HPP_INCLUDED

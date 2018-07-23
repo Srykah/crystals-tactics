@@ -7,7 +7,7 @@
 #include <memory>
 #include <vector>
 
-#include "Data/Graphism/AnimationData.hpp"
+#include "Graphism/Entity/AnimationData.hpp"
 
 namespace gr
 {
@@ -15,7 +15,7 @@ namespace gr
 class Animation : public sf::Drawable
 {
 public:
-                            Animation(const Data::AnimationData& data);
+                            Animation(const en::AnimationData& data);
 
     void 					update(sf::Time dt);
     void 					restart();
@@ -30,7 +30,7 @@ private:
     void 					draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 private:
-    const Data::AnimationData&  mAnimData;
+    const en::AnimationData&    mAnimData;
     sf::Sprite 		            mSprite;
     std::size_t 		        mCurrentFrame;
     sf::Time                    mElapsedTime;

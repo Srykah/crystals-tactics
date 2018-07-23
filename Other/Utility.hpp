@@ -59,5 +59,8 @@ constexpr auto toInt(Enum e);
 template<typename Enum>
 std::vector<short> getRange();
 
+template<typename T>
+using Grid = std::vector< std::vector< T > >;
+
 #include "Utility.inl"
 #endif // UTILITY_HPP_INCLUDED

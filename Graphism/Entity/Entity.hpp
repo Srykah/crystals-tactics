@@ -5,7 +5,7 @@
 #include <utility>
 #include <SFML/System/String.hpp>
 #include <memory>
-#include "Data/Graphism/EntityData.hpp"
+#include "Graphism/Entity/EntityData.hpp"
 #include "Graphism/Entity/Animation.hpp"
 #include "Gameplay/General/Direction.hpp"
 #include "XML/pugixml.hpp"
@@ -18,7 +18,7 @@ class Entity : public sf::Drawable
 public:
     typedef std::unique_ptr<Entity> Ptr;
 
-    Entity(const Data::EntityData& data, sf::String anim, Direction::Dir facing);
+    Entity(const en::EntityData& data, sf::String anim, Direction::Dir facing);
     ~Entity();
 
     void update(sf::Time delta);
@@ -35,7 +35,7 @@ public:
     bool isAnimationFinished() const;
 
 private:
-    const Data::EntityData& mData;
+    const en::EntityData& mData;
     std::unique_ptr<Animation> mAnimationPtr;
     sf::String mCurAnim;
     Direction::Dir mFacing;

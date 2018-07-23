@@ -14,7 +14,7 @@ class Battlefield;
 class UnitList;
 
 /*
-namespace Ab
+namespace ab
 {
     namespace Range
     { enum Type
@@ -43,7 +43,7 @@ namespace Ab
     }
 }*/
 
-namespace Ab
+namespace ab
 {
     bool                        isVisible(const Character* user, sf::Vector2i cible); // to rewrite
 

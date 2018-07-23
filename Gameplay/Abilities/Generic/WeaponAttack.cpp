@@ -5,7 +5,7 @@
 #include "Gameplay/Cutscene/AnimateFunctions.hpp"
 #include "Other/Utility.hpp"
 
-namespace Ab
+namespace ab
 {
 
 WeaponAttack::WeaponAttack()
@@ -32,7 +32,7 @@ std::vector<sf::Vector2i> WeaponAttack::getArea(Character* user, sf::Vector2i to
 
 void WeaponAttack::use(Character* user, sf::Vector2i to) const
 {
-    BattleContext bc(user->getBattleContext());
+    bt::BattleContext bc(user->getBattleContext());
 
     Animate::attack(user, to); //animation attaque
 
